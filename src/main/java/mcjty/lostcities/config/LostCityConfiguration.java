@@ -382,7 +382,6 @@ public class LostCityConfiguration {
         profile = new LostCityProfile("nospawner", true);
         profile.setDescription("No spawners, no lights. Contains loot.");
         profile.setExtraDescription("Works best with other mods");
-        profile.setIconFile("textures/gui/icon_safe.png");
         profile.GENERATE_SPAWNERS = false;
         profile.GENERATE_LIGHTING = false;
         profile.GENERATE_LOOT = true;
@@ -470,7 +469,6 @@ public class LostCityConfiguration {
 
         profile = new LostCityProfile("experimental", true);
         profile.setDescription("Experimental Profile, might not work");
-        profile.setIconFile("textures/gui/transparentlogo.png");
         profile.CITY_MAXRADIUS = 256;
         standardProfiles.put(profile.getName(), profile);
 
