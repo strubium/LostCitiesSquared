@@ -362,7 +362,7 @@
       "border": "y",
       "wall": "w",
       "street": "S",
-      "streetbase": "b",
+      "streetbase": "y",
       "streetvariant": "b"
     },
     "parkblocks": {
