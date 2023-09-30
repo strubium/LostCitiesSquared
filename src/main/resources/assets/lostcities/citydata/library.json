@@ -1868,7 +1868,7 @@
   },
   {
     "type": "part",
-    "name": "_fountain1",
+    "name": "park_fountain1",
     "xsize": 16,
     "zsize": 16,
     "slices": [
