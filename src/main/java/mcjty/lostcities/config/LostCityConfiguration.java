@@ -382,6 +382,7 @@ public class LostCityConfiguration {
         profile = new LostCityProfile("nospawner", true);
         profile.setDescription("No spawners, no lights. Contains loot.");
         profile.setExtraDescription("Works best with other mods");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.GENERATE_SPAWNERS = false;
         profile.GENERATE_LIGHTING = false;
         profile.GENERATE_LOOT = true;
@@ -469,11 +470,13 @@ public class LostCityConfiguration {
 
         profile = new LostCityProfile("experimental", true);
         profile.setDescription("Experimental Profile, might not work");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.CITY_MAXRADIUS = 256;
         standardProfiles.put(profile.getName(), profile);
 
         profile = new LostCityProfile("water_empty", true);
         profile.setDescription("Private empty terrain for waterbubbles");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.WATERLEVEL_OFFSET = -80;
         profile.RAILWAYS_ENABLED = false;
         profile.RAILWAY_STATIONS_ENABLED = false;
@@ -494,6 +497,7 @@ public class LostCityConfiguration {
 
         profile = new LostCityProfile("bio_wasteland", true);
         profile.setDescription("Private wasteland for biospheres");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.GROUNDLEVEL = 40;
         profile.WATERLEVEL_OFFSET = 70;
         profile.AVOID_WATER = true;
