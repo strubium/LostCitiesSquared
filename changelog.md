@@ -2,8 +2,9 @@
 * Removed the water that can be generated inside a building
 * Double stone slabs can sometimes generate as stone slabs for a more destroyed look
 * Closed the roof on one of the wells
-* Changed street variant to use grass instead of bricks for the time being 
-* Removed stone slabs from park_pool
+* Changed "street variant" to use stone bricks instead of bricks for the time being
+* Streets now generate with more stone slabs (More like a city)
+* Removed some stone slabs from park_pool
 * Internal: 
   * New MODID
   * Renamed park_pool to park_pond 
