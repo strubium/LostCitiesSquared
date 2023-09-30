@@ -23,15 +23,16 @@ public class LostCityConfiguration {
     public static final String WORLDTYPES_COMMENT = "List of other worldtypes (id) that this mod will try " +
             "to work with. The worldtype has to support the IChunkPrimerFactory API for this to work";
     public static final String PROFILES_COMMENT = "List of all supported profiles (used for world creation). Warning! Make sure there is always a 'default' profile!";
-    public static final String PRIVATE_PROFILES_COMMENT = "List of privatep profiles that cannot be selected by the player but are only used as a child profile of another one";
+    public static final String PRIVATE_PROFILES_COMMENT = "List of private profiles that cannot be selected by the player but are only used as a child profile of another one";
 
-    public static final String[] DEFAULT_PROFILES = new String[]{"default", "cavern", "nodamage", "rarecities", "floating", "space", "waterbubbles", "biosphere", "onlycities", "tallbuildings", "safe", "nospawner", "ancient", "wasteland", "chisel", "atlantis", "realistic", "geopol","experimental","bio_wasteland", "water_empty"};
+    public static final String[] DEFAULT_PROFILES = new String[]{"default", "cavern", "nodamage", "rarecities", "floating", "space", "waterbubbles", "biosphere", "onlycities", "tallbuildings", "safe", "nospawner", "ancient", "wasteland", "chisel", "atlantis", "realistic", "geopol", "experimental","bio_wasteland", "water_empty"};
     public static final String[] PRIVATE_PROFILES = new String[]{};
 
     public static String[] BLOCKS_REQUIRING_LIGHTING_UPDATES = new String[] {
             "minecraft:glowstone",
             "minecraft:lit_pumpkin",
-            "minecraft:magma"
+            "minecraft:magma",
+            "minecraft:ladder"
     };
 
     public static String[] ASSETS = new String[] {
@@ -49,7 +50,6 @@ public class LostCityConfiguration {
     };
 
     public static String[] ADDITIONAL_DIMENSIONS = new String[] {
-
     };
 
     public static String[] ADAPTING_WORLDTYPES = new String[] {};
@@ -470,12 +470,13 @@ public class LostCityConfiguration {
 
         profile = new LostCityProfile("experimental", true);
         profile.setDescription("Experimental Profile, might not work");
-        profile.setIconFile("textures/gui/transparentlogo.png");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.CITY_MAXRADIUS = 256;
         standardProfiles.put(profile.getName(), profile);
 
         profile = new LostCityProfile("water_empty", true);
         profile.setDescription("Private empty terrain for waterbubbles");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.WATERLEVEL_OFFSET = -80;
         profile.RAILWAYS_ENABLED = false;
         profile.RAILWAY_STATIONS_ENABLED = false;
@@ -496,6 +497,7 @@ public class LostCityConfiguration {
 
         profile = new LostCityProfile("bio_wasteland", true);
         profile.setDescription("Private wasteland for biospheres");
+        profile.setIconFile("textures/gui/icon_safe.png");
         profile.GROUNDLEVEL = 40;
         profile.WATERLEVEL_OFFSET = 70;
         profile.AVOID_WATER = true;
