@@ -363,7 +363,7 @@
       "wall": "w",
       "street": "S",
       "streetbase": "b",
-      "streetvariant": "B"
+      "streetvariant": "b"
     },
     "parkblocks": {
       "elevation": "x"
