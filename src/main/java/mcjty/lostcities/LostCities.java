@@ -23,8 +23,8 @@ import java.util.function.Function;
         acceptedMinecraftVersions = "[1.12,1.13)",
         acceptableRemoteVersions = "*")
 public class LostCities {
-    public static final String MODID = "lostcities";
-    public static final String VERSION = "Dev-2";
+    public static final String MODID = "lostcitiessquared";
+    public static final String VERSION = "Dev-3";
     public static final String MIN_FORGE11_VER = "13.19.0.2176";
 
     @SidedProxy(clientSide="mcjty.lostcities.setup.ClientProxy", serverSide="mcjty.lostcities.setup.ServerProxy")
