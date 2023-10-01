@@ -1,3 +1,6 @@
+## The Lost Cities Squared Dev-4:
+* Fixed train station being one block elevated 
+
 ## The Lost Cities Squared Dev-3:
 * Removed the water that can be generated inside a building
 * Double stone slabs can sometimes generate as stone slabs for a more destroyed look
