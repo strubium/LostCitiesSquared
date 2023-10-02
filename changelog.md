@@ -1,5 +1,6 @@
 ## The Lost Cities Squared Dev-4:
-* Fixed train station being one block elevated 
+* Fixed train station being one block elevated
+* Increased the spawn chance of the townhall for testing
 
 ## The Lost Cities Squared Dev-3:
 * Removed the water that can be generated inside a building
