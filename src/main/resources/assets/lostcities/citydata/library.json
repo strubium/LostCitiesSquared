@@ -361,7 +361,7 @@
     "streetblocks": {
       "border": "y",
       "wall": "w",
-      "street": "S",
+      "street": "R",
       "streetbase": "S",
       "streetvariant": "y"
     },
