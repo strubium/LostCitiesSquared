@@ -46,14 +46,6 @@ tasks.injectTags.configure {
     outputClassName.set("testmod.Tags")
 }
 
-publishing {
-    publications {
-        create<MavenPublication>("testmod") {
-            from(components["java"])
-        }
-    }
-}
-
 dependencies {
     minecraft 'net.minecraftforge:forge:1.12.2-14.23.5.2859'
     implementation "mezz.jei:jei_${jei_version}"
