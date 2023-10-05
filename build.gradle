@@ -21,6 +21,9 @@ java {
         languageVersion.set(JavaLanguageVersion.of(8))
         vendor.set(JvmVendorSpec.ADOPTIUM)
     }
+    toolchain {
+        implementation = JvmImplementation.J8
+    }
     // Generate sources jar when building and publishing
     withSourcesJar()
 }
