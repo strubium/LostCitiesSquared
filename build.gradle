@@ -11,6 +11,10 @@ plugins {
 repositories {
     mavenCentral()
     mavenLocal()
+    maven {
+        name 'Cleanroom'
+        url 'https://maven.cleanroommc.com'
+    }
 }
 
 java {
