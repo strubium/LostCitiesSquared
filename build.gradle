@@ -47,3 +47,9 @@ dependencies {
     implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
     implementation "cofh:RedstoneFlux:${redstoneflux_version}"
 }
+
+jar {
+    manifest {
+        attributes 'FMLAT': 'lostcities_at.cfg'
+    }
+}
