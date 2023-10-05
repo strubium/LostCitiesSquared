@@ -47,7 +47,7 @@ tasks.injectTags.configure {
 }
 
 dependencies {
-    compile "mezz.jei:jei_${jei_version}"
-    compile "mcjty.theoneprobe:TheOneProbe-${top_version}"
-    compile "cofh:RedstoneFlux:${redstoneflux_version}"
+    implementation "mezz.jei:jei_${jei_version}"
+    implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
+    implementation "cofh:RedstoneFlux:${redstoneflux_version}"
 }
