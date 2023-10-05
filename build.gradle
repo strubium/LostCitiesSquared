@@ -42,10 +42,6 @@ minecraft {
     injectedTags.put("TAG_VERSION", version)
 }
 
-tasks.injectTags.configure {
-    outputClassName.set("testmod.Tags")
-}
-
 dependencies {
     implementation "mezz.jei:jei_${jei_version}"
     implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
