@@ -18,12 +18,12 @@ repositories {
 }
 
 java {
+java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8))
-        vendor = JvmVendorSpec.ECLIPSE_FOUNDATION
+        languageVersion = JavaLanguageVersion.of(8)
+        vendor = JvmVendorSpec.IBM
+        implementation = JvmImplementation.J9
     }
-    // Generate sources jar when building and publishing
-    withSourcesJar()
 }
 
 tasks.withType(JavaCompile).configureEach {
