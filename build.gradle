@@ -1,7 +1,7 @@
 import com.gtnewhorizons.retrofuturagradle.mcp.InjectTagsTask
 
 plugins {
-    id("com.gtnewhorizons.retrofuturagradle.gradle.plugin:1.3.24")
+    id("com.gtnewhorizons.retrofuturagradle.gradle.plugin"), version: "1.3.14"
     id("maven-publish")
 }
 
@@ -45,5 +45,4 @@ dependencies {
     implementation "mezz.jei:jei_${jei_version}"
     implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
     implementation "cofh:RedstoneFlux:${redstoneflux_version}"
-
 }
