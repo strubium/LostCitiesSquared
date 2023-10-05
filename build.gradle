@@ -32,12 +32,9 @@ tasks.withType(JavaCompile).configureEach {
 minecraft {
     mcVersion = '1.12.2'
 
-    username = 'Desoroxxx'
+    username = 'Dev'
 
     extraRunJvmArguments.addAll('-Xmx4G', '-Xms4G', '-Dforge.logging.console.level=debug', '-Dmixin.hotSwap=true', '-Dmixin.checks.interfaces=true', '-Dmixin.debug.export=true', '-Dfml.coreMods.load=com.paneedah.mwc.asm.MWCPlugin')
-
-    injectedTags.put('ID', project.id)
-    injectedTags.put('VERSION', project.version)
 }
 
 // Generate a my.project.Tags class with the version number as a field
