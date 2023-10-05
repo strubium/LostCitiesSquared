@@ -22,7 +22,7 @@ java {
         vendor.set(JvmVendorSpec.ADOPTIUM)
     }
     toolchain {
-        implementation = JvmImplementation.J8
+        implementation = JvmImplementation.J9
     }
     // Generate sources jar when building and publishing
     withSourcesJar()
