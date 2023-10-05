@@ -4,7 +4,7 @@ import org.jetbrains.gradle.ext.Gradle
 import org.jetbrains.gradle.ext.RunConfigurationContainer
 
 plugins {
-    id("com.gtnewhorizons.retrofuturagradle.gradle.plugin")
+    id("com.gtnewhorizons.retrofuturagradle.gradle.plugin") version: "${retro_fura_gradle_version}"
     id("maven-publish")
 }
 
