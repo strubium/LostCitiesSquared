@@ -20,7 +20,7 @@ repositories {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        vendor.set(JvmVendorSpec.ADOPTIUM)
+        vendor = JvmVendorSpec.matching("Azul")
     }
     // Generate sources jar when building and publishing
     withSourcesJar()
