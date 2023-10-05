@@ -19,18 +19,26 @@ repositories {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        vendor.set(JvmVendorSpec.AZUL)
+        vendor.set(JvmVendorSpec.ADOPTIUM)
     }
+    // Generate sources jar when building and publishing
     withSourcesJar()
-    withJavadocJar()
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    options.fork = true
+    options.forkOptions.jvmArgs += '-Xmx4G'
 }
 
 group = "com.github.strubium"
 version = "1.0"
 
 minecraft {
-    // skipSlowTasks.set(true)
-    mcVersion.set("1.12.2")
+    mcVersion = '1.12.2'
+
+    username = 'Dev'
+
     injectedTags.put("TAG_VERSION", version)
 }
 
