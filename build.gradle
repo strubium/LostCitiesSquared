@@ -20,8 +20,6 @@ repositories {
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(8)
-        vendor = JvmVendorSpec.IBM
-        implementation = JvmImplementation.J9
     }
 }
 
