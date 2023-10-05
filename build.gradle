@@ -20,6 +20,7 @@ repositories {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
+        vendor = JvmVendorSpec.matching("temurin")
     }
     // Generate sources jar when building and publishing
     withSourcesJar()
