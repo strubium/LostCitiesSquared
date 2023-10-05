@@ -18,21 +18,6 @@ repositories {
         url "https://dvs1.progwml6.com/files/maven"
     }
     maven {
-        name 'OC Repo'
-        url "https://maven.cil.li/"
-    }
-    maven { // TOP
-        name 'tterrag maven'
-        url "https://maven.tterrag.com/"
-    }
-    maven { // McJtyLib
-        url "https://maven.k-4u.nl"
-    }
-    maven {
-        name = "sonatype"
-        url = "https://oss.sonatype.org/content/repositories/snapshots/"
-    }
-    maven {
     name = "OvermindDL1 Maven"
     url = uri("https://gregtech.overminddl1.com/")
     mavenContent {
