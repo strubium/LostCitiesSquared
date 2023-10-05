@@ -20,7 +20,7 @@ repositories {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        vendor = JvmVendorSpec.matching("temurin")
+        vendor = JvmVendorSpec.matching("AZUL")
     }
     // Generate sources jar when building and publishing
     withSourcesJar()
@@ -28,6 +28,8 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
+    options.fork = true
+    options.forkOptions.jvmArgs += '-Xmx4G'
 }
 
 group = "com.github.strubium"
