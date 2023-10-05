@@ -1,23 +1,26 @@
+import com.gtnewhorizons.retrofuturagradle.mcp.InjectTagsTask
+import org.jetbrains.gradle.ext.Application
 import org.jetbrains.gradle.ext.Gradle
+import org.jetbrains.gradle.ext.RunConfigurationContainer
 
 plugins {
     id 'java'
-    id 'java-library'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
     id 'com.gtnewhorizons.retrofuturagradle' version '1.+'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
     id 'me.champeau.jmh' version '0.7.1'
-    id 'io.freefair.lombok' version '8.3'
 }
 
-// Add version to the jar name
-version project.version
+repositories {
+    mavenCentral()
+    mavenLocal()
+    gradlePluginPortal()
+}
 
-// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        vendor.set(JvmVendorSpec.ADOPTIUM)
+        vendor = JvmVendorSpec.matching("temurin")
     }
     // Generate sources jar when building and publishing
     withSourcesJar()
@@ -25,94 +28,27 @@ java {
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
-    options.fork = true
-    options.forkOptions.jvmArgs += '-Xmx4G'
 }
+
+group = "com.github.strubium"
+version = "1.0"
 
 minecraft {
     mcVersion = '1.12.2'
 
     username = 'Dev'
 
-    extraRunJvmArguments.addAll('-Xmx4G', '-Xms4G', '-Dforge.logging.console.level=debug', '-Dmixin.hotSwap=true', '-Dmixin.checks.interfaces=true', '-Dmixin.debug.export=true', '-Dfml.coreMods.load=com.paneedah.mwc.asm.MWCPlugin')
-}
-
-
-configurations {
-    // Define a configuration to download and attach sources
-    sources
-}
-
-repositories {
-    maven {
-        name 'Cleanroom'
-        url 'https://maven.cleanroommc.com'
-    }
-
-    ivy {
-        name 'Red Studio GitHub Releases'
-        url 'https://github.com/'
-
-        patternLayout { artifact '[organisation]/[module]/releases/download/[revision]/[module]-[revision](-[classifier]).[ext]' }
-
-        metadataSources { artifact() }
-    }
+    injectedTags.put("TAG_VERSION", version)
 }
 
 dependencies {
-    jmh 'org.openjdk.jmh:jmh-core:1.36'
-    jmh 'org.openjdk.jmh:jmh-generator-annprocess:1.36'
-
-
     implementation "mezz.jei:jei_${jei_version}"
     implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
     implementation "cofh:RedstoneFlux:${redstoneflux_version}"
 }
 
-jmh {
-    warmupIterations = 5
-    iterations = 10
-    fork = 1
+jar {
+    manifest {
+        attributes 'FMLAT': 'lostcities_at.cfg'
+    }
 }
-
-
-idea {
-    module { inheritOutputDirs = true }
-
-    module { excludeDirs = [file('.github'), file('.gradle'), file('.idea'), file('build'), file('gradle'), file('run')] }
-
-    project { settings {
-        runConfigurations {
-            'Client'(Gradle) {
-                taskNames = ['runClient']
-            }
-            'Server'(Gradle) {
-                taskNames = ['runServer']
-            }
-            'Obfuscated Client'(Gradle) {
-                taskNames = ['runObfClient']
-            }
-            'Obfuscated Server'(Gradle) {
-                taskNames = ['runObfServer']
-            }
-            'Vanilla Client'(Gradle) {
-                taskNames = ['runVanillaClient']
-            }
-            'Vanilla Server'(Gradle) {
-                taskNames = ['runVanillaServer']
-            }
-        }
-
-        compiler.javac {
-            afterEvaluate {
-                javacAdditionalOptions = '-encoding utf8'
-            }
-        }
-    }}
-}
-
-tasks.named('processIdeaSettings').configure {
-    dependsOn('injectTags')
-}
-
-
