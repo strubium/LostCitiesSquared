@@ -16,6 +16,8 @@ plugins {
 repositories {
     mavenCentral()
     mavenLocal()
+    gradlePluginPortal()
+    google()
     maven {
         name 'Cleanroom'
         url 'https://maven.cleanroommc.com'
