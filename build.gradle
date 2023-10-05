@@ -37,10 +37,6 @@ minecraft {
     extraRunJvmArguments.addAll('-Xmx4G', '-Xms4G', '-Dforge.logging.console.level=debug', '-Dmixin.hotSwap=true', '-Dmixin.checks.interfaces=true', '-Dmixin.debug.export=true', '-Dfml.coreMods.load=com.paneedah.mwc.asm.MWCPlugin')
 }
 
-// Generate a my.project.Tags class with the version number as a field
-tasks.injectTags.configure {
-    outputClassName.set("com.paneedah.${project.id}.Tags")
-}
 
 configurations {
     // Define a configuration to download and attach sources
