@@ -1,17 +1,14 @@
-buildscript {
-    repositories {
-        maven { url = 'https://maven.minecraftforge.net' }
+import org.jetbrains.gradle.ext.Application
+import org.jetbrains.gradle.ext.Gradle
+import org.jetbrains.gradle.ext.RunConfigurationContainer
 
-        mavenCentral()
-    }
-
-    dependencies {
-        classpath group: 'net.minecraftforge.gradle', name: 'ForgeGradle', version: '5.1.+', changing: true
-
-    }
+plugins {
+  id("java-library")
+  id("maven-publish")
+  id("org.jetbrains.gradle.plugin.idea-ext") version "1.1.7"
+  id("eclipse")
+  id("com.gtnewhorizons.retrofuturagradle") version "1.3.19"
 }
-
-apply plugin: 'net.minecraftforge.gradle'
 
 repositories {
 
@@ -34,90 +31,58 @@ repositories {
         url = "https://oss.sonatype.org/content/repositories/snapshots/"
     }
     maven {
-        name = "CoFH Maven"
-        url = "https://maven.covers1624.net"
+    name = "OvermindDL1 Maven"
+    url = uri("https://gregtech.overminddl1.com/")
+    mavenContent {
+      excludeGroup("net.minecraftforge") // missing the `universal` artefact
     }
-}
-
-def ENV = System.getenv()
-if (ENV.DRONE_BUILD_NUMBER) {
-    version += ".n" + ENV.DRONE_BUILD_NUMBER
+  }
+  maven {
+    name = "GTNH Maven"
+    url = uri("http://jenkins.usrv.eu:8081/nexus/content/groups/public/")
+    isAllowInsecureProtocol = true
+  }
 }
 group= "com.github.strubium" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+version = "1.0.0"
 archivesBaseName = "lostcities"
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+// Set the toolchain version to decouple the Java we run Gradle with from the Java used to compile and run the mod
+java {
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(8))
+    // Azul covers the most platforms for Java 8 toolchains, crucially including MacOS arm64
+    vendor.set(org.gradle.jvm.toolchain.JvmVendorSpec.AZUL)
+  }
+  // Generate sources and javadocs jars when building and publishing
+  withSourcesJar()
+  withJavadocJar()
+}
 
 
 
+// Most RFG configuration lives here, see the JavaDoc for com.gtnewhorizons.retrofuturagradle.MinecraftExtension
 minecraft {
-    // The mappings can be changed at any time and must be in the following format.
-    // Channel:   Version:
-    // official   MCVersion             Official field/method names from Mojang mapping files
-    // parchment  YYYY.MM.DD-MCVersion  Open community-sourced parameter names and javadocs layered on top of official
-    //
-    // You must be aware of the Mojang license when using the 'official' or 'parchment' mappings.
-    // See more information here: https://github.com/MinecraftForge/MCPConfig/blob/master/Mojang.md
-    //
-    // Parchment is an unofficial project maintained by ParchmentMC, separate from MinecraftForge
-    // Additional setup is needed to use their mappings: https://github.com/ParchmentMC/Parchment/wiki/Getting-Started
-    //
-    // Use non-default mappings at your own risk. They may not always work.
-    // Simply re-run your setup task after changing the mappings to update your workspace.
-    mappings channel: 'stable', version: '39-1.12'
+  mcVersion.set("1.12.2")
 
-    accessTransformer = file('src/main/resources/META-INF/lostcities_at.cfg')
+  // Username for client run configurations
+  username.set("Developer")
 
-    // Default run configurations.
-    // These can be tweaked, removed, or duplicated as needed.
-    runs {
-        client {
-            workingDirectory project.file('run')
+  // Generate a field named VERSION with the mod version in the injected Tags class
+  injectedTags.put("VERSION", project.version)
 
-            // Recommended logging data for a userdev environment
-            // The markers can be added/remove as needed separated by commas.
-            // "SCAN": For mods scan.
-            // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
-            property 'forge.logging.markers', 'REGISTRIES'
+  // If you need the old replaceIn mechanism, prefer the injectTags task because it doesn't inject a javac plugin.
+  // tagReplacementFiles.add("RfgExampleMod.java")
 
+  // Enable assertions in the mod's package when running the client or server
+  extraRunJvmArguments.add("-ea:${project.group}")
 
-            // Recommended logging level for the console
-            // You can set various levels here.
-            // Please read: https://stackoverflow.com/questions/2031163/when-to-use-the-different-log-levels
-            property 'forge.logging.console.level', 'debug'
+  // If needed, add extra tweaker classes like for mixins.
+  // extraTweakClasses.add("org.spongepowered.asm.launch.MixinTweaker")
 
-
-            mods {
-                lostcities {
-                    source sourceSets.main
-                }
-            }
-        }
-
-        server {
-            workingDirectory project.file('run')
-
-            property 'forge.logging.markers', 'REGISTRIES'
-
-            property 'forge.logging.console.level', 'debug'
-
-
-            mods {
-                lostcities {
-                    source sourceSets.main
-                }
-            }
-        }
-    }
+  // Exclude some Maven dependency groups from being automatically included in the reobfuscated runs
+  groupsToExcludeFromAutoReobfMapping.addAll("com.diffplug", "com.diffplug.durian", "net.industrial-craft")
 }
-
-task deobfJar(type: Jar) {
-    from sourceSets.main.output
-    classifier = 'dev'
-}
-
 
 
 
@@ -133,4 +98,66 @@ jar {
     manifest {
         attributes 'FMLAT': 'lostcities_at.cfg'
     }
+}
+ project {
+    this.withGroovyBuilder {
+      "settings" {
+        "runConfigurations" {
+          val self = this.delegate as RunConfigurationContainer
+          self.add(Gradle("1. Run Client").apply {
+            setProperty("taskNames", listOf("runClient"))
+          })
+          self.add(Gradle("2. Run Server").apply {
+            setProperty("taskNames", listOf("runServer"))
+          })
+          self.add(Gradle("3. Run Obfuscated Client").apply {
+            setProperty("taskNames", listOf("runObfClient"))
+          })
+          self.add(Gradle("4. Run Obfuscated Server").apply {
+            setProperty("taskNames", listOf("runObfServer"))
+          })
+          /*
+          These require extra configuration in IntelliJ, so are not enabled by default
+          self.add(Application("Run Client (IJ Native, Deprecated)", project).apply {
+            mainClass = "GradleStart"
+            moduleName = project.name + ".ideVirtualMain"
+            afterEvaluate {
+              val runClient = tasks.runClient.get()
+              workingDirectory = runClient.workingDir.absolutePath
+              programParameters = runClient.calculateArgs(project).map { '"' + it + '"' }.joinToString(" ")
+              jvmArgs = runClient.calculateJvmArgs(project).map { '"' + it + '"' }.joinToString(" ") +
+                ' ' + runClient.systemProperties.map { "\"-D" + it.key + '=' + it.value.toString() + '"' }
+                .joinToString(" ")
+            }
+          })
+          self.add(Application("Run Server (IJ Native, Deprecated)", project).apply {
+            mainClass = "GradleStartServer"
+            moduleName = project.name + ".ideVirtualMain"
+            afterEvaluate {
+              val runServer = tasks.runServer.get()
+              workingDirectory = runServer.workingDir.absolutePath
+              programParameters = runServer.calculateArgs(project).map { '"' + it + '"' }.joinToString(" ")
+              jvmArgs = runServer.calculateJvmArgs(project).map { '"' + it + '"' }.joinToString(" ") +
+                ' ' + runServer.systemProperties.map { "\"-D" + it.key + '=' + it.value.toString() + '"' }
+                .joinToString(" ")
+            }
+          })
+          */
+        }
+        "compiler" {
+          val self = this.delegate as org.jetbrains.gradle.ext.IdeaCompilerConfiguration
+          afterEvaluate {
+            self.javac.moduleJavacAdditionalOptions = mapOf(
+              (project.name + ".main") to
+                tasks.compileJava.get().options.compilerArgs.map { '"' + it + '"' }.joinToString(" ")
+            )
+          }
+        }
+      }
+    }
+  }
+}
+
+tasks.processIdeaSettings.configure {
+  dependsOn(tasks.injectTags)
 }
