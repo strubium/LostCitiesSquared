@@ -20,7 +20,7 @@ repositories {
 java {
     toolchain {
         languageVersion.set(JavaLanguageVersion.of(8))
-        vendor = JvmVendorSpec.matching("temurin")
+        vendor = JvmVendorSpec.matching("Eclipse Adoptium")
     }
     // Generate sources jar when building and publishing
     withSourcesJar()
