@@ -1,7 +1,8 @@
 ## The Lost Cities Squared Dev-4:
 * Fixed train station being one block elevated
+* Fixed bridges being one block elevated
 * Increased the spawn chance of the townhall for testing
-* Streets will now use Dark Grey Concrete as the road base
+* Streets now use Dark Grey Concrete as the road base
 
 ## The Lost Cities Squared Dev-3:
 * Removed the water that can be generated inside a building
