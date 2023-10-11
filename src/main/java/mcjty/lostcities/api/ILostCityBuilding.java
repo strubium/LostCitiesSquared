@@ -12,13 +12,13 @@ public interface ILostCityBuilding extends ILostCityAsset {
      * Maximum number of floors for this type of building.
      */
     int getMaxFloors();
+    
+    int getMinFloors();
 
     /**
      * Maximum number of cellars for this type of building.
      */
     int getMaxCellars();
-
-    int getMinFloors();
 
     int getMinCellars();
 
