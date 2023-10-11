@@ -4,7 +4,7 @@
     "name": "easymobs",
     "values": [
       {
-        "factor": 1,
+        "factor": 2,
         "value": "Zombie"
       },
       {
@@ -49,35 +49,6 @@
         "factor": 20,
         "value": "lostcities:chests/raildungeonchest",
         "inpart": "rail_dungeon1"
-      },
-      {
-        "factor": 20,
-        "value": "lostcities:chests/raildungeonchest",
-        "inpart": "rail_dungeon2"
-      },
-      {
-        "factor": 2,
-        "value": "minecraft:chests/nether_bridge"
-      },
-      {
-        "factor": 2,
-        "value": "minecraft:chests/abandoned_mineshaft"
-      },
-      {
-        "factor": 2,
-        "value": "minecraft:chests/village_blacksmith"
-      },
-      {
-        "factor": 2,
-        "value": "minecraft:chests/desert_pyramid"
-      },
-      {
-        "factor": 2,
-        "value": "minecraft:chests/jungle_temple"
-      },
-      {
-        "factor": 20,
-        "value": "minecraft:chests/simple_dungeon"
       }
     ]
   }
