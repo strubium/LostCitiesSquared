@@ -79,6 +79,25 @@
         "factor": 20,
         "value": "minecraft:chests/simple_dungeon"
       }
+       {
+    "type": "condition",
+    "name": "chestlootMWC",
+    "values": [
+      {
+        "factor": 8,
+        "value": "lostcities:chests/lostcitychestMWC",
+        "range": "4,100"
+      },
+      {
+        "factor": 8,
+        "value": "lostcities:chests/lostcitychestMWC",
+        "range": "-100,-3"
+      },
+      {
+        "factor": 20,
+        "value": "lostcities:chests/raildungeonchest",
+        "inpart": "rail_dungeon1"
+      }
     ]
   }
 ]
