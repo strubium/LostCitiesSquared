@@ -29,6 +29,7 @@ public class ModSetup {
     public static boolean atg = false;
     public static boolean neid = false;
     public static boolean jeid = false;
+    public static boolean mwc = false;
 
     private Logger logger;
     public static File modConfigDir;
@@ -50,9 +51,9 @@ public class ModSetup {
     private void setupModCompat() {
         chisel = Loader.isModLoaded("chisel");
         biomesoplenty = Loader.isModLoaded("biomesoplenty") || Loader.isModLoaded("BiomesOPlenty");
-//        atg = Loader.isModLoaded("atg"); // @todo
         neid = Loader.isModLoaded("neid");
         jeid = Loader.isModLoaded("jeid");
+        mwc = Loader.isModLoaded("mwc");
     }
 
     public Logger getLogger() {
