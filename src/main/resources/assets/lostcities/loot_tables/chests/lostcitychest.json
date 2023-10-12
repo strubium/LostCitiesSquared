@@ -19,7 +19,7 @@
               }
             }
           ],
-          "weight": 2
+          "weight": 1
         },
         {
           "type": "item",
@@ -29,11 +29,25 @@
               "function": "set_count",
               "count": {
                 "min": 1,
-                "max": 5
+                "max": 3
               }
             }
           ],
           "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:iron_sword",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
+                "max": 1
+              }
+            }
+          ],
+          "weight": 2
         },
         {
           "type": "item",
@@ -47,7 +61,7 @@
               }
             }
           ],
-          "weight": 5
+          "weight": 1
         },
         {
           "type": "item",
@@ -61,7 +75,7 @@
               }
             }
           ],
-          "weight": 5
+          "weight": 1
         },
         {
           "type": "item",
@@ -98,7 +112,21 @@
             {
               "function": "set_count",
               "count": {
-                "min": 1,
+                "min": 0,
+                "max": 3
+              }
+            }
+          ],
+          "weight": 5
+        },
+        {
+          "type": "item",
+          "name": "minecraft:carrot",
+          "functions": [
+            {
+              "function": "set_count",
+              "count": {
+                "min": 0,
                 "max": 2
               }
             }
