@@ -3,6 +3,8 @@
 * Fixed bridges being one block elevated
 * Increased the spawn chance of the townhall for testing
 * Streets now use Dark Grey Concrete as the road base
+* Chests now no longer reuse minecrafts dungeon loot tables
+* Added more loot variety to chests 
 
 ## The Lost Cities Squared Dev-3:
 * Removed the water that can be generated inside a building
