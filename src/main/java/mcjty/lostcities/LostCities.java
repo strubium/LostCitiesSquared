@@ -24,7 +24,7 @@ import java.util.function.Function;
         acceptableRemoteVersions = "*")
 public class LostCities {
     public static final String MODID = "lostcitiessquared";
-    public static final String VERSION = "Dev-3";
+    public static final String VERSION = "Dev-4";
     public static final String MIN_FORGE11_VER = "13.19.0.2176";
 
     @SidedProxy(clientSide="mcjty.lostcities.setup.ClientProxy", serverSide="mcjty.lostcities.setup.ServerProxy")
