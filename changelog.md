@@ -6,7 +6,12 @@
 * Chests now no longer reuse minecrafts dungeon loot tables
 * Added more loot variety to chests
 * Added a check for if ATG is loaded
-* Started work on the MWC pallete   
+* Started work on the MWC pallete
+* Added a bunch of lang translations! These were all closed PR's for the original Lost Cities.
+* Lang credits:
+  * Blueberryy (ru_RU.lang)
+  * MCUmbrella (zh_CN.lang)
+  * Lykrast (fr_FR.lang)
 
 ## The Lost Cities Squared Dev-3:
 * Removed the water that can be generated inside a building
