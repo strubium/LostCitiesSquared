@@ -106,6 +106,7 @@ public class DimensionDictionary
 
         registerSubtypes(UNREAL, Arrays.asList(IMAGINARY, SIMULATED, ABSTRACT));
 
+        // Minecrafts default dimensions
         registerDimensionTypes(0, Arrays.asList(MC_DEFAULT, REAL, INFINITE, NO_TOP_LIMIT, BOTTOM_LIMIT, PLANET_SURFACE, EARTH));
         registerDimensionTypes(-1, Arrays.asList(MC_DEFAULT, REAL, INFINITE, TOP_LIMIT, BOTTOM_LIMIT, HELL));
         registerDimensionTypes(1, Arrays.asList(MC_DEFAULT, REAL, FINITE, NO_TOP_LIMIT, NO_BOTTOM_LIMIT, BOSS_ARENA, ENDER));
