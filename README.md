@@ -17,11 +17,11 @@ Hello and welcome to Strubium steals code from people to make an old mod slightl
 * New "geopol" profile. Generate cities with the power of [GeoPol!](https://github.com/markgyoni/geopol)
 * Tweeks to the "onlycity" profile. Railways + Highways.
 * Un-privated all the hidden "base" profies.
-* Removed the water that generates inside buildings  
+* Removed the water that generates inside buildings
+* Stopped using dungeon loot in citys. 
 
 ## Future Plans
 * A palette that uses MWC Props
-* Stop using dungeon loot in citys.
 * A config system for city loot as 1.12.2 doesnt support datapacks   
 * Remastered Chisel profile (It will look nicer)
 
