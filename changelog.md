@@ -1,6 +1,8 @@
 ## The Lost Cities Squared Dev-4:
 * Fixed train station being one block elevated
 * Fixed bridges being one block elevated
+* Fixed explosions making airblocks under water (Windmill-City) 
+* Fixed biome offset (Pseudonomenclature)
 * Increased the spawn chance of the townhall for testing
 * Streets now use Dark Grey Concrete as the road base
 * Chests now no longer reuse minecrafts dungeon loot tables
