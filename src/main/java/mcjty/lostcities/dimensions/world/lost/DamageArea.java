@@ -76,10 +76,10 @@ public class DamageArea {
                 if (provider.rand.nextFloat() < .7f) {
                     b = damaged == LostCitiesTerrainGenerator.airChar && y < waterlevel ? liquidChar : damaged;
                 } else {
-                    b = y <= waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
+                    b = y < waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
                 }
             } else {
-                b = y <= waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
+                b = y < waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
             }
         }
         return b;
