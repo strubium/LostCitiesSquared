@@ -1,15 +1,18 @@
 ## The Lost Cities Squared Dev-4:
+* Added a bunch of closed PR's from the original Lost Cities. The orginal author's username is credited next to the change.
 * Fixed train station being one block elevated
 * Fixed bridges being one block elevated
-* Fixed explosions making airblocks under water (Windmill-City) 
-* Fixed biome offset (Pseudonomenclature)
+* Fixed explosions leaving airblocks underwater (Windmill-City)
+* Fixed Min + Max Cellars (Windmill-City)
+* Fixed grass blocks generating underwater (Windmill-City)
+* Fixed waterlevel being wrong (Windmill-City) 
+* Fixed biomes being one chunk offset (Pseudonomenclature)
 * Increased the spawn chance of the townhall for testing
 * Streets now use Dark Grey Concrete as the road base
 * Chests now no longer reuse minecrafts dungeon loot tables
 * Added more loot variety to chests
 * Added a check for if ATG is loaded
 * Started work on the MWC pallete
-* Added a bunch of lang translations! These were all closed PR's for the original Lost Cities.
 * Lang credits:
   * Blueberryy (ru_RU.lang)
   * MCUmbrella (zh_CN.lang)
