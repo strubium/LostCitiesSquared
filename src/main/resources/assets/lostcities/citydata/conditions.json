@@ -41,11 +41,6 @@
         "range": "4,100"
       },
       {
-        "factor": 8,
-        "value": "lostcities:chests/lostcitychest",
-        "range": "-100,-3"
-      },
-      {
         "factor": 20,
         "value": "lostcities:chests/raildungeonchest",
         "inpart": "rail_dungeon1"
