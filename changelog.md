@@ -9,7 +9,6 @@
 * Fixed biomes being one chunk offset (Pseudonomenclature)
 * Increased the spawn chance of the townhall for testing
 * Streets now use Dark Grey Concrete as the road base
-* Chests now no longer reuse minecrafts dungeon loot tables
 * Added more loot variety to chests
 * Added a check for if ATG is loaded
 * Started work on the MWC pallete
