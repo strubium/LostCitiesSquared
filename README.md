@@ -8,9 +8,8 @@ Hello and welcome to Strubium steals code from people to make an old mod slightl
 
 ## Compatibility 
 * The Lost Soul's: Use Dev-1 and below.
-* The Lost Cities (Original): Does not work! These mods have the same mod id!
-* The Lost Cities (Render Fix): Does not work! These mods have the same mod id!
-* Biomes O' Plenty: Supported! Use custom generator to see biomes   
+* Biomes O' Plenty: Supported! Use custom generator to see biomes
+* LCPatches: Untested, but should work.  
 
 ## Changes (See [changelog.md](changelog.md))
 * TileEntitys now get special treatment and aren't placed as normal blocks. (Not my work, this is the power of Burchard36) 
