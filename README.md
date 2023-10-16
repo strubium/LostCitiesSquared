@@ -18,7 +18,7 @@ Hello and welcome to Strubium steals code from people to make an old mod slightl
 * Tweeks to the "onlycity" profile. Railways + Highways.
 * Un-privated all the hidden "base" profies.
 * Removed the water that generates inside buildings
-* Stopped using dungeon loot in citys. 
+* Added more language translations  
 
 ## Future Plans
 * A palette that uses MWC Props
