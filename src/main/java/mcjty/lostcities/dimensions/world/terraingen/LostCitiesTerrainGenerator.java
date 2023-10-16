@@ -2485,10 +2485,12 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                 if (isSide(x, z)) {
                     while (y > 1 && driver.getBlock() == airChar) {
                         driver.block(info.getCompiledPalette().get(borderBlock)).decY();
+                        y--;
                     }
                 } else {
                     while (y > 1 && driver.getBlock() == airChar) {
                         driver.block(baseChar).decY();
+                        y--;
                     }
                 }
             }
