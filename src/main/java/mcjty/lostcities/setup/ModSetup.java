@@ -44,13 +44,14 @@ public class ModSetup {
         ModDimensions.init();
 
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychest"));
+        LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestMWC"));
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/raildungeonchest"));
     }
 
     private void setupModCompat() {
         chisel = Loader.isModLoaded("chisel");
         biomesoplenty = Loader.isModLoaded("biomesoplenty") || Loader.isModLoaded("BiomesOPlenty");
-//        atg = Loader.isModLoaded("atg"); // @todo
+        atg = Loader.isModLoaded("atg"); // @todo This does nothing
         neid = Loader.isModLoaded("neid");
         jeid = Loader.isModLoaded("jeid");
     }

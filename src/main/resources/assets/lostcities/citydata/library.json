@@ -361,7 +361,7 @@
     "streetblocks": {
       "border": "y",
       "wall": "w",
-      "street": "S",
+      "street": "R",
       "streetbase": "S",
       "streetvariant": "y"
     },
@@ -432,7 +432,7 @@
         "multibuilding": "center"
       },
       {
-        "factor": 0.08,
+        "factor": 0.1,
         "multibuilding": "townhall"
       },
       {
@@ -511,11 +511,11 @@
       },
       {
         "factor": 1.0,
-        "park": "park_trees"
+        "park": "park_plants_pillars"
       },
       {
         "factor": 1.0,
-        "park": "park_plants_pillars"
+        "park": "park_trees"
       },
       {
         "factor": 0.8,
@@ -1317,24 +1317,6 @@
         "                ",
         "                ",
         "wwwwvwwwwwwwvwww",
-        "                ",
-        "                ",
-        "                "
-      ],
-      [
-        "                ",
-        "                ",
-        "                ",
-        "    w       w   ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "    w       w   ",
         "                ",
         "                ",
         "                "

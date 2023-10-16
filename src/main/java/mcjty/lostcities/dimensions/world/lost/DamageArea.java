@@ -74,12 +74,12 @@ public class DamageArea {
             int waterlevel = profile.GROUNDLEVEL - profile.WATERLEVEL_OFFSET;
             if (damage < BLOCK_DAMAGE_CHANCE && damaged != null) {
                 if (provider.rand.nextFloat() < .7f) {
-                    b = damaged;
+                    b = damaged == LostCitiesTerrainGenerator.airChar && y < waterlevel ? liquidChar : damaged;
                 } else {
-                    b = y <= waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
+                    b = y < waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
                 }
             } else {
-                b = y <= waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
+                b = y < waterlevel ? liquidChar : LostCitiesTerrainGenerator.airChar;
             }
         }
         return b;
