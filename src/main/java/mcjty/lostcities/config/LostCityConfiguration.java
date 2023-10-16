@@ -66,6 +66,7 @@ public class LostCityConfiguration {
 
     public static boolean DEBUG = false;
     public static boolean OPTIMIZED_CHUNKGEN = true;
+    public static boolean MWC_LOOT = false;
 
     public static String SPECIAL_BED_BLOCK = Blocks.DIAMOND_BLOCK.getRegistryName().toString();
 
@@ -140,6 +141,11 @@ public class LostCityConfiguration {
         if (ModSetup.neid || ModSetup.jeid) {
             LostCities.setup.getLogger().log(Level.INFO, "NEID or JEID detected: disabling optimized chunkgeneration!");
             OPTIMIZED_CHUNKGEN = false;
+        }
+        MWC_LOOT = cfg.getBoolean("doMWCloot", CATEGORY_GENERAL, MWC_LOOT, "Enable this if you want MWC items to spawn in chests");
+        if (ModSetup.mwc) {
+            LostCities.setup.getLogger().log(Level.INFO, "MWC detected: Enableing MWC loot!");
+            MWC_LOOT = true;
         }
 
         return profileList;
