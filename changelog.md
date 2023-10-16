@@ -1,3 +1,7 @@
+## The Lost Cities Squared Dev-5:
+* Fixed a ArrayIndexOutOfBoundsException when generating chunks (sandtechnology)
+* Add a config to generate with MWC's loot
+
 ## The Lost Cities Squared Dev-4:
 * Added a bunch of closed PR's from the original Lost Cities. The orginal author's username is credited next to the change.
 * Fixed train station being one block elevated
