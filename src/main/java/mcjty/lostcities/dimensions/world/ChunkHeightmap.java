@@ -48,7 +48,7 @@ public class ChunkHeightmap {
                     heightmap[z * 16 + x] = (byte) y;
                 }
             }
-        } else {
+        } else { // Finding the hight for every other profile
             for (int x = 0; x < 16; x++) {
                 for (int z = 0; z < 16; z++) {
                     int y = 255;
@@ -104,7 +104,7 @@ public class ChunkHeightmap {
     }
 
     public int getMinimumHeight() {
-        int y = 255;
+        int y = 255; //<--World Max Height
         int yy;
         yy = getHeight(2, 2);
         if (yy < y) {
