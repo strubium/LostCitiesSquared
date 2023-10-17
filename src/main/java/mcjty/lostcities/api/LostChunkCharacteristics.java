@@ -8,4 +8,5 @@ public class LostChunkCharacteristics {
     public ILostCityCityStyle cityStyle;
     public ILostCityMultiBuilding multiBuilding;
     public ILostCityBuilding buildingType;
+    public ILostCityAsset zone;
 }
