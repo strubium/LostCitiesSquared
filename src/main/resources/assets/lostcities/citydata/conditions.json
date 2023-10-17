@@ -47,6 +47,21 @@
       },
       {
         "factor": 20,
+        "value": "lostcities:chests/lostcitychestOffice",
+        "inpart": "building1"
+      },
+      {
+        "factor": 20,
+        "value": "lostcities:chests/lostcitychestFood",
+        "inpart": "shopping"
+      },
+      {
+        "factor": 20,
+        "value": "lostcities:chests/lostcitychestFood",
+        "inpart": "shopping_open"
+      },
+      {
+        "factor": 20,
         "value": "lostcities:chests/raildungeonchest",
         "inpart": "rail_dungeon2"
       },
