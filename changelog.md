@@ -1,6 +1,9 @@
 ## The Lost Cities Squared Dev-5:
 * Fixed a ArrayIndexOutOfBoundsException when generating chunks (sandtechnology)
-* Add a config to generate with MWC's loot
+* Add a config to generate with MWC's loot. (Doesn't do anything right now)
+* Fixed bridges generating air under water (Windmill-City)
+* Improved how citys flatten terrian (Windmill-City)
+* Added loottables that generate in diffrent items based on what building the chest is in.   
 
 ## The Lost Cities Squared Dev-4:
 * Added a bunch of closed PR's from the original Lost Cities. The orginal author's username is credited next to the change.
