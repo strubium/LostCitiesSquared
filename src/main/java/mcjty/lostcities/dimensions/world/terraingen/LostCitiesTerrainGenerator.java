@@ -243,7 +243,8 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         // @todo this setup is not very clean
         CityStyle cityStyle = info.getCityStyle();
 
-        street = info.getCompiledPalette().get(cityStyle.getStreetBlock());
+        //Streets are defined here
+        street = info.getCompiledPalette().get(cityStyle.getStreetBlock()); 
         streetBase = info.getCompiledPalette().get(cityStyle.getStreetBaseBlock());
         street2 = info.getCompiledPalette().get(cityStyle.getStreetVariantBlock());
         streetBorder = (16 - cityStyle.getStreetWidth()) / 2;
