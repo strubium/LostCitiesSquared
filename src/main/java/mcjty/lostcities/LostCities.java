@@ -20,11 +20,11 @@ import java.util.function.Function;
         dependencies =
                         "after:forge@[" + LostCities.MIN_FORGE11_VER + ",)",
         version = LostCities.VERSION,
-        acceptedMinecraftVersions = "[1.12,1.13)",
+        acceptedMinecraftVersions = "[1.12, 1.13)",
         acceptableRemoteVersions = "*")
 public class LostCities {
     public static final String MODID = "lostcitiessquared";
-    public static final String VERSION = "Dev-4";
+    public static final String VERSION = "Dev-5";
     public static final String MIN_FORGE11_VER = "13.19.0.2176";
 
     @SidedProxy(clientSide="mcjty.lostcities.setup.ClientProxy", serverSide="mcjty.lostcities.setup.ServerProxy")
