@@ -25,6 +25,12 @@ public interface ILostChunkInfo {
      */
     String getBuildingType();
 
+     /**
+     * Gets the Zone of the building
+     * @ToDo Fix
+     */
+    int getZone();
+
     /**
      * Return the kind of railway type at this spot
      */
