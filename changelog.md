@@ -3,7 +3,7 @@
 * Add a config to generate with MWC's loot. (Doesn't do anything right now)
 * Fixed bridges generating air under water (Windmill-City)
 * Improved how citys flatten terrian (Windmill-City)
-* Added loottables that generate diffrent items based on what building the chest is in. (Office, Food)   
+* Added loottables that generate different items based on what building the chest is in. (Office, Food)   
 
 ## The Lost Cities Squared Dev-4:
 * Added a bunch of closed PR's from the original Lost Cities. The orginal author's username is credited next to the change.
