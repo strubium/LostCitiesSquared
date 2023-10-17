@@ -1,7 +1,7 @@
 {
   "pools": [
     {
-      "name": "lostcities:lostcitychest",
+      "name": "lostcities:lostcitychestOffice",
       "rolls": {
         "min": 2,
         "max": 5
