@@ -45,6 +45,8 @@ public class ModSetup {
         ModDimensions.init();
 
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychest"));
+        LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestFood"));
+        LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestOffice"));
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestMWC"));
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/raildungeonchest"));
     }
