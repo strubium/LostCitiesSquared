@@ -9,5 +9,7 @@ public interface ILostCityAsset {
 
     String getName();
 
+    int getZone(); // 1: Downtown 2: Uptown 3: Suburban 4: Rural
+    
     void readFromJSon(JsonObject object);
 }
