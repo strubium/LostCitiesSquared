@@ -1231,7 +1231,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                     transform = Transform.ROTATE_270;
                     break;
                 default:
-                    throw new RuntimeException("Cannot happen!");
+                    throw new RuntimeException("Error with LostCities generateStreetDecorations - Cannot happen!");
             }
 
             generatePart(info, stairs, transform, 0, oy, 0, false,
@@ -1738,7 +1738,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     }
 
     /**
-     * Fill base blocks under streets to bedrock
+     * Fill base blocks under streets to bedrock.
      */
     private void fillToBedrockStreetBlock(BuildingInfo info) {
         // Base blocks below streets
@@ -2071,7 +2071,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         }
     }
 
-    private void generateFullStreetSection(int height) {
+    private void generateFullStreetSection(int height) { // This appears to be where LostCities picks between the street and the street variant  
         char b;
         for (int x = 0; x < 16; ++x) {
             for (int z = 0; z < 16; ++z) {
@@ -2085,25 +2085,20 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         }
     }
 
-    private void generateNormalStreetSection(BuildingInfo info, int height) {
-//        char defaultStreet = info.profile.isFloating() ? street2 : streetBase;
+    private void generateNormalStreetSection(BuildingInfo info, int height) {  
         char defaultStreet = streetBase;
         char b;
         for (int x = 0; x < 16; ++x) {
             for (int z = 0; z < 16; ++z) {
                 b = defaultStreet;
                 if (isStreetBorder(x, z)) {
-                    if (x <= streetBorder && z > streetBorder && z < (15 - streetBorder)
-                            && (BuildingInfo.hasRoadConnection(info, info.getXmin()) || (info.getXmin().hasXBridge(provider) != null))) {
+                    if (x <= streetBorder && z > streetBorder && z < (15 - streetBorder) && (BuildingInfo.hasRoadConnection(info, info.getXmin()) || (info.getXmin().hasXBridge(provider) != null))) {
                         b = street;
-                    } else if (x >= (15 - streetBorder) && z > streetBorder && z < (15 - streetBorder)
-                            && (BuildingInfo.hasRoadConnection(info, info.getXmax()) || (info.getXmax().hasXBridge(provider) != null))) {
+                    } else if (x >= (15 - streetBorder) && z > streetBorder && z < (15 - streetBorder) && (BuildingInfo.hasRoadConnection(info, info.getXmax()) || (info.getXmax().hasXBridge(provider) != null))) {
                         b = street;
-                    } else if (z <= streetBorder && x > streetBorder && x < (15 - streetBorder)
-                            && (BuildingInfo.hasRoadConnection(info, info.getZmin()) || (info.getZmin().hasZBridge(provider) != null))) {
+                    } else if (z <= streetBorder && x > streetBorder && x < (15 - streetBorder) && (BuildingInfo.hasRoadConnection(info, info.getZmin()) || (info.getZmin().hasZBridge(provider) != null))) {
                         b = street;
-                    } else if (z >= (15 - streetBorder) && x > streetBorder && x < (15 - streetBorder)
-                            && (BuildingInfo.hasRoadConnection(info, info.getZmax()) || (info.getZmax().hasZBridge(provider) != null))) {
+                    } else if (z >= (15 - streetBorder) && x > streetBorder && x < (15 - streetBorder) && (BuildingInfo.hasRoadConnection(info, info.getZmax()) || (info.getZmax().hasZBridge(provider) != null))) {
                         b = street;
                     }
                 } else {
@@ -2145,7 +2140,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
      *
      * Highway booleans is for support direction block states in highways (Useful in roads)
      *
-     * //TODO: If 1.12 support is continued; refactor this to a Builder class as this should be able to
+     * //TODO: Refactor this to a Builder class as this should be able to
      * //TODO: Support a lot more generation options if directional support is to be added!
      */
     private int generatePart(BuildingInfo info, IBuildingPart part,
