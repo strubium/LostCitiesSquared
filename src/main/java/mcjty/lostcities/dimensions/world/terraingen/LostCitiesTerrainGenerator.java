@@ -134,14 +134,14 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     public static Set<Character> getCharactersNeedingTodo() {
         if (charactersNeedingTodo == null) {
             charactersNeedingTodo = new HashSet<>();
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.ACACIA)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.BIRCH)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.SPRUCE)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.DARK_OAK)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.JUNGLE)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.RED_FLOWER.getDefaultState()));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.YELLOW_FLOWER.getDefaultState()));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.ACACIA)));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.BIRCH)));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK)));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.SPRUCE)));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.DARK_OAK)));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.JUNGLE)));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.RED_FLOWER.getDefaultState()));
+            charactersNeedingTodo.add((char) Block.getStateById(Blocks.YELLOW_FLOWER.getDefaultState()));
         }
         return charactersNeedingTodo;
     }
@@ -185,7 +185,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         for (int m = 0; m < 16; m++) {
             try {
                 IBlockState state = block.getStateFromMeta(m);
-                set.add((char) Block.BLOCK_STATE_IDS.get(state));
+                set.add((char) Blocks.getBlockState(state));
             } catch (Exception e) {
                 // Ignore
             }
@@ -194,33 +194,33 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
 
     public void setupChars(LostCityProfile profile) {
         if (!charsSetup) {
-            airChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.AIR.getDefaultState());
-            hardAirChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.COMMAND_BLOCK.getDefaultState());
-            glowstoneChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GLOWSTONE.getDefaultState());
-            gravelChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GRAVEL.getDefaultState());
+            airChar = (char) Blocks.getBlockState(Blocks.AIR.getDefaultState());
+            hardAirChar = (char) Blocks.getBlockState(Blocks.COMMAND_BLOCK.getDefaultState());
+            glowstoneChar = (char) Blocks.getBlockState(Blocks.GLOWSTONE.getDefaultState());
+            gravelChar = (char) Blocks.getBlockState(Blocks.GRAVEL.getDefaultState());
 
-            baseChar = (char) Block.BLOCK_STATE_IDS.get(profile.getBaseBlock());
-            liquidChar = (char) Block.BLOCK_STATE_IDS.get(profile.getLiquidBlock());
+            baseChar = (char) Blocks.getBlockState(profile.getBaseBlock());
+            liquidChar = (char) Blocks.getBlockState(profile.getLiquidBlock());
 
             // @todo
-            glassChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GLASS.getDefaultState());
+            glassChar = (char) Blocks.getBlockState(Blocks.GLASS.getDefaultState());
 
-            leavesChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leavesChar = (char) Blocks.getBlockState(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false));
-            leaves2Char = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leaves2Char = (char) Blocks.getBlockState(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false)
                     .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE));
-            leaves3Char = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leaves3Char = (char) Blocks.getBlockState(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false)
                     .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.SPRUCE));
 
-            ironbarsChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.IRON_BARS.getDefaultState());
-            grassChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GRASS.getDefaultState());
-            bedrockChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.BEDROCK.getDefaultState());
-            endportalChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL.getDefaultState());
-            endportalFrameChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL_FRAME.getDefaultState());
-            goldBlockChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GOLD_BLOCK.getDefaultState());
-            diamondBlockChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.DIAMOND_BLOCK.getDefaultState());
+            ironbarsChar = (char) Blocks.getBlockState(Blocks.IRON_BARS.getDefaultState());
+            grassChar = (char) Blocks.getBlockState(Blocks.GRASS.getDefaultState());
+            bedrockChar = (char) Blocks.getBlockState(Blocks.BEDROCK.getDefaultState());
+            endportalChar = (char) Blocks.getBlockState(Blocks.END_PORTAL.getDefaultState());
+            endportalFrameChar = (char) Blocks.getBlockState(Blocks.END_PORTAL_FRAME.getDefaultState());
+            goldBlockChar = (char) Blocks.getBlockState(Blocks.GOLD_BLOCK.getDefaultState());
+            diamondBlockChar = (char) Blocks.getBlockState(Blocks.DIAMOND_BLOCK.getDefaultState());
             charsSetup = true;
         }
     }
@@ -355,7 +355,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             Map<String, Integer> map = pair.getRight();
 
             char torch = driver.getBlock();
-            IBlockState torchState = Block.BLOCK_STATE_IDS.getByValue(torch);
+            IBlockState torchState = Blocks.getBlockState(torch);
             if (map != null) {
                 int x = driver.getX();
                 int z = driver.getZ();
@@ -2181,7 +2181,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                             } else if (charZ != null && !isHighwayRunningX) {
                                 b = charZ;
                                 driver.add(charZ);
-                                IBlockState stateZ = Block.BLOCK_STATE_IDS.getByValue(b);
+                                IBlockState stateZ = Blocks.getBlockState(b);
                                 String debug;
                                 if (stateZ != null) {
                                     ResourceLocation loc = stateZ.getBlock().getRegistryName();
@@ -2198,11 +2198,11 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
 
                         if (transform != Transform.ROTATE_NONE) {
                             if (getRotatableChars().contains(b)) {
-                                IBlockState bs = Block.BLOCK_STATE_IDS.getByValue(b);
+                                IBlockState bs = Blocks.getBlockState(b);
                                 bs = bs.withRotation(transform.getMcRotation());
-                                b = (char) Block.BLOCK_STATE_IDS.get(bs);
+                                b = (char) Blocks.getBlockState(bs);
                             } else if (getRailChars().contains(b)) {
-                                IBlockState bs = Block.BLOCK_STATE_IDS.getByValue(b);
+                                IBlockState bs = Blocks.getBlockState(b);
                                 PropertyEnum<BlockRailBase.EnumRailDirection> shapeProperty;
                                 if (bs.getBlock() == Blocks.RAIL) {
                                     shapeProperty = BlockRail.SHAPE;
@@ -2213,7 +2213,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                                 }
                                 BlockRailBase.EnumRailDirection shape = bs.getValue(shapeProperty);
                                 bs = bs.withProperty(shapeProperty, transform.transform(shape));
-                                b = (char) Block.BLOCK_STATE_IDS.get(bs);
+                                b = (char) Blocks.getBlockState(bs);
                             }
                         }
                         // We don't replace the world where the part is empty (air)
@@ -2261,7 +2261,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                             } else if (getCharactersNeedingLightingUpdate().contains(b)) {
                                 info.getTodoChunk(rx, rz).addLightingUpdateTodo(new BlockPos(info.chunkX * 16 + rx, oy + y, info.chunkZ * 16 + rz));
                             } else if (getCharactersNeedingTodo().contains(b)) {
-                                IBlockState bs = Block.BLOCK_STATE_IDS.getByValue(b);
+                                IBlockState bs = Blocks.getBlockState(b);
                                 Block block = bs.getBlock();
                                 if (block instanceof BlockSapling || block instanceof BlockFlower) {
                                     if (info.profile.AVOID_FOLIAGE) {
@@ -2501,7 +2501,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                 .withProperty(BlockDoor.HALF, upper ? BlockDoor.EnumDoorHalf.UPPER : BlockDoor.EnumDoorHalf.LOWER)
                 .withProperty(BlockDoor.HINGE, left ? BlockDoor.EnumHingePosition.LEFT : BlockDoor.EnumHingePosition.RIGHT)
                 .withProperty(BlockDoor.FACING, facing);
-        return (char) Block.BLOCK_STATE_IDS.get(bs);
+        return (char) Blocks.getBlockState(bs);
     }
 
     private void generateDoors(BuildingInfo info, int height, int f) {
