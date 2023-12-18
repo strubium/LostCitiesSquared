@@ -138,8 +138,8 @@ public class LostCityConfiguration {
 
         DEBUG = cfg.getBoolean("debug", CATEGORY_GENERAL, DEBUG, "Enable debugging/logging");
         OPTIMIZED_CHUNKGEN = cfg.getBoolean("optimizedChunkgen", CATEGORY_GENERAL, OPTIMIZED_CHUNKGEN, "Disable this if you have mods like NEID or JEID installed. Note that when NEID or JEID is present this is disabled by default");
-        if (ModSetup.neid || ModSetup.jeid) {
-            LostCities.setup.getLogger().log(Level.INFO, "NEID or JEID detected: disabling optimized chunkgeneration!");
+        if (ModSetup.neid || ModSetup.jeid || ModSetup.reid) {
+            LostCities.setup.getLogger().log(Level.INFO, "NEID/JEID/REID detected: disabling optimized chunkgeneration!");
             OPTIMIZED_CHUNKGEN = false;
         }
         MWC_LOOT = cfg.getBoolean("doMWCloot", CATEGORY_GENERAL, MWC_LOOT, "Enable this if you want MWC items to spawn in chests");
