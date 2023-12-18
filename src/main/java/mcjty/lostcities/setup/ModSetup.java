@@ -29,6 +29,7 @@ public class ModSetup {
     public static boolean atg = false;
     public static boolean neid = false;
     public static boolean jeid = false;
+    public static boolean reid = false;
     public static boolean mwc = false;
 
     private Logger logger;
@@ -57,6 +58,7 @@ public class ModSetup {
         atg = Loader.isModLoaded("atg"); // @todo This does nothing
         neid = Loader.isModLoaded("neid");
         jeid = Loader.isModLoaded("jeid");
+        reid = Loader.isModLoaded("reid");
         mwc = Loader.isModLoaded("mwc");
     }
 
