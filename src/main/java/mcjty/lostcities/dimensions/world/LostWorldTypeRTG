@@ -15,10 +15,10 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class LostWorldTypeBOP extends WorldType {
+public class LostWorldTypeRTG extends WorldType {
 
-    public LostWorldTypeBOP() {
-        super("lostcities_atg");
+    public LostWorldTypeRTG() {
+        super("lostcities_rtg");
     }
 
     private BiomeProvider biomeProvider = null;
