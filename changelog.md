@@ -1,13 +1,15 @@
 ## The Lost Cities Squared Dev-5:
-* Fixed a ArrayIndexOutOfBoundsException when generating chunks (sandtechnology)
+* Fixed an ArrayIndexOutOfBoundsException when generating chunks (sandtechnology)
 * Add a config to generate with MWC's loot. (Doesn't do anything right now)
-* Fixed bridges generating air under water (Windmill-City)
-* Improved how citys flatten terrian (Windmill-City)
-* Added loottables that generate different items based on what building the chest is in. (Office, Food)   
+* Fixed bridges generating air underwater (Windmill-City)
+* Improved how cities flatten terrain (Windmill-City)
+* Added loottables that generate different items based on what building the chest is in. (Office, Food)
+* Added a check for REID
+* Cobblestone walls have a chance to be mossy   
 
 ## The Lost Cities Squared Dev-4:
-* Added a bunch of closed PR's from the original Lost Cities. The orginal author's username is credited next to the change.
-* Fixed train station being one block elevated
+* Added a bunch of closed PRs from the original Lost Cities. The original author's username is credited next to the change.
+* Fixed train station is one block elevated
 * Fixed bridges being one block elevated
 * Fixed explosions leaving airblocks underwater (Windmill-City)
 * Fixed Min + Max Cellars (Windmill-City)
@@ -38,8 +40,8 @@
 ## The Lost Cities Squared Dev-2:
 * New "experimental" profile for my testing. May work, may not.  
 * Library.json changes:
-  * Brewing stands will generate less frequently in city's.
-  * Enchanting tables will generate less frequently city's.
+  * Brewing stands will generate less frequently in cities.
+  * Enchanting tables will generate less frequent cities.
   * Slight chance to generate air in place of crafting tables or furnaces.
 * Un-privated the "bio_wasteland" and "water_empty" profiles. They are used internally for waterbubbles and biospheres respectively.
 * Removed the ugly Blue and Light Blue glass colors from generating in cities.
