@@ -49,7 +49,7 @@ public class LostWorldType extends WorldType {
         }
         return super.getSpawnFuzz(world, server);
     }
-
+    
     @Override
     public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
         return new LostCityChunkGenerator(world, world.getSeed());
@@ -57,6 +57,21 @@ public class LostWorldType extends WorldType {
 
     protected BiomeProvider getInternalBiomeProvider(World world) {
         return super.getBiomeProvider(world);
+    }
+
+    private BiomeProvider getInternalBiomeProvider(World world) {
+        if (biomeProvider == null) {
+            for (WorldType type : WorldType.WORLD_TYPES) {
+                if ("BIOMESOP".equals(type.getName())) {
+                    WorldType orig = world.getWorldInfo().getTerrainType();
+                    world.getWorldInfo().setTerrainType(type);
+                    biomeProvider = type.getBiomeProvider(world);
+                    world.getWorldInfo().setTerrainType(orig);
+                    break;
+                }
+            }
+        }
+        return biomeProvider;
     }
 
     @Override
@@ -74,7 +89,7 @@ public class LostWorldType extends WorldType {
                 outsideManualBiomeMappings = outProfile.MANUAL_BIOME_MAPPINGS;
                 outsideStrategy = outProfile.BIOME_SELECTION_STRATEGY;
             }
-            return new LostWorldFilteredBiomeProvider(world, super.getBiomeProvider(world),
+            return new LostWorldFilteredBiomeProvider(world, getInternalBiomeProvider(world),
                     profile.ALLOWED_BIOME_FACTORS,
                     profile.MANUAL_BIOME_MAPPINGS,
                     profile.BIOME_SELECTION_STRATEGY,
