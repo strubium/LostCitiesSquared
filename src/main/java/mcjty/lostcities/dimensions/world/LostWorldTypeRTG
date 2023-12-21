@@ -55,7 +55,7 @@ public class LostWorldTypeRTG extends WorldType {
     private BiomeProvider getInternalBiomeProvider(World world) {
         if (biomeProvider == null) {
             for (WorldType type : WorldType.WORLD_TYPES) {
-                if ("RTG".equals(type.getName())) {
+                if ("RTGWorld".equals(type.getName())) {
                     WorldType orig = world.getWorldInfo().getTerrainType();
                     world.getWorldInfo().setTerrainType(type);
                     biomeProvider = type.getBiomeProvider(world);
