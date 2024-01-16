@@ -58,6 +58,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.LinkedHashMap;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import static net.minecraftforge.event.terraingen.InitMapGenEvent.EventType.*;
 
@@ -82,11 +85,30 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
     private MapGenBase caveGenerator;
 
     // Sometimes we have to precalculate primers for a chunk before the
-    // chunk is generated. In that case we cache them here so that when the
-    // chunk is really generated it will find it and use that instead of
-    // making that primer again
-    // @todo, make this cache timed so that primers expire if they are not used quickly enough?
-    private Map<ChunkCoord, ChunkPrimer> cachedPrimers = new HashMap<>();
+    // chunk is generated. In that case, we cache them here so that when the
+    // chunk is generated it will find it and use that instead of making that primer again
+    
+    cachedPrimers = new LinkedHashMap<>();
+
+    // Schedule a timer task to periodically clear the map
+    Timer timer = new Timer(true);
+    timer.scheduleAtFixedRate(new ClearUnusedEntriesTask(), 0, 300000); // Clear every 5 minutes
+
+    public void put(ChunkCoord key, ChunkPrimer value) {
+        cachedPrimers.put(key, value);
+    }
+
+    public ChunkPrimer get(ChunkCoord key) {
+        return cachedPrimers.get(key);
+    }
+
+    private class ClearUnusedEntriesTask extends TimerTask {
+        @Override
+        public void run() {
+            // Clear entries that haven't been accessed recently
+            cachedPrimers.entrySet().removeIf(entry -> System.currentTimeMillis() - entry.getValue() > 300000);
+        }
+    }
     private Map<ChunkCoord, ChunkHeightmap> cachedHeightmaps = new HashMap<>();
 
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
