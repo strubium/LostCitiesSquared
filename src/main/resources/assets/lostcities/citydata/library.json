@@ -80,7 +80,16 @@
       },
       {
         "char": "h",
-        "block": "minecraft:glowstone"
+        "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:glowstone"
+          },
+          {
+            "random": 12,
+            "block": "minecraft:redstone_lamp"
+          }
+      ]
       },
       {
         "char": "g",
@@ -169,6 +178,22 @@
             "block": "minecraft:red_flower"
           },
           {
+            "random": 64,
+            "block": "minecraft:red_flower@2"
+          },
+          {
+            "random": 64,
+            "block": "minecraft:red_flower@3"
+          },
+          {
+            "random": 64,
+            "block": "minecraft:red_flower@4"
+          },
+          {
+            "random": 64,
+            "block": "minecraft:red_flower@5"
+          },
+          {
             "random": 1000,
             "block": "minecraft:yellow_flower"
           }
@@ -254,8 +279,17 @@
         "block": "minecraft:ladder@2"
       },
       {
-        "char": "-",
-        "block": "minecraft:wooden_pressure_plate"
+      "char": "-",
+      "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:wooden_pressure_plate"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:stone_pressure_plate"
+          }
+      ]
       },
       {
         "char": ".",
