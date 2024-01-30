@@ -293,7 +293,20 @@
       },
       {
         "char": ".",
-        "block": "minecraft:fence"
+         "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:fence"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:spruce_fence"
+          },
+          {
+            "random": 12,
+            "block": "minecraft:dark_oak_fence"
+          }
+        ]   
       },
       {
         "char": "L",
