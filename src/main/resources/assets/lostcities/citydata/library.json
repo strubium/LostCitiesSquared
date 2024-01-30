@@ -336,7 +336,16 @@
       },
       {
         "char": "D",
-        "block": "minecraft:dirt"
+        "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:dirt"
+          },
+          {
+            "random": 12,
+            "block": "minecraft:dirt@1"
+          }
+        ]
       },
       {
         "char": " ",
