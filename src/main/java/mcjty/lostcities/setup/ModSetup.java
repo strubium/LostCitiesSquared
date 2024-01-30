@@ -22,7 +22,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 
-import static mcjty.lostcities.config.MWC_LOOT;
+import static mcjty.lostcities.config.LostCityConfiguration.MWC_LOOT;
 
 public class ModSetup {
 
