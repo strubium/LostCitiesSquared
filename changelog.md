@@ -1,11 +1,15 @@
 ## The Lost Cities Squared Dev-5:
 * Fixed an ArrayIndexOutOfBoundsException when generating chunks (sandtechnology)
-* Add a config to generate with MWC's loot. (Doesn't do anything right now)
+* Add a config to generate loot from Modern Warfare Cubed.
 * Fixed bridges generating air underwater (Windmill-City)
 * Improved how cities flatten terrain (Windmill-City)
-* Added loottables that generate different items based on what building the chest is in. (Office, Food)
+* Added loottables that generate different items based on what building the chest is in. (Office, Food. More will be added as I revamp the buildings)
 * Added a check for REID
-* Cobblestone walls have a chance to be mossy   
+* Cobblestone walls have a chance to be mossy
+* Glowstone has a chance to be a unlit redstone lamp
+* Preasure plates can be stone now 
+* Increased the variety of flowers
+* Cleaned up LostWorldBOP   
 
 ## The Lost Cities Squared Dev-4:
 * Added a bunch of closed PRs from the original Lost Cities. The original author's username is credited next to the change.
