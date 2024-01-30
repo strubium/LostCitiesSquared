@@ -22,6 +22,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UncheckedIOException;
 
+import static mcjty.lostcities.config.MWC_LOOT;
+
 public class ModSetup {
 
     public static boolean chisel = false;
@@ -48,8 +50,11 @@ public class ModSetup {
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychest"));
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestFood"));
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestOffice"));
-        LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestMWC"));
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/raildungeonchest"));
+
+        if(MWC_LOOT = true){
+        LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestMWC"));
+        }
     }
 
     private void setupModCompat() {
