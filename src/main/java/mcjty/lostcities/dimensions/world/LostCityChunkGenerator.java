@@ -45,6 +45,7 @@ import net.minecraft.world.gen.ChunkGeneratorSettings;
 import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraft.world.gen.MapGenBase;
 import net.minecraft.world.gen.MapGenRavine;
+import net.minecraft.world.gen.MapGenCaves;
 import net.minecraft.world.gen.feature.WorldGenDungeons;
 import net.minecraft.world.gen.feature.WorldGenLakes;
 import net.minecraft.world.gen.structure.*;
@@ -126,10 +127,9 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
 
         WorldTypeTools.registerChunkGenerator(world.provider.getDimension(), this);
 
-        caveGenerator = new LostGenCaves(this);
+        caveGenerator = new MapGenCaves();
         caveGenerator = TerrainGen.getModdedMapGen(caveGenerator, CAVE);
         strongholdGenerator = (MapGenStronghold) TerrainGen.getModdedMapGen(strongholdGenerator, STRONGHOLD);
-
         villageGenerator = (MapGenVillage) TerrainGen.getModdedMapGen(villageGenerator, VILLAGE);
         mineshaftGenerator = (MapGenMineshaft) TerrainGen.getModdedMapGen(mineshaftGenerator, MINESHAFT);
         scatteredFeatureGenerator = (MapGenScatteredFeature) TerrainGen.getModdedMapGen(scatteredFeatureGenerator, SCATTERED_FEATURE);
