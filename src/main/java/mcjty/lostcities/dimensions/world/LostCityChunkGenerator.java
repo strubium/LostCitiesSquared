@@ -52,6 +52,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.PopulateChunkEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
 import org.apache.commons.lang3.tuple.Pair;
+import org.dimdev.jeid.INewChunk;
 
 import javax.annotation.Nullable;
 import java.util.HashMap;
@@ -279,10 +280,10 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
         }
 
         Chunk chunk = new Chunk(this.worldObj, chunkprimer, chunkX, chunkZ);
-        byte[] abyte = chunk.getBiomeArray();
+        int[] abyte = (INewChunk) chunk).getIntBiomeArray();
 
         for (int i = 0; i < abyte.length; ++i) {
-            abyte[i] = (byte) Biome.getIdForBiome(this.biomesForGeneration[i]);
+            abyte[i] = (int) Biome.getIdForBiome(this.biomesForGeneration[i]);
         }
 
         chunk.generateSkylightMap();
