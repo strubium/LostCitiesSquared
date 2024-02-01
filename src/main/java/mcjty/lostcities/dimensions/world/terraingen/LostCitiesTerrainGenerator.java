@@ -28,6 +28,7 @@ import net.minecraft.world.gen.NoiseGeneratorPerlin;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
+import net.jafama.FastMath;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -863,7 +864,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                         }
                     }
 
-                    double percent = Math.atan(mindist / 85) * 0.8;
+                    double percent = FastMath.atan(mindist / 85) * 0.8;
                     int offset = Math.abs(heightmap.getHeight(x,z) - height);
                     flattenChunkBorder(info, x, (int)(offset * percent), z, provider.rand, height);
                 }
@@ -885,7 +886,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                     }
                     int height = minheight;//info.getCityGroundLevel();
 
-                    double percent = Math.atan(mindist / 85) * 0.8;
+                    double percent = FastMath.atan(mindist / 85) * 0.8;
                     int offset = Math.abs(heightmap.getHeight(x,z) - height);
                     flattenChunkBorderDownwards(info, x, (int)(offset * percent), z, provider.rand, height);
                 }
