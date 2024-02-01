@@ -15,6 +15,7 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkGeneratorEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.jafama.FastMath;
 
 public class CavernTerrainGenerator {
     private LostCityChunkGenerator provider;
@@ -93,7 +94,7 @@ public class CavernTerrainGenerator {
         int i2;
 
         for (i2 = 0; i2 < sy; ++i2) {
-            adouble1[i2] = Math.cos(i2 * Math.PI * 6.0D / syr) * 2.0D;
+            adouble1[i2] = FastMath.cos(i2 * Math.PI * 6.0D / syr) * 2.0D;
             double d2 = i2;
 
             if (i2 > syr) {
