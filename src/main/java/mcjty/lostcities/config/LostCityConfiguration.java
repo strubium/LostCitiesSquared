@@ -32,7 +32,9 @@ public class LostCityConfiguration {
             "minecraft:glowstone",
             "minecraft:lit_pumpkin",
             "minecraft:magma",
-            "minecraft:ladder"
+            "minecraft:ladder",
+            "minecraft:redstone_lamp",
+            "minecraft:redstone_lamp_lit"
     };
 
     public static String[] ASSETS = new String[] {
