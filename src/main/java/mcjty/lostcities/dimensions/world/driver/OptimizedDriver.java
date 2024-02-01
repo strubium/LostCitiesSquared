@@ -2,14 +2,14 @@ package mcjty.lostcities.dimensions.world.driver;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.world.chunk.ChunkPrimer;
+import net.minecraft.world.chunk.Chunk;
 
 import java.util.Arrays;
 import java.util.Objects;
 
 public class OptimizedDriver implements IPrimerDriver {
 
-    public ChunkPrimer primer;
+    public Chunk primer;
     private int current;
 
     @Override
@@ -77,6 +77,75 @@ public class OptimizedDriver implements IPrimerDriver {
     @Override
     public int getZ() {
         return (current >> 8) & 0xf;
+    }
+     @Override
+    public void setBlockRange(int x, int y, int z, int y2, char c) {
+        int s = getBlockIndex(x, y, z);
+        int e = s + y2-y;
+        Arrays.fill(primer.data, s, e, c);
+    }
+
+    @Override
+    public void setBlockRangeSafe(int x, int y, int z, int y2, char c) {
+        if (y2 <= y) {
+            return;
+        }
+        int s = getBlockIndex(x, y, z);
+        int e = s + y2-y;
+        Arrays.fill(primer.data, s, e, c);
+    }
+
+    @Override
+    public IPrimerDriver block(char c) {
+        primer.data[current] = c;
+        return this;
+    }
+
+    @Override
+    public IPrimerDriver block(IBlockState c) {
+        primer.data[current] = (char) Block.BLOCK_STATE_IDS.get(c);
+        return this;
+    }
+
+    @Override
+    public IPrimerDriver add(char c) {
+        primer.data[current++] = c;
+        return this;
+    }
+
+    @Override
+    public char getBlock() {
+        return primer.data[current];
+    }
+
+    @Override
+    public char getBlockDown() {
+        return primer.data[current-1];
+    }
+
+    @Override
+    public char getBlockEast() {
+        return primer.data[current  + (1<<12)];
+    }
+
+    @Override
+    public char getBlockWest() {
+        return primer.data[current  - (1<<12)];
+    }
+
+    @Override
+    public char getBlockSouth() {
+        return primer.data[current  + (1<<8)];
+    }
+
+    @Override
+    public char getBlockNorth() {
+        return primer.data[current  - (1<<8)];
+    }
+
+    @Override
+    public char getBlock(int x, int y, int z) {
+        return primer.data[getBlockIndex(x, y, z)];
     }
     
     @Override
