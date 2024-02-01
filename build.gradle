@@ -126,6 +126,7 @@ dependencies {
     implementation "mezz.jei:jei_${jei_version}"
     implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
     implementation "cofh:RedstoneFlux:${redstoneflux_version}"
+    implementation 'net.jafama:jafama:2.+'
 
 }
 
