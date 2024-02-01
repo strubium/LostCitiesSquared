@@ -88,17 +88,8 @@ dependencies {
 
 jar {
     manifest {
-        def attribute_map = [:]
-        
-        attribute_map['FMLCorePluginContainsFMLMod'] = true
-        attribute_map['ForceLoadAsMod'] = project.gradle.startParameter.taskNames[0] == "build"
-    
-        attribute_map['FMLAT'] = project.archives_base_name + '_at.cfg'
-        attributes(attribute_map)
-        
+        attributes 'FMLAT': 'lostcities_at.cfg'
     }
-    // Add all embedded dependencies into the jar
-    from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
 }
 
 idea {
