@@ -56,6 +56,7 @@ public class LostCityProfile {
     public boolean AVOID_GENERATED_LAKE_WATER = false;
     public boolean AVOID_GENERATED_DESERT_WELL = false;
     public boolean AVOID_GENERATED_FOSSILS = false;
+    public boolean AVOID_GENERATED_ICE = false;
 
     public boolean RUBBLELAYER = true;
     public float RUBBLE_DIRT_SCALE = 3.0f;
@@ -325,6 +326,8 @@ public class LostCityProfile {
                 "This will prevent the generation of desert wells");
         AVOID_GENERATED_FOSSILS = cfg.getBoolean("avoidGeneratedFossils", categoryLostcity, inheritFrom.orElse(this).AVOID_GENERATED_FOSSILS,
                 "This will prevent the generation of fossils");
+        AVOID_GENERATED_ICE = cfg.getBoolean("avoidGeneratedIce", categoryLostcity, inheritFrom.orElse(this).AVOID_GENERATED_ICE,
+                "This will prevent the generation of ice");
 
         String type = cfg.getString("landscapeType", categoryLostcity, inheritFrom.orElse(this).LANDSCAPE_TYPE.getName(),
                 "Type of landscape",
