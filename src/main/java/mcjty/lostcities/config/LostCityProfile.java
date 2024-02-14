@@ -75,7 +75,7 @@ public class LostCityProfile {
     public float HIGHWAY_MAINPERLIN_SCALE = 50.0f;
     public float HIGHWAY_SECONDARYPERLIN_SCALE = 10.0f;
     public float HIGHWAY_PERLIN_FACTOR = 2.0f;
-    public int HIGHWAY_DISTANCE_MASK = 7;
+    public int HIGHWAY_DISTANCE_MASK = 20;
     public boolean HIGHWAY_SUPPORTS = true;
 
     public float RAILWAY_DUNGEON_CHANCE = .01f;
@@ -86,7 +86,7 @@ public class LostCityProfile {
     public float DESTROY_LONE_BLOCKS_FACTOR = .05f;
     public float DESTROY_OR_MOVE_CHANCE = .4f;
     public int DESTROY_SMALL_SECTIONS_SIZE = 50;
-    public boolean EXPLOSIONS_IN_CITIES_ONLY = true;
+    public boolean EXPLOSIONS_IN_CITIES_ONLY = false;
 
     public boolean GENERATE_SPAWNERS = true;
     public boolean GENERATE_LOOT = true;
@@ -450,7 +450,7 @@ public class LostCityProfile {
     private void initCities(Configuration cfg) {
         CITY_CHANCE = cfg.getFloat("cityChance", categoryCities, inheritFrom.orElse(this).CITY_CHANCE, 0.0f, 1.0f, "The chance this chunk will be the center of a city");
         CITY_MINRADIUS = cfg.getInt("cityMinRadius", categoryCities, inheritFrom.orElse(this).CITY_MINRADIUS, 1, 10000, "The minimum radius of a city");
-        CITY_MAXRADIUS = cfg.getInt("cityMaxRadius", categoryCities, inheritFrom.orElse(this).CITY_MAXRADIUS, 1, 10000, "The maximum radius of a city");
+        CITY_MAXRADIUS = cfg.getInt("cityMaxRadius", categoryCities, inheritFrom.orElse(this).CITY_MAXRADIUS, 1, 15000, "The maximum radius of a city");
         CITY_THRESSHOLD = cfg.getFloat("cityThresshold", categoryCities, inheritFrom.orElse(this).CITY_THRESSHOLD, 0.0f, 1.0f, "The center and radius of a city define a sphere. " +
                 "This thresshold indicates from which point a city is considered a city. " +
                 "This is important for calculating where cities are based on overlapping city circles (where the city thressholds are added)");
