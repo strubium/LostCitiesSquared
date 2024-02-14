@@ -33,6 +33,10 @@ public class TerrainEventHandlers {
                 case CLAY:
                 case DEAD_BUSH:
                 case ICE:
+                    if (getProfile(event, (WorldServer) world).AVOID_GENERATED_ICE) {
+                        event.setResult(Event.Result.DENY);
+                    }
+                    break;
                 case LAKE_LAVA:
                 case ROCK:
                 case SAND:
