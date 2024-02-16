@@ -18,6 +18,7 @@ public class ModDimensions {
 
     public static LostWorldType worldType;
     public static LostWorldTypeBOP worldTypeBOP;
+    public static LostWorldTypeATG worldTypeATG;
     public static List<LostWorldTypeAdapter> worldTypeAdapterList = new ArrayList<>();
 
     public static DimensionType lostDimensionType;
