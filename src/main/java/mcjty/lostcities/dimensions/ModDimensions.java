@@ -28,6 +28,9 @@ public class ModDimensions {
         if (ModSetup.biomesoplenty) {
             worldTypeBOP = new LostWorldTypeBOP();
         }
+        if (ModSetup.atg ) {
+            worldTypeATG = new LostWorldTypeATG();
+        }
         for (String worldtype : LostCityConfiguration.ADAPTING_WORLDTYPES) {
             worldTypeAdapterList.add(new LostWorldTypeAdapter(worldtype));
         }
