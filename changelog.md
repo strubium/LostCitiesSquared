@@ -5,15 +5,15 @@
 * Improved how cities flatten terrain (Windmill-City)
 * Added loottables that generate different items based on what building the chest is in. (Office, Food. More will be added as I revamp the buildings)
 * Added a check for REID
-* Randomness overhall: 
+* More Randomness: 
   * Cobblestone walls have a chance to be mossy
-  * Fences have a chance to be spruce or dark oak. 
-  * Glowstone have a chance to be a unlit redstone lamp
+  * Fences have a chance to be Spruce or Dark oak. 
+  * Glowstone blocks have a chance to be a unlit redstone lamps
   * Preasure plates have a chance to be stone pressure plates 
   * Increased the variety of flowers
 * Cleaned up LostWorldBOP
-* Added support for creating world types with ATG. Probably very buggy.
-* New config value: avoidGeneratedIce.     
+* WIP: Added support for creating world types with ATG. Very buggy! Usually crashes! 
+* New config value: avoidGeneratedIce. Simalar to avoidGeneratedFossils or avoidGeneratedPumpkins, but for Ice.     
 
 ## The Lost Cities Squared Dev-4:
 * Added a bunch of closed PRs from the original Lost Cities. The original author's username is credited next to the change.
