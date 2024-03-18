@@ -207,8 +207,20 @@
             "block": "minecraft:diamond_block"
           },
           {
+            "random": 15,
+            "block": "minecraft:lapis_block"
+          },
+          {
+            "random": 15,
+            "block": "minecraft:redstone_block"
+          },
+          {
             "random": 20,
             "block": "minecraft:gold_block"
+          },
+          {
+            "random": 20,
+            "block": "minecraft:coal_block"
           },
           {
             "random": 15,
