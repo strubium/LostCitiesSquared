@@ -357,7 +357,7 @@ public class BuildingInfo implements ILostChunkInfo {
                 characteristics.multiBuilding = null;
             }
             else {
-                initMultiBuildingSection(characteristics, coord, provider, profile);
+                 characteristics.section = getMultiBuildingSection(chunkX, chunkZ, provider, profile);
             }
             if (characteristics.section > 0) {
                 characteristics.cityLevel = getTopLeftCityInfo(characteristics, chunkX, chunkZ, provider).cityLevel;
