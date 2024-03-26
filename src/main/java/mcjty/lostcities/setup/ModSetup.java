@@ -33,6 +33,7 @@ public class ModSetup {
     public static boolean jeid = false;
     public static boolean reid = false;
     public static boolean mwc = false;
+    public static boolean cubicchunks = false;
 
     private Logger logger;
     public static File modConfigDir;
@@ -65,6 +66,7 @@ public class ModSetup {
         jeid = Loader.isModLoaded("jeid");
         reid = Loader.isModLoaded("reid");
         mwc = Loader.isModLoaded("mwc");
+        cubicchunks = Loader.isModLoaded("cubicchunks");
     }
 
     public Logger getLogger() {
