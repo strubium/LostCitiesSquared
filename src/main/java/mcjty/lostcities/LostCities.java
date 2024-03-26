@@ -31,7 +31,7 @@ public class LostCities {
     public static IProxy proxy;
     public static ModSetup setup = new ModSetup();
 
-    @Mod.Instance("lostcities")
+    @Mod.Instance("lostcitiessquared")
     public static LostCities instance;
 
     public static LostCitiesImp lostCitiesImp = new LostCitiesImp();
