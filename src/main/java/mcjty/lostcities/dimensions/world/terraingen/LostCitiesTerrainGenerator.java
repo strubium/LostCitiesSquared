@@ -42,7 +42,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     public static char hardAirChar;
     public static char glowstoneChar;
     public static char gravelChar;
-    public static char glassChar;       // @todo: for space: depend on city style
+    public static IBlockState glassChar;
     public static char leavesChar;
     public static char leaves2Char;
     public static char leaves3Char;
