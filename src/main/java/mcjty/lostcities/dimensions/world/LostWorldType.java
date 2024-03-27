@@ -95,18 +95,17 @@ public class LostWorldType extends WorldType {
         mc.displayGuiScreen(new GuiLostCityConfiguration(guiCreateWorld));
     }
 
-
-
     @Override
     public int getMinimumSpawnHeight(World world) {
         LostCityProfile profile = WorldTypeTools.getProfile(world);
         switch (profile.LANDSCAPE_TYPE) {
             case DEFAULT:
             case FLOATING:
-                return super.getMinimumSpawnHeight(world);
             case SPACE:
             case CAVERN:
                 return profile.GROUNDLEVEL;
+            case default:
+                return super.getMinimumSpawnHeight(world);
         }
         return super.getMinimumSpawnHeight(world);
     }
