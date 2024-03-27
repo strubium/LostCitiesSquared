@@ -203,7 +203,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             liquidChar = (char) Block.BLOCK_STATE_IDS.get(profile.getLiquidBlock());
 
             // @todo
-            glassChar = (char) Blocks.GLASS.getDefaultState();
+            glassChar = (IBlockState) Blocks.GLASS.getDefaultState();
 
             leavesChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false));
