@@ -570,7 +570,7 @@
     ],
     "parks": [
       {
-        "factor": 1.0,
+        "factor": 0.3,
         "park": "park_pond"
       },
       {
@@ -583,7 +583,11 @@
       },
       {
         "factor": 1.0,
-        "park": "park_trees"
+        "park": "park_trees1"
+      },
+      {
+        "factor": 0.9,
+        "park": "park_trees2"
       },
       {
         "factor": 0.8,
@@ -1825,7 +1829,7 @@
   },
   {
     "type": "part",
-    "name": "park_trees",
+    "name": "park_trees1",
     "xsize": 16,
     "zsize": 16,
     "palette": [
@@ -1883,6 +1887,73 @@
         "                ",
         "                ",
         "   TP      PT   ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ]
+    ]
+  },
+    {
+    "type": "part",
+    "name": "park_trees2",
+    "xsize": 16,
+    "zsize": 16,
+    "palette": [
+      {
+        "char": "P",
+        "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:sapling"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:sapling@1"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:sapling@2"
+          },
+          {
+            "random": 1000,
+            "block": "minecraft:sapling@4"
+          }
+        ]
+      }
+    ],
+    "slices": [
+      [
+        "                ",
+        "                ",
+        "  _____  _____  ",
+        "  _SSS_  _SSS_  ",
+        "  _SDS_  _SDS_  ",
+        "  _SSS_  _SSS_  ",
+        "  _____  _____  ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ],
+      [
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
         "                ",
         "                ",
         "                ",
