@@ -62,6 +62,10 @@
         },
         {
           "factor": 1.0,
+          "palette": "bricks_chisel_brick2"
+        },
+        {
+          "factor": 1.0,
           "palette": "bricks_chisel_limestone_brick"
         },
         {
@@ -283,6 +287,27 @@
             "block": "chisel:bricks@1"
           }
         ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+  {
+    "type": "palette",
+    "name": "bricks_chisel_brick2",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "block": "chisel:bricks2@0",
         "damaged": "minecraft:iron_bars"
       }
     ]
