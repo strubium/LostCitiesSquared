@@ -62,6 +62,22 @@
         },
         {
           "factor": 1.0,
+          "palette": "bricks_chisel_limestone_brick"
+        },
+        {
+          "factor": 1.0,
+          "palette": "bricks_chisel_hardenedclay_brick"
+        },
+        {
+          "factor": 1.0,
+          "palette": "bricks_chisel_diorite_brick"
+        },
+        {
+          "factor": 1.0,
+          "palette": "bricks_chisel_granite_brick"
+        },
+        {
+          "factor": 1.0,
           "palette": "bricks_chisel_cobblestone_brick"
         },
         {
@@ -265,6 +281,126 @@
           {
             "random": 2000,
             "block": "chisel:bricks@1"
+          }
+        ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+  {
+    "type": "palette",
+    "name": "bricks_chisel_limestone_brick",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "blocks": [
+          {
+            "random": 10,
+            "block": "chisel:limestone@2"
+          },
+          {
+            "random": 2000,
+            "block": "chisel:limestone@1"
+          }
+        ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+  {
+    "type": "palette",
+    "name": "bricks_chisel_hardenedclay_brick",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "blocks": [
+          {
+            "random": 10,
+            "block": "chisel:hardenedclay@2"
+          },
+          {
+            "random": 2000,
+            "block": "chisel:hardenedclay@1"
+          }
+        ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+  {
+    "type": "palette",
+    "name": "bricks_chisel_diorite_brick",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "blocks": [
+          {
+            "random": 10,
+            "block": "chisel:diorite@2"
+          },
+          {
+            "random": 2000,
+            "block": "chisel:diorite@1"
+          }
+        ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+    {
+    "type": "palette",
+    "name": "bricks_chisel_granite_brick",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "blocks": [
+          {
+            "random": 10,
+            "block": "chisel:granite@2"
+          },
+          {
+            "random": 2000,
+            "block": "chisel:granite@1"
           }
         ],
         "damaged": "minecraft:iron_bars"
