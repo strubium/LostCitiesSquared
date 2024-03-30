@@ -34,25 +34,25 @@ import java.util.function.BiFunction;
 
 public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
 
+    private boolean charsSetup = false;
     private static int g_seed = 123456789;
     private final int mainGroundLevel;
     private final int waterLevel;
-    private boolean charsSetup = false;
-    public static char airChar;
-    public static char hardAirChar;
-    public static char glowstoneChar;
-    public static char gravelChar;
+    public static IBlockState airChar;
+    public static IBlockState hardAirChar;
+    public static IBlockState glowstoneChar;
+    public static IBlockState gravelChar;
     public static IBlockState glassChar;
-    public static char leavesChar;
-    public static char leaves2Char;
-    public static char leaves3Char;
-    public static char ironbarsChar;
-    public static char grassChar;
-    public static char bedrockChar;
-    public static char endportalChar;
-    public static char endportalFrameChar;
-    public static char goldBlockChar;
-    public static char diamondBlockChar;
+    public static IBlockState leavesChar;
+    public static IBlockState leaves2Char;
+    public static IBlockState leaves3Char;
+    public static IBlockState ironbarsChar;
+    public static IBlockState grassChar;
+    public static IBlockState bedrockChar;
+    public static IBlockState endportalChar;
+    public static IBlockState endportalFrameChar;
+    public static IBlockState goldBlockChar;
+    public static IBlockState diamondBlockChar;
 
     public char liquidChar;
     public char baseChar;
@@ -134,14 +134,14 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     public static Set<Character> getCharactersNeedingTodo() {
         if (charactersNeedingTodo == null) {
             charactersNeedingTodo = new HashSet<>();
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.ACACIA)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.BIRCH)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.SPRUCE)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.DARK_OAK)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.JUNGLE)));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.RED_FLOWER.getDefaultState()));
-            charactersNeedingTodo.add((char) Block.BLOCK_STATE_IDS.get(Blocks.YELLOW_FLOWER.getDefaultState()));
+            charactersNeedingTodo.add((IBlockState) Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.ACACIA));
+            charactersNeedingTodo.add((IBlockState) Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.BIRCH));
+            charactersNeedingTodo.add((IBlockState) Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.OAK));
+            charactersNeedingTodo.add((IBlockState) Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.SPRUCE));
+            charactersNeedingTodo.add((IBlockState) Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.DARK_OAK));
+            charactersNeedingTodo.add((IBlockState) Blocks.SAPLING.getDefaultState().withProperty(BlockSapling.TYPE, BlockPlanks.EnumType.JUNGLE));
+            charactersNeedingTodo.add((IBlockState) Blocks.RED_FLOWER.getDefaultState());
+            charactersNeedingTodo.add((IBlockState) Blocks.YELLOW_FLOWER.getDefaultState());
         }
         return charactersNeedingTodo;
     }
@@ -194,33 +194,32 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
 
     public void setupChars(LostCityProfile profile) {
         if (!charsSetup) {
-            airChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.AIR.getDefaultState());
-            hardAirChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.COMMAND_BLOCK.getDefaultState());
-            glowstoneChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GLOWSTONE.getDefaultState());
-            gravelChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GRAVEL.getDefaultState());
+            airChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.AIR.getDefaultState());
+            hardAirChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.COMMAND_BLOCK.getDefaultState());
+            glowstoneChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GLOWSTONE.getDefaultState());
+            gravelChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GRAVEL.getDefaultState());
 
-            baseChar = (char) Block.BLOCK_STATE_IDS.get(profile.getBaseBlock());
-            liquidChar = (char) Block.BLOCK_STATE_IDS.get(profile.getLiquidBlock());
+            baseChar = (IBlockState) Block.BLOCK_STATE_IDS.get(profile.getBaseBlock());
+            liquidChar = (IBlockState) Block.BLOCK_STATE_IDS.get(profile.getLiquidBlock());
 
-            // @todo
             glassChar = (IBlockState) Blocks.GLASS.getDefaultState();
 
-            leavesChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leavesChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false));
-            leaves2Char = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leaves2Char = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false)
                     .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE));
-            leaves3Char = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leaves3Char = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false)
                     .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.SPRUCE));
 
-            ironbarsChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.IRON_BARS.getDefaultState());
-            grassChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GRASS.getDefaultState());
-            bedrockChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.BEDROCK.getDefaultState());
-            endportalChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL.getDefaultState());
-            endportalFrameChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL_FRAME.getDefaultState());
-            goldBlockChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GOLD_BLOCK.getDefaultState());
-            diamondBlockChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.DIAMOND_BLOCK.getDefaultState());
+            ironbarsChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.IRON_BARS.getDefaultState());
+            grassChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GRASS.getDefaultState());
+            bedrockChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.BEDROCK.getDefaultState());
+            endportalChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL.getDefaultState());
+            endportalFrameChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL_FRAME.getDefaultState());
+            goldBlockChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GOLD_BLOCK.getDefaultState());
+            diamondBlockChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.DIAMOND_BLOCK.getDefaultState());
             charsSetup = true;
         }
     }
