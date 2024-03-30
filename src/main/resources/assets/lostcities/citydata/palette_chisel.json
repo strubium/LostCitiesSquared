@@ -322,7 +322,44 @@
       },
       {
         "char": ":",
-        "block": "minecraft:iron_bars"
+        "blocks": [
+          {
+            "random": 10,
+            "block": "minecraft:iron_bars"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@1"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@2"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@3"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@4"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@5"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@6"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@1"
+          },
+          {
+            "random": 2000,
+            "block": "chisel:ironpane@0"
+          }
+        ],
       },
       {
         "char": "A",
