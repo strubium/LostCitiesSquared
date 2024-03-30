@@ -1,6 +1,6 @@
 package mcjty.lostcities.api;
 
-public interface ILostCityCityStyle extends ILostCityAsset {
+public interface ILostCityStyle extends ILostCityAsset {
 
     String getStyle();
 

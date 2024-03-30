@@ -775,7 +775,7 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
     }
 
     @Override
-    public ILostCityAssetRegistry<ILostCityCityStyle> getCityStyles() {
+    public ILostCityAssetRegistry<ILostCityStyle> getCityStyles() {
         return AssetRegistries.CITYSTYLES.cast();
     }
 }
