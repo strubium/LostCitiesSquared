@@ -58,6 +58,10 @@
         },
         {
           "factor": 1.0,
+          "palette": "bricks_chisel_brick"
+        },
+        {
+          "factor": 1.0,
           "palette": "bricks_chisel_cyan"
         },
         {
@@ -139,6 +143,36 @@
           {
             "random": 2000,
             "block": "chisel:concrete_gray1@8"
+          }
+        ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+   {
+    "type": "palette",
+    "name": "bricks_chisel_brick",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "blocks": [
+          {
+            "random": 10,
+            "block": "chisel:bricks@2"
+          },
+          {
+            "random": 2000,
+            "block": "chisel:bricks@1"
           }
         ],
         "damaged": "minecraft:iron_bars"
