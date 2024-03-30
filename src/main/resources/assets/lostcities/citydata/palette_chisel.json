@@ -62,6 +62,10 @@
         },
         {
           "factor": 1.0,
+          "palette": "bricks_chisel_cobblestone_brick"
+        },
+        {
+          "factor": 1.0,
           "palette": "bricks_chisel_cyan"
         },
         {
@@ -149,7 +153,7 @@
       }
     ]
   },
-   {
+  {
     "type": "palette",
     "name": "bricks_chisel_brick",
     "palette": [
@@ -173,6 +177,53 @@
           {
             "random": 2000,
             "block": "chisel:bricks@1"
+          }
+        ],
+        "damaged": "minecraft:iron_bars"
+      }
+    ]
+  },
+  {
+    "type": "palette",
+    "name": "bricks_chisel_cobblestone_brick",
+    "palette": [
+      {
+        "char": "X",
+        "block": "chisel:concrete_lightgray1@8",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "$",
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:iron_bars"
+      },
+      {
+        "char": "#",
+        "blocks": [
+        {
+            "random": 10,
+            "blocks": [
+        {
+            "random": 10,
+            "block": "chisel:cobblestone2@2"
+        },
+        {
+            "random": 10,
+            "block": "chisel:cobblestonemossy@1"
+        },
+        {
+            "random": 10,
+            "block": "chisel:cobblestonemossy@2"
+        },
+        {
+            "random": 10,
+            "block": "chisel:cobblestonemossy@8"
+        }
+        ],
+        },
+          {
+            "random": 2000,
+            "block": "chisel:cobblestone2@0"
           }
         ],
         "damaged": "minecraft:iron_bars"
