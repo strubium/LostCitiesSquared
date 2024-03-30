@@ -194,32 +194,32 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
 
     public void setupChars(LostCityProfile profile) {
         if (!charsSetup) {
-            airChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.AIR.getDefaultState());
-            hardAirChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.COMMAND_BLOCK.getDefaultState());
-            glowstoneChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GLOWSTONE.getDefaultState());
-            gravelChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GRAVEL.getDefaultState());
+            airChar = (IBlockState)Blocks.AIR.getDefaultState();
+            hardAirChar = (IBlockState) Blocks.COMMAND_BLOCK.getDefaultState();
+            glowstoneChar = (IBlockState)Blocks.GLOWSTONE.getDefaultState();
+            gravelChar = (IBlockState) Blocks.GRAVEL.getDefaultState();
 
-            baseChar = (IBlockState) Block.BLOCK_STATE_IDS.get(profile.getBaseBlock());
-            liquidChar = (IBlockState) Block.BLOCK_STATE_IDS.get(profile.getLiquidBlock());
+            baseChar = (IBlockState) profile.getBaseBlock();
+            liquidChar = (IBlockState) profile.getLiquidBlock();
 
             glassChar = (IBlockState) Blocks.GLASS.getDefaultState();
 
-            leavesChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
-                    .withProperty(BlockLeaves.DECAYABLE, false));
-            leaves2Char = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+            leavesChar = (IBlockState) Blocks.LEAVES.getDefaultState()
+                    .withProperty(BlockLeaves.DECAYABLE, false);
+            leaves2Char = (IBlockState) Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false)
-                    .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE));
-            leaves3Char = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
+                    .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.JUNGLE);
+            leaves3Char = (IBlockState) Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false)
-                    .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.SPRUCE));
+                    .withProperty(BlockOldLeaf.VARIANT, BlockPlanks.EnumType.SPRUCE);
 
-            ironbarsChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.IRON_BARS.getDefaultState());
-            grassChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GRASS.getDefaultState());
-            bedrockChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.BEDROCK.getDefaultState());
-            endportalChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL.getDefaultState());
-            endportalFrameChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.END_PORTAL_FRAME.getDefaultState());
-            goldBlockChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.GOLD_BLOCK.getDefaultState());
-            diamondBlockChar = (IBlockState) Block.BLOCK_STATE_IDS.get(Blocks.DIAMOND_BLOCK.getDefaultState());
+            ironbarsChar = (IBlockState) Blocks.IRON_BARS.getDefaultState();
+            grassChar = (IBlockState) Blocks.GRASS.getDefaultState();
+            bedrockChar = (IBlockState) Blocks.BEDROCK.getDefaultState();
+            endportalChar = (IBlockState) Blocks.END_PORTAL.getDefaultState();
+            endportalFrameChar = (IBlockState) Blocks.END_PORTAL_FRAME.getDefaultState();
+            goldBlockChar = (IBlockState) Blocks.GOLD_BLOCK.getDefaultState();
+            diamondBlockChar = (IBlockState) Blocks.DIAMOND_BLOCK.getDefaultState();
             charsSetup = true;
         }
     }
