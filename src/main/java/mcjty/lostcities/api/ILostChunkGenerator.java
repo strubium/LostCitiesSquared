@@ -24,5 +24,5 @@ public interface ILostChunkGenerator {
 
     ILostCityAssetRegistry<ILostCityBuilding> getBuildings();
     ILostCityAssetRegistry<ILostCityMultiBuilding> getMultiBuildings();
-    ILostCityAssetRegistry<ILostCityStyle> getCityStyles();
+    ILostCityAssetRegistry<ILostCityCityStyle> getCityStyles();
 }

@@ -4,7 +4,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import mcjty.lostcities.api.ILostCityStyle;
+import mcjty.lostcities.api.ILostCityCityStyle;
 import mcjty.lostcities.dimensions.world.lost.Direction;
 import mcjty.lostcities.varia.Tools;
 import org.apache.commons.lang3.tuple.Pair;
@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class CityStyle implements ILostCityStyle {
+public class CityStyle implements ILostCityCityStyle {
 
     private String name;
 
