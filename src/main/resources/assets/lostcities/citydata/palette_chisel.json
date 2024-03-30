@@ -246,29 +246,12 @@
         "blocks": [
         {
             "random": 10,
-            "blocks": [
-        {
-            "random": 10,
             "block": "chisel:cobblestone2@2"
         },
         {
-            "random": 10,
-            "block": "chisel:cobblestonemossy@1"
-        },
-        {
-            "random": 10,
-            "block": "chisel:cobblestonemossy@2"
-        },
-        {
-            "random": 10,
-            "block": "chisel:cobblestonemossy@8"
-        }
-        ],
-        },
-          {
             "random": 2000,
             "block": "chisel:cobblestone2@0"
-          }
+        }
         ],
         "damaged": "minecraft:iron_bars"
       }
