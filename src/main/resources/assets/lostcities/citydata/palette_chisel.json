@@ -109,6 +109,10 @@
         {
           "factor": 1.0,
           "palette": "glass_chisel_pane_stone_bordered"
+        },
+        {
+          "factor": 1.0,
+          "palette": "glass_chisel_pane_shale_bordered"
         }
       ],
       [
@@ -164,6 +168,24 @@
       {
         "char": "a",
         "block": "chisel:glasspane@10"
+      }
+    ]
+  },
+  {
+    "type": "palette",
+    "name": "glass_chisel_pane_shale_bordered",
+    "palette": [
+      {
+        "char": "+",
+        "block": "chisel:glasspane@8"
+      },
+      {
+        "char": "`",
+        "block": "chisel:glasspane@8"
+      },
+      {
+        "char": "a",
+        "block": "chisel:glasspane@8"
       }
     ]
   },
