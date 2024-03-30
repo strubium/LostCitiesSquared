@@ -13,7 +13,13 @@
   * Increased the variety of flowers
 * Cleaned up LostWorldBOP
 * WIP: Added support for creating world types with ATG. Very buggy! Usually crashes! 
-* New config value: avoidGeneratedIce. Simalar to avoidGeneratedFossils or avoidGeneratedPumpkins, but for Ice.     
+* New config value: avoidGeneratedIce. Simalar to avoidGeneratedFossils or avoidGeneratedPumpkins, but for Ice.
+* New parks:
+  * park_nofountain1 and park_nofountain2. Same as park_fountain1 and park_fountain2 but without fountains in the middle
+* The Water Tower building top now has water in it.
+* Chisel Palette Overhaul Part 1
+  * New Brick types: bricks_chisel_brick, bricks_chisel_limestone_brick, bricks_chisel_hardenedclay_brick, bricks_chisel_diorite_brick, bricks_chisel_granite_brick, and bricks_chisel_cobblestone_brick.
+  * New Glass types: glass_chisel_pane_gray_bordered, glass_chisel_pane_stone_bordered, glass_chisel_pane_shale_bordered and glass_chisel_pane_steel_bordered.
 
 ## The Lost Cities Squared Dev-4:
 * Added a bunch of closed PRs from the original Lost Cities. The original author's username is credited next to the change.
