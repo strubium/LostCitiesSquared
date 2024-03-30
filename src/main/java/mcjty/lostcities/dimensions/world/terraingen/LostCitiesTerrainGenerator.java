@@ -43,7 +43,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     public static char hardAirChar;
     public static char glowstoneChar;
     public static char gravelChar;
-    public static char glassChar;       // @todo: for space: depend on city style
+    public static IBlockState glassChar;
     public static char leavesChar;
     public static char leaves2Char;
     public static char leaves3Char;
@@ -203,8 +203,8 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             baseChar = (char) Block.BLOCK_STATE_IDS.get(profile.getBaseBlock());
             liquidChar = (char) Block.BLOCK_STATE_IDS.get(profile.getLiquidBlock());
 
-            // @todo
-            glassChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GLASS.getDefaultState());
+            // glassChar is the only one that be be a IBlockState
+            glassChar = (IBlockState) Blocks.GLASS.getDefaultState();
 
             leavesChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.LEAVES.getDefaultState()
                     .withProperty(BlockLeaves.DECAYABLE, false));
@@ -244,7 +244,8 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         // @todo this setup is not very clean
         CityStyle cityStyle = info.getCityStyle();
 
-        street = info.getCompiledPalette().get(cityStyle.getStreetBlock());
+        //Streets are defined here
+        street = info.getCompiledPalette().get(cityStyle.getStreetBlock()); 
         streetBase = info.getCompiledPalette().get(cityStyle.getStreetBaseBlock());
         street2 = info.getCompiledPalette().get(cityStyle.getStreetVariantBlock());
         streetBorder = (16 - cityStyle.getStreetWidth()) / 2;
