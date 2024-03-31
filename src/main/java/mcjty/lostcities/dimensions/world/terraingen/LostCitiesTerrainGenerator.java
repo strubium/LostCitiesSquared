@@ -29,6 +29,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
 import net.jafama.FastMath;
+import java.util.Random;
 
 import java.util.*;
 import java.util.function.BiFunction;
@@ -618,7 +619,9 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                     false, null);
         } else if (info.isCity && level <= adjacent1.cityLevel && level <= adjacent2.cityLevel && adjacent1.isCity && adjacent2.isCity) {
             // Simple highway in the city
-            part = AssetRegistries.PARTS.get("highway_open" + suffix);
+            Random random = new Random();
+            String partKey = random.nextBoolean() ? "highway_open" : "highway_open_crossing";
+            part = AssetRegistries.PARTS.get(partKey + suffix);            
             int height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true,
                     true, runningX, intersects,
                     false, null);
