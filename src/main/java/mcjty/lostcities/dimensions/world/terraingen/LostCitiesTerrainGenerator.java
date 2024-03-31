@@ -197,7 +197,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     public void setupChars(LostCityProfile profile) {
         if (!charsSetup) {
             airChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.AIR.getDefaultState());
-            hardAirChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.STRUCTURE_VOID.getDefaultState());
+            hardAirChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.COMMAND_BLOCK.getDefaultState());
             glowstoneChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GLOWSTONE.getDefaultState());
             gravelChar = (char) Block.BLOCK_STATE_IDS.get(Blocks.GRAVEL.getDefaultState());
 
