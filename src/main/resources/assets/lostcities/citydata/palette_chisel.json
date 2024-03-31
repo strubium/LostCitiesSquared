@@ -558,7 +558,7 @@
     "palette": [
       {
         "char": "Q",
-        "block": "minecraft:quartz_block",
+        "block": "chisel:quartz@7",
         "damaged": "minecraft:iron_bars"
       },
       {
