@@ -620,7 +620,8 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         } else if (info.isCity && level <= adjacent1.cityLevel && level <= adjacent2.cityLevel && adjacent1.isCity && adjacent2.isCity) {
             // Simple highway in the city
             Random random = new Random();
-            String partKey = random.nextBoolean() ? "highway_open" : "highway_open_crossing";
+            String partKey = random.nextDouble() < 0.9 ? "highway_open" : "highway_open_crossing";
+            part = AssetRegistries.PARTS.get(partKey + suffix);
             part = AssetRegistries.PARTS.get(partKey + suffix);            
             int height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true,
                     true, runningX, intersects,
