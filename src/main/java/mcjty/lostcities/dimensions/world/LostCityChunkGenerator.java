@@ -94,7 +94,7 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
     private MapGenVillage villageGenerator = new MapGenVillage();
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
-    private LostWoodlandMansion woodlandMansionGenerator = new LostStructureWoodlandMansion(this);
+    private LostStructureWoodlandMansion woodlandMansionGenerator = new LostStructureWoodlandMansion(this);
 
     public ChunkGeneratorSettings getSettings() {
         if (settings == null) {
