@@ -22,7 +22,7 @@ public class LostStructureWoodlandMansion extends MapGenStructure {
     public static final List<Biome> ALLOWED_BIOMES = Arrays.<Biome>asList(Biomes.ROOFED_FOREST, Biomes.MUTATED_ROOFED_FOREST);
     private final LostCityChunkGenerator provider;
 
-    public LostWoodlandMansion(LostCityChunkGenerator provider) {
+    public LostStructureWoodlandMansion(LostCityChunkGenerator provider) {
         this.provider = provider;
     }
 
@@ -77,7 +77,7 @@ public class LostStructureWoodlandMansion extends MapGenStructure {
 
     @Override
     protected StructureStart getStructureStart(int chunkX, int chunkZ) {
-        return new LostWoodlandMansion.Start(this.world, this.provider, this.rand, chunkX, chunkZ);
+        return new LostStructureWoodlandMansion.Start(this.world, this.provider, this.rand, chunkX, chunkZ);
     }
 
     public static class Start extends StructureStart {
