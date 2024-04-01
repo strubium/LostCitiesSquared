@@ -1,4 +1,4 @@
-package mcjty.lostcities.dimensions.world.lost;
+package mcjty.lostcities.dimensions.world.lost.structure;
 
 import net.minecraft.world.World;
 import net.minecraft.world.gen.structure.StructureOceanMonument;

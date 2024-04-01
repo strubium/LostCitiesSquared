@@ -1,4 +1,4 @@
-package mcjty.lostcities.dimensions.world;
+package mcjty.lostcities.dimensions.world.lost.structure;
 
 import com.google.common.collect.Lists;
 import net.minecraft.init.Biomes;
@@ -15,7 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class LostWoodlandMansion extends MapGenStructure {
+public class LostStructureWoodlandMansion extends MapGenStructure {
 
     private final int featureSpacing = 80;
     private final int minFeatureSeparation = 20;
