@@ -5,50 +5,62 @@
     "palette": [
       {
         "char": "k",
+        "tile_entity":true,
         "block": "minecraft:rail"
       },
       {
         "char": "e",
+        "tile_entity":true,
         "block": "minecraft:rail@1"
       },
       {
         "char": "j",
+        "tile_entity":true,
         "block": "minecraft:rail@2"
       },
       {
         "char": "q",
+        "tile_entity":true,
         "block": "minecraft:rail@6"
       },
       {
         "char": "s",
+        "tile_entity":true,
         "block": "minecraft:rail@7"
       },
       {
         "char": "r",
+        "tile_entity":true,
         "block": "minecraft:rail@8"
       },
       {
         "char": "n",
+        "tile_entity":true,
         "block": "minecraft:rail@9"
       },
       {
         "char": "m",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@8"
       },
       {
         "char": "E",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@13"
       },
       {
         "char": "H",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@12"
       },
       {
         "char": "f",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@9"
       },
       {
         "char": "i",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@10"
       }
     ]
