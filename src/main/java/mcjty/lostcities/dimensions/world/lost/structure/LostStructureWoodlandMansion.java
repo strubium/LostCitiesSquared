@@ -1,5 +1,6 @@
 package mcjty.lostcities.dimensions.world.lost.structure;
 
+import mcjty.lostcities.dimensions.world.LostCityChunkGenerator;
 import com.google.common.collect.Lists;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
