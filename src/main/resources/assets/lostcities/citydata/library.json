@@ -2039,6 +2039,7 @@
     "palette": [
       {
         "char": "P",
+        "tile_entity":true,
         "blocks": [
           {
             "random": 32,
