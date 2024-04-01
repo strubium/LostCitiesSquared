@@ -16,6 +16,7 @@ import mcjty.lostcities.dimensions.world.lost.cityassets.ConditionContext;
 import mcjty.lostcities.dimensions.world.lost.cityassets.WorldStyle;
 import mcjty.lostcities.dimensions.world.terraingen.LostCitiesTerrainGenerator;
 import mcjty.lostcities.varia.ChunkCoord;
+import mcjty.lostcities.varia.DelayedCache;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFalling;
 import net.minecraft.block.BlockSapling;
@@ -86,8 +87,8 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
     // chunk is really generated it will find it and use that instead of
     // making that primer again
     // @todo, make this cache timed so that primers expire if they are not used quickly enough?
-    private Map<ChunkCoord, ChunkPrimer> cachedPrimers = new HashMap<>();
-    private Map<ChunkCoord, ChunkHeightmap> cachedHeightmaps = new HashMap<>();
+    private DelayedCache<ChunkCoord, ChunkPrimer> cachedPrimers = new DelayedCache();
+    private DelayedCache<ChunkCoord, ChunkHeightmap> cachedHeightmaps = new DelayedCache()();
 
     private MapGenStronghold strongholdGenerator = new MapGenStronghold();
     private StructureOceanMonument oceanMonumentGenerator = new LostStructureOceanMonument();
