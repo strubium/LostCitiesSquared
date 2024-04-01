@@ -49,7 +49,7 @@ public class ModDimensions {
             dimensionProfileMap.put(id, profile);
         }
 
-        MapGenStructureIO.registerStructure(LostWoodlandMansion.Start.class, "LostMansion");
+        MapGenStructureIO.registerStructure(LostStructureWoodlandMansion.Start.class, "LostMansion");
     }
 
 }
