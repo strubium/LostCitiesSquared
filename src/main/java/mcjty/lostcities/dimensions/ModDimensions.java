@@ -3,6 +3,7 @@ package mcjty.lostcities.dimensions;
 import mcjty.lostcities.LostCities;
 import mcjty.lostcities.config.LostCityConfiguration;
 import mcjty.lostcities.dimensions.world.*;
+import mcjty.lostcities.dimensions.world.lost.structure.LostStructureWoodlandMansion;
 import mcjty.lostcities.setup.ModSetup;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
