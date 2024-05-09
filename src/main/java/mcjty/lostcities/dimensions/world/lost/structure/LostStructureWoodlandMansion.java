@@ -28,7 +28,7 @@ public class LostStructureWoodlandMansion extends MapGenStructure {
     }
 
     @Override
-    public static String getStructureName() {
+    public String getStructureName() {
         return "LostMansion";
     }
 
