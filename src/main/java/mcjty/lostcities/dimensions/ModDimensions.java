@@ -50,7 +50,7 @@ public class ModDimensions {
             dimensionProfileMap.put(id, profile);
         }
 
-        MapGenStructureIO.registerStructure(LostStructureWoodlandMansion.Start.class, LostStructureWoodlandMansion.getStructureName());
+        MapGenStructureIO.registerStructure(LostStructureWoodlandMansion.Start.class, "LostMansion");
     }
 
 }
