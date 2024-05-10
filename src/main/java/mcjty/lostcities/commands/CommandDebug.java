@@ -18,30 +18,40 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * This class represents a command for debugging Lost Cities mod.
+ * It provides information about the building, city, railway, and city sphere at the player's current position.
+ */
 public class CommandDebug implements ICommand {
 
     @Override
     public String getName() {
+        // Returns the name of the command.
         return "lc_debug";
     }
 
     @Override
     public String getUsage(ICommandSender sender) {
+        // Returns the usage of the command.
         return getName();
     }
 
     @Override
     public List<String> getAliases() {
+        // Returns an empty list of aliases for the command.
         return Collections.emptyList();
     }
 
     @Override
     public void execute(MinecraftServer server, ICommandSender sender, String[] args) throws CommandException {
+        // Executes the command.
         if (sender instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) sender;
             BlockPos position = player.getPosition();
             LostCityChunkGenerator provider = WorldTypeTools.getChunkGenerator(sender.getEntityWorld().provider.getDimension());
             BuildingInfo info = BuildingInfo.getBuildingInfo(position.getX() >> 4, position.getZ() >> 4, provider);
+
+            // Print debug information about the building.
             System.out.println("profile = " + info.profile.getName());
             System.out.println("provider.hasMansion = " + info.provider.hasMansion(info.chunkX, info.chunkZ));
             System.out.println("buildingType = " + info.buildingType.getName());
@@ -60,6 +70,7 @@ public class CommandDebug implements ICommand {
             System.out.println("getChestTodo().size() = " + info.getLootTodo().size());
             System.out.println("getMobSpawnerTodo().size() = " + info.getMobSpawnerTodo().size());
 
+            // Print debug information about the city sphere.
             float reldist = CitySphere.getRelativeDistanceToCityCenter(info.chunkX, info.chunkZ, provider);
             System.out.println("reldist = " + reldist);
 
@@ -78,21 +89,25 @@ public class CommandDebug implements ICommand {
 
     @Override
     public boolean checkPermission(MinecraftServer server, ICommandSender sender) {
+        // Returns true if the sender has permission to execute the command.
         return true;
     }
 
     @Override
     public List<String> getTabCompletions(MinecraftServer server, ICommandSender sender, String[] args, @Nullable BlockPos targetPos) {
+        // Returns an empty list of tab completions for the command.
         return Collections.emptyList();
     }
 
     @Override
     public boolean isUsernameIndex(String[] args, int index) {
+        // Returns false, indicating that the command does not accept a username as an argument at the specified index.
         return false;
     }
 
     @Override
     public int compareTo(ICommand o) {
+        // Compares this command to another command based on their names.
         return getName().compareTo(o.getName());
     }
 }
