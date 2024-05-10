@@ -95,7 +95,11 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         cavernTerrainGenerator.setup(provider.worldObj, provider);
         spaceTerrainGenerator.setup(provider.worldObj, provider);
     }
-
+    
+    /**
+    * Generates a random leaf character.
+    * @return a random leaf character
+    */
     public static char getRandomLeaf() {
         if (randomLeafs == null) {
             randomLeafs = new char[128];
@@ -113,6 +117,10 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         return randomLeafs[fastrand128()];
     }
 
+    /**
+    * Gets the set of rail characters.
+    * @return a set of rail characters
+    */
     public static Set<Character> getRailChars() {
         if (railChars == null) {
             railChars = new HashSet<>();
@@ -122,6 +130,10 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         return railChars;
     }
 
+    /**
+    * Gets the set of glass characters.
+    * @return a set of glass characters
+    */
     public static Set<Character> getGlassChars() {
         if (glassChars == null) {
             glassChars = new HashSet<>();
@@ -133,6 +145,10 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         return glassChars;
     }
 
+    /**
+    * Gets the set of characters needing todo.
+    * @return a set of characters needing todo
+    */
     public static Set<Character> getCharactersNeedingTodo() {
         if (charactersNeedingTodo == null) {
             charactersNeedingTodo = new HashSet<>();
@@ -148,6 +164,10 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         return charactersNeedingTodo;
     }
 
+    /**
+    * Gets the set of characters needing lighting update.
+    * @return a set of characters needing lighting update
+    */
     public static Set<Character> getCharactersNeedingLightingUpdate() {
         if (charactersNeedingLightingUpdate == null) {
             charactersNeedingLightingUpdate = new HashSet<>();
@@ -161,6 +181,10 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         return charactersNeedingLightingUpdate;
     }
 
+    /**
+     * Gets the set of rotatable characters.
+    * @return a set of rotatable characters
+    */
     public static Set<Character> getRotatableChars() {
         if (rotatableChars == null) {
             rotatableChars = new HashSet<>();
