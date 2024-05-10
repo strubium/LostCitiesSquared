@@ -24,8 +24,15 @@ import java.io.UncheckedIOException;
 
 import static mcjty.lostcities.config.LostCityConfiguration.MWC_LOOT;
 
+/**
+ * This class is responsible for setting up the mod, including registering mod compatibility,
+ * initializing loot tables, and loading asset registries.
+ */
 public class ModSetup {
 
+    /**
+     * Flags indicating whether certain mods are loaded.
+     */
     public static boolean chisel = false;
     public static boolean biomesoplenty = false;
     public static boolean atg = false;
@@ -38,6 +45,13 @@ public class ModSetup {
     private Logger logger;
     public static File modConfigDir;
 
+    /**
+     * This method is called during the pre-initialization phase of the mod.
+     * It initializes the logger, registers network messages, sets up mod compatibility,
+     * and initializes the mod configuration directory and other necessary components.
+     *
+     * @param e The FMLPreInitializationEvent
+     */
     public void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
         PacketHandler.registerMessages("lostcitiessquared");
@@ -54,10 +68,13 @@ public class ModSetup {
         LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/raildungeonchest"));
 
         if(MWC_LOOT = true){
-        LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestMWC"));
+            LootTableList.register(new ResourceLocation(LostCities.MODID, "chests/lostcitychestMWC"));
         }
     }
 
+    /**
+     * This method sets up mod compatibility by checking if certain mods are loaded.
+     */
     private void setupModCompat() {
         chisel = Loader.isModLoaded("chisel");
         biomesoplenty = Loader.isModLoaded("biomesoplenty") || Loader.isModLoaded("BiomesOPlenty");
@@ -69,15 +86,34 @@ public class ModSetup {
         cubicchunks = Loader.isModLoaded("cubicchunks");
     }
 
+    /**
+     * This method returns the logger instance.
+     *
+     * @return The logger instance
+     */
     public Logger getLogger() {
         return logger;
     }
 
+    /**
+     * This method is called during the initialization phase of the mod.
+     * It registers event handlers for Forge and terrain generation events.
+     *
+     * @param e The FMLInitializationEvent
+     */
     public void init(FMLInitializationEvent e) {
         MinecraftForge.EVENT_BUS.register(new ForgeEventHandlers());
         MinecraftForge.TERRAIN_GEN_BUS.register(new TerrainEventHandlers());
     }
 
+    /**
+     * This method is called during the post-initialization phase of the mod.
+     * It processes the mod configuration, clears profile configurations,
+     * resets asset registries, loads asset registries from files or resources,
+     * and logs statistics if debug mode is enabled.
+     *
+     * @param e The FMLPostInitializationEvent
+     */
     public void postInit(FMLPostInitializationEvent e) {
         ConfigSetup.postInit();
         ConfigSetup.profileConfigs.clear();
