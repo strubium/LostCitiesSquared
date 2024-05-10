@@ -621,7 +621,6 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             // Simple highway in the city
             Random random = new Random();
             String partKey = random.nextDouble() < 0.9 ? "highway_open" : "highway_open_crossing";
-            part = AssetRegistries.PARTS.get(partKey + suffix);
             part = AssetRegistries.PARTS.get(partKey + suffix);            
             int height = generatePart(info, part, transform, 0, highwayGroundLevel, 0, true,
                     true, runningX, intersects,
@@ -2437,19 +2436,20 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                             driver.add(palette.get(borderBlock));
                             y++;
                         }
-                    } else if (info.profile.isDefault()) {
+                    } 
+                    else if (info.profile.isDefault()) {
                         driver.setBlockRange(x, info.profile.BEDROCK_LAYER, z, lowestLevel, baseChar);
+                    }
+                    else if (info.profile.isCavern()) {
+                        // Also clear the inside of buildings to avoid geometry that doesn't really belong there
+                        clearRange(info, x, z, lowestLevel, info.getCityGroundLevel() + info.getNumFloors() * 6, info.waterLevel > info.groundLevel);
                     }
                     if (driver.getBlock(x, lowestLevel, z) == airChar) {
                         char filler = palette.get(fillerBlock);
                         driver.current(x, lowestLevel, z).block(filler); // There is nothing below so we fill this with the filler
                     }
 
-                    if (info.profile.isCavern()) {
-                        // Also clear the inside of buildings to avoid geometry that doesn't really belong there
-//                        clearRange(primer, index, lowestLevel, info.getCityGroundLevel() + info.getNumFloors() * 6, waterLevel > mainGroundLevel);
-                        clearRange(info, x, z, lowestLevel, info.getCityGroundLevel() + info.getNumFloors() * 6, info.waterLevel > info.groundLevel);
-                    }
+                    
                 }
             }
         }
@@ -2668,7 +2668,6 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             return false;
         }
         return (info2.isCity && !info2.hasBuilding && localLevel == 0 && localAdjacent == 0) || (info2.hasBuilding && localAdjacent == info2.getNumFloors());
-//        return (!info2.hasBuilding && localLevel == localAdjacent) || (info2.hasBuilding && localAdjacent == info2.getNumFloors());
     }
 
     private boolean hasConnectionWithBuilding(int localLevel, BuildingInfo info, BuildingInfo info2) {
