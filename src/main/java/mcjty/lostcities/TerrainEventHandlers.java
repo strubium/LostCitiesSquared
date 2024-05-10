@@ -16,12 +16,7 @@ import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class TerrainEventHandlers {
-    /**
-     * This method is an event handler for the DecorateBiomeEvent.Decorate event.
-     * It modifies the world's terrain generation based on the Lost Cities mod's configuration.
-     *
-     * @param event The DecorateBiomeEvent.Decorate event
-     */
+
     @SubscribeEvent
     public void onCreateDecorate(DecorateBiomeEvent.Decorate event) {
         World world = event.getWorld();
@@ -147,22 +142,10 @@ public class TerrainEventHandlers {
         }
     }
 
-/**
- * Retrieves the Lost City Profile for the given decorate event and world server.
- *
- * @param event The decorate event for which the profile is required.
- * @param world The world server associated with the decorate event.
- * @return The Lost City Profile for the given chunk coordinates in the world.
- */
-private LostCityProfile getProfile(DecorateBiomeEvent.Decorate event, WorldServer world) {
-    // Get the Lost City Chunk Generator associated with the world's dimension
-    LostCityChunkGenerator provider = WorldTypeTools.getChunkGenerator(world.provider.getDimension());
-
-    // Calculate the chunk coordinates for the decorate event position
-    int chunkX = (event.getPos().getX()) >> 4;
-    int chunkZ = (event.getPos().getZ()) >> 4;
-
-    // Retrieve the Lost City Profile for the given chunk coordinates using the BuildingInfo class
-    return BuildingInfo.getProfile(chunkX, chunkZ, provider);
-}
+    private LostCityProfile getProfile(DecorateBiomeEvent.Decorate event, WorldServer world) {
+        LostCityChunkGenerator provider = WorldTypeTools.getChunkGenerator(world.provider.getDimension());
+        int chunkX = (event.getPos().getX()) >> 4;
+        int chunkZ = (event.getPos().getZ()) >> 4;
+        return BuildingInfo.getProfile(chunkX, chunkZ, provider);
+    }
 }

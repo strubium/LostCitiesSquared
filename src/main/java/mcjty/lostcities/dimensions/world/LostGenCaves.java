@@ -4,41 +4,22 @@ import net.minecraft.world.World;
 import net.minecraft.world.chunk.ChunkPrimer;
 import net.minecraft.world.gen.MapGenCaves;
 
-/**
- * Customized cave generation class for the Lost Cities mod.
- * Extends the vanilla MapGenCaves class to modify cave generation behavior.
- */
 public class LostGenCaves extends MapGenCaves {
 
-    /**
-     * The chunk generator associated with this cave generator.
-     */
     private final LostCityChunkGenerator provider;
 
-    /**
-     * Constructor for the LostGenCaves class.
-     *
-     * @param provider The chunk generator associated with this cave generator.
-     */
     public LostGenCaves(LostCityChunkGenerator provider) {
         this.provider = provider;
     }
 
     /**
-     * Recursively called by generate() to generate caves in a chunk.
-     *
-     * @param worldIn The world in which the caves are being generated.
-     * @param chunkX The X coordinate of the chunk.
-     * @param chunkZ The Z coordinate of the chunk.
-     * @param originalX The original X coordinate of the chunk.
-     * @param originalZ The original Z coordinate of the chunk.
-     * @param chunkPrimerIn The chunk primer used to store the generated cave data.
+     * Recursively called by generate()
      */
     @Override
     protected void recursiveGenerate(World worldIn, int chunkX, int chunkZ, int originalX, int originalZ, ChunkPrimer chunkPrimerIn) {
         int i = this.rand.nextInt(this.rand.nextInt(this.rand.nextInt(15) + 1) + 1);
 
-        if (this.rand.nextInt(7)!= 0) {
+        if (this.rand.nextInt(7) != 0) {
             i = 0;
         }
 
@@ -66,6 +47,5 @@ public class LostGenCaves extends MapGenCaves {
             }
         }
     }
-}
 }
 
