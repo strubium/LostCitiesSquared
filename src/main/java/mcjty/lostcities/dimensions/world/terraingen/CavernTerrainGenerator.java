@@ -66,8 +66,17 @@ public class CavernTerrainGenerator {
     }
 
     /**
-     * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the
+     * Generates a subset of the level's terrain data. Takes 7 arguments: the empty noise array, the position, and the
      * size.
+     *
+     * @param noiseField the noise array to initialize
+     * @param x the x-coordinate of the position
+     * @param y the y-coordinate of the position
+     * @param z the z-coordinate of the position
+     * @param sx the size of the terrain data in the x-direction
+     * @param sy the size of the terrain data in the y-direction
+     * @param sz the size of the terrain data in the z-direction
+     * @return the initialized noise field
      */
     private double[] initializeNoiseField(double[] noiseField, int x, int y, int z, int sx, int sy, int sz) {
         ChunkGeneratorEvent.InitNoiseField event = new ChunkGeneratorEvent.InitNoiseField(provider, noiseField, x, y, z, sx, sy, sz);
