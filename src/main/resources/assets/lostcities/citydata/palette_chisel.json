@@ -201,7 +201,7 @@
     "palette": [
       {
         "char": "+",
-        "block": "chisel:glasspane@8"
+        "block": "chisel:glass@8"
       },
       {
         "char": "`",
@@ -219,7 +219,7 @@
     "palette": [
       {
         "char": "+",
-        "block": "chisel:glasspane@9"
+        "block": "chisel:glass@9"
       },
       {
         "char": "`",
