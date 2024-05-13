@@ -12,8 +12,20 @@ import org.apache.logging.log4j.Level;
 import java.io.IOException;
 import java.util.Collection;
 
+/**
+ * This class provides utility methods for reading and writing various types of data to and from a ByteBuf.
+ * It is used in the Lost Cities mod for network communication.
+ * 
+ * @author McJty
+ */
 public class NetworkTools {
 
+    /**
+     * Reads a FluidStack from a ByteBuf.
+     *
+     * @param dataIn The ByteBuf to read from.
+     * @return The FluidStack read from the ByteBuf, or null if an error occurred.
+     */
     public static FluidStack readFluidStack(ByteBuf dataIn) {
         PacketBuffer buf = new PacketBuffer(dataIn);
         try {
@@ -169,7 +181,13 @@ public class NetworkTools {
             collection.add(values[buf.readInt()]);
         }
     }
-
+    
+    /**
+     * Writes a Float to a ByteBuf.
+     *
+     * @param buf The ByteBuf to write to.
+     * @param f   The Float to write. If null, a boolean false is written first.
+     */
     public static void writeFloat(ByteBuf buf, Float f) {
         if (f != null) {
             buf.writeBoolean(true);
@@ -178,7 +196,13 @@ public class NetworkTools {
             buf.writeBoolean(false);
         }
     }
-
+    
+    /**
+     * Reads a Float from a ByteBuf.
+     *
+     * @param buf The ByteBuf to read from.
+     * @return The Float read from the ByteBuf, or null if the boolean read was false.
+     */
     public static Float readFloat(ByteBuf buf) {
         if (buf.readBoolean()) {
             return buf.readFloat();

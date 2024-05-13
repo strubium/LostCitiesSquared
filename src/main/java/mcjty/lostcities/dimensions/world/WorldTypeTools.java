@@ -15,6 +15,10 @@ import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class provides utility methods for working with Lost Cities dimensions.
+ * It includes methods for getting the profile, chunk generator, and other related functionalities.
+ */
 public class WorldTypeTools {
 
     // A map which maps dimension id to the profile
@@ -26,20 +30,38 @@ public class WorldTypeTools {
 
     // To prevent the client from asking the profile to the server too much
     private static long clientTimeout = -1;
-
+    
+    /**
+     * Clears the cache of profiles and resets the client timeout.
+     */
     public static void cleanCache() {
         profileMap.clear();
         clientTimeout = -1;
     }
-
+    
+    /**
+     * Clears the map of chunk generators.
+     */
     public static void cleanChunkGeneratorMap() {
         chunkGeneratorMap.clear();
     }
-
+    
+    /**
+     * Registers a chunk generator for a specific dimension.
+     *
+     * @param dimension The dimension id.
+     * @param chunkGenerator The chunk generator instance.
+     */
     public static void registerChunkGenerator(Integer dimension, LostCityChunkGenerator chunkGenerator) {
         chunkGeneratorMap.put(dimension, new WeakReference<LostCityChunkGenerator>(chunkGenerator));
     }
 
+    /**
+     * Retrieves the chunk generator for a specific dimension.
+     *
+     * @param dimension The dimension id.
+     * @return The chunk generator instance or null if not found.
+     */
     @Nullable
     public static LostCityChunkGenerator getChunkGenerator(int dimension) {
         if (chunkGeneratorMap.containsKey(dimension)) {
@@ -49,6 +71,12 @@ public class WorldTypeTools {
         return null;
     }
 
+    /**
+     * Retrieves the profile for a specific world.
+     *
+     * @param world The world instance.
+     * @return The profile instance.
+     */
     public static LostCityProfile getProfile(World world) {
         if (profileMap.containsKey(world.provider.getDimension())) {
             return profileMap.get(world.provider.getDimension());
@@ -85,9 +113,11 @@ public class WorldTypeTools {
         profileMap.put(dimension, profile);
     }
 
-    /**
-     * If possible return the LostCityChunkGenerator that belongs to this world. Return
-     * null if it is not a Lost City world
+   /**
+     * If possible, returns the LostCityChunkGenerator that belongs to this world.
+     *
+     * @param world The world instance.
+     * @return The chunk generator instance or null if not a Lost Cities world.
      */
     @Nullable
     public static LostCityChunkGenerator getLostCityChunkGenerator(World world) {
@@ -101,7 +131,13 @@ public class WorldTypeTools {
 //        }
 //        return (LostCityChunkGenerator) chunkGenerator;
     }
-
+    
+    /**
+     * Checks if a world is a Lost Cities world.
+     *
+     * @param world The world instance.
+     * @return True if the world is a Lost Cities world, false otherwise.
+     */
     public static boolean isLostCities(World world) {
         if (ModDimensions.dimensionProfileMap.containsKey(world.provider.getDimension())) {
             return true;
