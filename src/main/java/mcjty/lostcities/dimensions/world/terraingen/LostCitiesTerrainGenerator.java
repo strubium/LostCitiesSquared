@@ -746,16 +746,10 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                             if (info.profile.GENERATE_LIGHTING) {
                                 info.addTorchTodo(driver.getCurrent(), orientations);
                             } else {
-                                b = driver.getBlock();        // No torch!
+                                b = airChar;        // No torch!
                             }
                         }
                     }
-                    if (b == airChar)
-                        if (!info.profile.AVOID_WATER) {
-                            b = driver.getY() <= info.waterLevel ? liquidChar : airChar;
-                        } else {
-                            b = airChar;
-                        }
                     driver.add(b);
                     l++;
                 }
