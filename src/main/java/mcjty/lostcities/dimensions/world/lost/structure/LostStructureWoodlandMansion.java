@@ -1,5 +1,6 @@
-package mcjty.lostcities.dimensions.world;
+package mcjty.lostcities.dimensions.world.lost.structure;
 
+import mcjty.lostcities.dimensions.world.LostCityChunkGenerator;
 import com.google.common.collect.Lists;
 import net.minecraft.init.Biomes;
 import net.minecraft.init.Blocks;
@@ -15,14 +16,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class LostWoodlandMansion extends MapGenStructure {
+public class LostStructureWoodlandMansion extends MapGenStructure {
 
     private final int featureSpacing = 80;
     private final int minFeatureSeparation = 20;
     public static final List<Biome> ALLOWED_BIOMES = Arrays.<Biome>asList(Biomes.ROOFED_FOREST, Biomes.MUTATED_ROOFED_FOREST);
     private final LostCityChunkGenerator provider;
 
-    public LostWoodlandMansion(LostCityChunkGenerator provider) {
+    public LostStructureWoodlandMansion(LostCityChunkGenerator provider) {
         this.provider = provider;
     }
 
@@ -77,7 +78,7 @@ public class LostWoodlandMansion extends MapGenStructure {
 
     @Override
     protected StructureStart getStructureStart(int chunkX, int chunkZ) {
-        return new LostWoodlandMansion.Start(this.world, this.provider, this.rand, chunkX, chunkZ);
+        return new LostStructureWoodlandMansion.Start(this.world, this.provider, this.rand, chunkX, chunkZ);
     }
 
     public static class Start extends StructureStart {
