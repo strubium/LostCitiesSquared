@@ -56,12 +56,12 @@ public class OptimizedDriver implements IPrimerDriver {
 
     @Override
     public void incX() {
-        current += 1<<12;
+        current += 1 << 12;
     }
 
     @Override
     public void incZ() {
-        current += 1<<8;
+        current += 1 << 8;
     }
 
     @Override
@@ -80,73 +80,73 @@ public class OptimizedDriver implements IPrimerDriver {
     }
 
     @Override
-    public void setBlockRange(int x, int y, int z, int y2, char c) {
+    public void setBlockRange(int x, int y, int z, int y2, int blockId) { // Changed char to int
         int s = getBlockIndex(x, y, z);
-        int e = s + y2-y;
-        Arrays.fill(primer.data, s, e, c);
+        int e = s + y2 - y;
+        Arrays.fill(primer.data, s, e, (char) blockId); // Cast int to char
     }
 
     @Override
-    public void setBlockRangeSafe(int x, int y, int z, int y2, char c) {
+    public void setBlockRangeSafe(int x, int y, int z, int y2, int blockId) { // Changed char to int
         if (y2 <= y) {
             return;
         }
         int s = getBlockIndex(x, y, z);
-        int e = s + y2-y;
-        Arrays.fill(primer.data, s, e, c);
+        int e = s + y2 - y;
+        Arrays.fill(primer.data, s, e, (char) blockId); // Cast int to char
     }
 
     @Override
-    public IPrimerDriver block(char c) {
-        primer.data[current] = c;
+    public IPrimerDriver block(int blockId) { // Changed char to int
+        primer.data[current] = (char) blockId; // Cast int to char
         return this;
     }
 
     @Override
-    public IPrimerDriver block(IBlockState c) {
-        primer.data[current] = (char) Block.BLOCK_STATE_IDS.get(c);
+    public IPrimerDriver block(IBlockState state) {
+        primer.data[current] = (char) Block.BLOCK_STATE_IDS.get(state);
         return this;
     }
 
     @Override
-    public IPrimerDriver add(char c) {
-        primer.data[current++] = c;
+    public IPrimerDriver add(int blockId) { // Changed char to int
+        primer.data[current++] = (char) blockId; // Cast int to char
         return this;
     }
 
     @Override
-    public char getBlock() {
-        return primer.data[current];
+    public char getBlock() { // Changed char to int
+        return primer.data[current]; // Return char as int
     }
 
     @Override
-    public char getBlockDown() {
-        return primer.data[current-1];
+    public int getBlockDown() { // Changed char to int
+        return primer.data[current - 1]; // Return char as int
     }
 
     @Override
-    public char getBlockEast() {
-        return primer.data[current  + (1<<12)];
+    public int getBlockEast() { // Changed char to int
+        return primer.data[current + (1 << 12)]; // Return char as int
     }
 
     @Override
-    public char getBlockWest() {
-        return primer.data[current  - (1<<12)];
+    public int getBlockWest() { // Changed char to int
+        return primer.data[current - (1 << 12)]; // Return char as int
     }
 
     @Override
-    public char getBlockSouth() {
-        return primer.data[current  + (1<<8)];
+    public int getBlockSouth() { // Changed char to int
+        return primer.data[current + (1 << 8)]; // Return char as int
     }
 
     @Override
-    public char getBlockNorth() {
-        return primer.data[current  - (1<<8)];
+    public int getBlockNorth() { // Changed char to int
+        return primer.data[current - (1 << 8)]; // Return char as int
     }
 
     @Override
-    public char getBlock(int x, int y, int z) {
-        return primer.data[getBlockIndex(x, y, z)];
+    public int getBlock(int x, int y, int z) { // Changed char to int
+        return primer.data[getBlockIndex(x, y, z)]; // Return char as int
     }
 
     @Override

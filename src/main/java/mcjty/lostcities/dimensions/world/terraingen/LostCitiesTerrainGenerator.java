@@ -380,7 +380,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             driver.current(idx);
             Map<String, Integer> map = pair.getRight();
 
-            char torch = driver.getBlock();
+            int torch = driver.getBlock();
             IBlockState torchState = Block.BLOCK_STATE_IDS.getByValue(torch);
             if (map != null) {
                 int x = driver.getX();
@@ -539,11 +539,11 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                         for (int x = 0; x < 16; x++) {
                             driver.current(x, cury, 0);
                             for (int z = 0; z < 16; z++) {
-                                char d = driver.getBlock();
+                                int d = driver.getBlock();
                                 if (d != airChar || cury < info.waterLevel) {
                                     float damage = damageArea.getDamage(cx + x, cury, cz + z) * damageFactor;
                                     if (damage >= 0.001) {
-                                        Character newd = damageArea.damageBlock(d, provider, cury, damage, info.getCompiledPalette(), liquidChar);
+                                        Character newd = damageArea.damageBlock((char) d, provider, cury, damage, info.getCompiledPalette(), liquidChar);
                                         if (newd != d) {
                                             driver.block(newd);
                                             cntDamaged++;
@@ -930,7 +930,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
     private void flattenChunkBorder(BuildingInfo info, int x, int offset, int z, Random rand, int level) {
         driver.current(x, 0, z);
         for (int y = 0; y <= level - offset - rand.nextInt(2); y++) {
-            char b = driver.getBlock();
+            int b = driver.getBlock();
             if (b != bedrockChar) {
                 driver.add(baseChar);
             } else {
@@ -1452,7 +1452,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
             for (int z = 0; z < 16; z++) {
                 driver.current(x, start, z);
                 for (int y = start; y < end; y++) {
-                    char p = driver.getBlock();
+                    int p = driver.getBlock();
                     if (p != airChar && p != liquidChar) {
                         Blob blob = findBlob(blobs, driver.getCurrent());
                         if (blob == null) {
@@ -1496,7 +1496,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
         });
         for (IIndex index : blocksToMove.connectedBlocks) {
             driver.current(index);
-            char c = driver.getBlock();
+            int c = driver.getBlock();
             driver.block(((driver.getY()) < info.waterLevel) ? liquidChar : airChar);
             driver.decY();
             int y = driver.getY();
@@ -1527,7 +1527,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                         // whoops, it's air all the way down. No rubble here
                         continue;
                     }
-                    char c = driver.getBlockDown();
+                    int c = driver.getBlockDown();
                     if (c != airChar && c != liquidChar) {
                         for (int i = 0; i < vr; i++) {
                             if (driver.getBlock() == airChar || driver.getBlock() == liquidChar) {
@@ -1623,7 +1623,7 @@ public class LostCitiesTerrainGenerator extends NormalTerrainGenerator {
                 }
                 while (height > 0) {
                     Character damage = info.getCompiledPalette().canBeDamagedToIronBars(driver.getBlock());
-                    char c = driver.getBlockDown();
+                    int c = driver.getBlockDown();
                     if ((damage != null || c == ironbarsChar) && c != airChar && c != liquidChar && provider.rand.nextFloat() < .2f) {
                         driver.add(ironbarsChar);
                     } else {

@@ -275,7 +275,7 @@ public class CavernTerrainGenerator {
                             foundAir = true;
                         }
                     } else {
-                        char currentBlock = driver.getBlock();
+                        int currentBlock = driver.getBlock();
 
                         if (currentBlock != air) {
                             if (currentBlock == baseBlock) {
