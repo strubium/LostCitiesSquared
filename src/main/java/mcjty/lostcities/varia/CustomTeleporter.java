@@ -10,8 +10,21 @@ import net.minecraft.world.WorldServer;
 
 import javax.annotation.Nonnull;
 
+/**
+ * This class is used to teleport entities to a specific location in a given dimension.
+ * 
+ * @author mcjty
+ */
 public class CustomTeleporter extends Teleporter {
 
+    /**
+     * Constructor for CustomTeleporter.
+     *
+     * @param world The WorldServer instance to teleport to.
+     * @param x The x-coordinate of the destination.
+     * @param y The y-coordinate of the destination.
+     * @param z The z-coordinate of the destination.
+     */
     public CustomTeleporter(WorldServer world, double x, double y, double z) {
         super(world);
         this.worldServer = world;
@@ -23,6 +36,10 @@ public class CustomTeleporter extends Teleporter {
     private final WorldServer worldServer;
     private double x, y, z;
 
+    /**
+     * {@inheritDoc}
+     * This method is overridden to place the entity in the portal at the specified coordinates.
+     */
     @Override
     public void placeInPortal(@Nonnull Entity entity, float rotationYaw) {
         this.worldServer.getBlockState(new BlockPos((int) this.x, (int) this.y, (int) this.z));
@@ -33,10 +50,27 @@ public class CustomTeleporter extends Teleporter {
         entity.motionZ = 0.0f;
     }
 
+    /**
+     * Static method to teleport an entity to a specific dimension using a BlockPos.
+     *
+     * @param player The entity to teleport.
+     * @param dimension The dimension to teleport to.
+     * @param pos The BlockPos to teleport to.
+     */
     public static void teleportToDimension(EntityPlayer player, int dimension, BlockPos pos){
         teleportToDimension(player, dimension, pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
     }
 
+    /**
+     * Static method to teleport an entity to a specific dimension using coordinates.
+     *
+     * @param player The entity to teleport.
+     * @param dimension The dimension to teleport to.
+     * @param x The x-coordinate to teleport to.
+     * @param y The y-coordinate to teleport to.
+     * @param z The z-coordinate to teleport to.
+     * @throws IllegalArgumentException If the specified dimension does not exist.
+     */
     public static void teleportToDimension(EntityPlayer player, int dimension, double x, double y, double z) {
         int oldDimension = player.getEntityWorld().provider.getDimension();
         EntityPlayerMP entityPlayerMP = (EntityPlayerMP) player;

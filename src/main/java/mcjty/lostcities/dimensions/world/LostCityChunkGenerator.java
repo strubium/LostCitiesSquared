@@ -9,7 +9,7 @@ import mcjty.lostcities.dimensions.world.driver.OptimizedDriver;
 import mcjty.lostcities.dimensions.world.driver.SafeDriver;
 import mcjty.lostcities.dimensions.world.lost.BuildingInfo;
 import mcjty.lostcities.dimensions.world.lost.CitySphere;
-import mcjty.lostcities.dimensions.world.lost.LostStructureOceanMonument;
+import mcjty.lostcities.dimensions.world.lost.structure.*;
 import mcjty.lostcities.dimensions.world.lost.cityassets.AssetRegistries;
 import mcjty.lostcities.dimensions.world.lost.cityassets.Condition;
 import mcjty.lostcities.dimensions.world.lost.cityassets.ConditionContext;
@@ -94,7 +94,7 @@ public class LostCityChunkGenerator implements IChunkGenerator, ILostChunkGenera
     private MapGenVillage villageGenerator = new MapGenVillage();
     private MapGenMineshaft mineshaftGenerator = new MapGenMineshaft();
     private MapGenScatteredFeature scatteredFeatureGenerator = new MapGenScatteredFeature();
-    private LostWoodlandMansion woodlandMansionGenerator = new LostWoodlandMansion(this);
+    private LostStructureWoodlandMansion woodlandMansionGenerator = new LostStructureWoodlandMansion(this);
 
     public ChunkGeneratorSettings getSettings() {
         if (settings == null) {

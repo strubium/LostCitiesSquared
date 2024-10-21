@@ -28,6 +28,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * This class represents a command to export a building from the Lost Cities mod.
+ * The building is exported as a JSON file, containing the building parts and their corresponding palettes.
+ */
 public class CommandExportBuilding implements ICommand {
 
     @Override

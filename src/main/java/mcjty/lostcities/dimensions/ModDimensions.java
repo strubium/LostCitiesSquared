@@ -3,6 +3,7 @@ package mcjty.lostcities.dimensions;
 import mcjty.lostcities.LostCities;
 import mcjty.lostcities.config.LostCityConfiguration;
 import mcjty.lostcities.dimensions.world.*;
+import mcjty.lostcities.dimensions.world.lost.structure.LostStructureWoodlandMansion;
 import mcjty.lostcities.setup.ModSetup;
 import net.minecraft.world.DimensionType;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
@@ -18,6 +19,7 @@ public class ModDimensions {
 
     public static LostWorldType worldType;
     public static LostWorldTypeBOP worldTypeBOP;
+    public static LostWorldTypeATG worldTypeATG;
     public static List<LostWorldTypeAdapter> worldTypeAdapterList = new ArrayList<>();
 
     public static DimensionType lostDimensionType;
@@ -27,6 +29,9 @@ public class ModDimensions {
         worldType = new LostWorldType();
         if (ModSetup.biomesoplenty) {
             worldTypeBOP = new LostWorldTypeBOP();
+        }
+        if (ModSetup.atg ) {
+            worldTypeATG = new LostWorldTypeATG();
         }
         for (String worldtype : LostCityConfiguration.ADAPTING_WORLDTYPES) {
             worldTypeAdapterList.add(new LostWorldTypeAdapter(worldtype));
@@ -49,7 +54,7 @@ public class ModDimensions {
             dimensionProfileMap.put(id, profile);
         }
 
-        MapGenStructureIO.registerStructure(LostWoodlandMansion.Start.class, "LostMansion");
+        MapGenStructureIO.registerStructure(LostStructureWoodlandMansion.Start.class, "LostMansion");
     }
 
 }

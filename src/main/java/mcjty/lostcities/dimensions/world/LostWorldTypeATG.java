@@ -15,15 +15,17 @@ import net.minecraft.world.gen.IChunkGenerator;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class LostWorldType extends WorldType {
+public class LostWorldTypeATG extends WorldType {
 
-    public LostWorldType() {
-        super("lostcities");
+    public LostWorldTypeATG() {
+        super("lostcities_atg");
     }
 
-    public LostWorldType(String name) {
-        super(name);
+    private BiomeProvider biomeProvider = null;
 
+    @Override
+    public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
+        return new LostCityChunkGenerator(world, world.getSeed());
     }
 
     @Override
@@ -49,14 +51,20 @@ public class LostWorldType extends WorldType {
         }
         return super.getSpawnFuzz(world, server);
     }
-    
-    @Override
-    public IChunkGenerator getChunkGenerator(World world, String generatorOptions) {
-        return new LostCityChunkGenerator(world, world.getSeed());
-    }
 
-    protected BiomeProvider getInternalBiomeProvider(World world) {
-        return super.getBiomeProvider(world);
+    private BiomeProvider getInternalBiomeProvider(World world) {
+        if (biomeProvider == null) {
+            for (WorldType type : WorldType.WORLD_TYPES) {
+                if ("ATG".equals(type.getName())) {
+                    WorldType orig = world.getWorldInfo().getTerrainType();
+                    world.getWorldInfo().setTerrainType(type);
+                    biomeProvider = type.getBiomeProvider(world);
+                    world.getWorldInfo().setTerrainType(orig);
+                    break;
+                }
+            }
+        }
+        return biomeProvider;
     }
 
     @Override
@@ -74,7 +82,7 @@ public class LostWorldType extends WorldType {
                 outsideManualBiomeMappings = outProfile.MANUAL_BIOME_MAPPINGS;
                 outsideStrategy = outProfile.BIOME_SELECTION_STRATEGY;
             }
-            return new LostWorldFilteredBiomeProvider(world, super.getBiomeProvider(world),
+            return new LostWorldFilteredBiomeProvider(world, getInternalBiomeProvider(world),
                     profile.ALLOWED_BIOME_FACTORS,
                     profile.MANUAL_BIOME_MAPPINGS,
                     profile.BIOME_SELECTION_STRATEGY,
@@ -101,6 +109,7 @@ public class LostWorldType extends WorldType {
         switch (profile.LANDSCAPE_TYPE) {
             case DEFAULT:
             case FLOATING:
+                return super.getMinimumSpawnHeight(world);
             case SPACE:
             case CAVERN:
                 return profile.GROUNDLEVEL;

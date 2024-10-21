@@ -32,7 +32,9 @@ public class LostCityConfiguration {
             "minecraft:glowstone",
             "minecraft:lit_pumpkin",
             "minecraft:magma",
-            "minecraft:ladder"
+            "minecraft:ladder",
+            "minecraft:redstone_lamp",
+            "minecraft:redstone_lamp_lit"
     };
 
     public static String[] ASSETS = new String[] {
@@ -66,6 +68,7 @@ public class LostCityConfiguration {
 
     public static boolean DEBUG = false;
     public static boolean OPTIMIZED_CHUNKGEN = true;
+    public static boolean MWC_LOOT = false;
 
     public static String SPECIAL_BED_BLOCK = Blocks.DIAMOND_BLOCK.getRegistryName().toString();
 
@@ -137,9 +140,14 @@ public class LostCityConfiguration {
 
         DEBUG = cfg.getBoolean("debug", CATEGORY_GENERAL, DEBUG, "Enable debugging/logging");
         OPTIMIZED_CHUNKGEN = cfg.getBoolean("optimizedChunkgen", CATEGORY_GENERAL, OPTIMIZED_CHUNKGEN, "Disable this if you have mods like NEID or JEID installed. Note that when NEID or JEID is present this is disabled by default");
-        if (ModSetup.neid || ModSetup.jeid) {
-            LostCities.setup.getLogger().log(Level.INFO, "NEID or JEID detected: disabling optimized chunkgeneration!");
+        if (ModSetup.neid || ModSetup.jeid || ModSetup.reid) {
+            LostCities.setup.getLogger().log(Level.INFO, "NEID/JEID/REID detected: disabling optimized chunkgeneration!");
             OPTIMIZED_CHUNKGEN = false;
+        }
+        MWC_LOOT = cfg.getBoolean("doMWCloot", CATEGORY_GENERAL, MWC_LOOT, "Enable this if you want MWC items to spawn in chests");
+        if (ModSetup.mwc) {
+            LostCities.setup.getLogger().log(Level.INFO, "MWC detected: Enableing MWC loot!");
+            MWC_LOOT = true;
         }
 
         return profileList;

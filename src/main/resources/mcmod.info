@@ -7,8 +7,8 @@
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["McJty"],
-  "credits": "",
+  "authorList": ["strubium", "McJty"],
+  "credits": "Windmill-City for many, many fixes. Blueberryy for ru_RU.lang, MCUmbrella for zh_CN.lang, and Lykrast for fr_FR.lang",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

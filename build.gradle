@@ -44,7 +44,7 @@ if (ENV.DRONE_BUILD_NUMBER) {
     version += ".n" + ENV.DRONE_BUILD_NUMBER
 }
 group= "com.github.strubium" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "lostcities"
+archivesBaseName = "lostcitiessquared"
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -126,6 +126,7 @@ dependencies {
     implementation "mezz.jei:jei_${jei_version}"
     implementation "mcjty.theoneprobe:TheOneProbe-${top_version}"
     implementation "cofh:RedstoneFlux:${redstoneflux_version}"
+    implementation 'net.jafama:jafama:2.+'
 
 }
 

@@ -13,6 +13,13 @@ import net.minecraft.client.gui.GuiScreen;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * This class represents the GUI for configuring Lost Cities world generation.
+ * It extends the GuiScreen class from Minecraft and provides a user interface
+ * for selecting and applying different Lost Cities profiles.
+ * 
+ * @author mcjty
+ */
 public class GuiLostCityConfiguration extends GuiScreen {
 
     private final GuiCreateWorld parent;
@@ -22,10 +29,18 @@ public class GuiLostCityConfiguration extends GuiScreen {
     private int numpages;
     private GuiMutableLabel pagelabel;
 
+    /**
+     * Constructor for the GuiLostCityConfiguration class.
+     *
+     * @param parent The parent GUI screen from which this GUI is opened.
+     */
     public GuiLostCityConfiguration(GuiCreateWorld parent) {
         this.parent = parent;
     }
 
+    /**
+     * Initializes the GUI components and sets up the profile selection.
+     */
     @Override
     public void initGui() {
         JsonParser parser = new JsonParser();
@@ -42,7 +57,10 @@ public class GuiLostCityConfiguration extends GuiScreen {
 
         setupGui(profileName);
     }
-
+    
+    /**
+     * Initializes the GUI components and sets up the profile selection.
+     */
     private int countPublicProfiles() {
         int cnt = 0;
         for (Map.Entry<String, LostCityProfile> entry : LostCityConfiguration.profiles.entrySet()) {
@@ -52,7 +70,12 @@ public class GuiLostCityConfiguration extends GuiScreen {
         }
         return cnt;
     }
-
+    
+    /**
+     * Sets up the GUI components for the profile selection.
+     *
+     * @param profileName The name of the currently selected profile.
+     */
     private void setupGui(String profileName) {
         actionHandler.clear();
         profileNames.clear();
@@ -128,6 +151,13 @@ public class GuiLostCityConfiguration extends GuiScreen {
         }
     }
 
+     /**
+     * Draws the GUI components on the screen.
+     *
+     * @param mouseX The X coordinate of the mouse cursor.
+     * @param mouseY The Y coordinate of the mouse cursor.
+     * @param partialTicks The partial ticks for smooth rendering.
+     */
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         this.drawDefaultBackground();

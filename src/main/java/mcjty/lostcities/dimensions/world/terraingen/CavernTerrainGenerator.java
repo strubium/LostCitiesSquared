@@ -15,6 +15,7 @@ import net.minecraft.world.gen.NoiseGeneratorOctaves;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.ChunkGeneratorEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
+import net.jafama.FastMath;
 
 public class CavernTerrainGenerator {
     private LostCityChunkGenerator provider;
@@ -65,8 +66,17 @@ public class CavernTerrainGenerator {
     }
 
     /**
-     * generates a subset of the level's terrain data. Takes 7 arguments: the [empty] noise array, the position, and the
+     * Generates a subset of the level's terrain data. Takes 7 arguments: the empty noise array, the position, and the
      * size.
+     *
+     * @param noiseField the noise array to initialize
+     * @param x the x-coordinate of the position
+     * @param y the y-coordinate of the position
+     * @param z the z-coordinate of the position
+     * @param sx the size of the terrain data in the x-direction
+     * @param sy the size of the terrain data in the y-direction
+     * @param sz the size of the terrain data in the z-direction
+     * @return the initialized noise field
      */
     private double[] initializeNoiseField(double[] noiseField, int x, int y, int z, int sx, int sy, int sz) {
         ChunkGeneratorEvent.InitNoiseField event = new ChunkGeneratorEvent.InitNoiseField(provider, noiseField, x, y, z, sx, sy, sz);
@@ -93,7 +103,7 @@ public class CavernTerrainGenerator {
         int i2;
 
         for (i2 = 0; i2 < sy; ++i2) {
-            adouble1[i2] = Math.cos(i2 * Math.PI * 6.0D / syr) * 2.0D;
+            adouble1[i2] = FastMath.cos(i2 * Math.PI * 6.0D / syr) * 2.0D;
             double d2 = i2;
 
             if (i2 > syr) {
@@ -265,7 +275,7 @@ public class CavernTerrainGenerator {
                             foundAir = true;
                         }
                     } else {
-                        char currentBlock = driver.getBlock();
+                        int currentBlock = driver.getBlock();
 
                         if (currentBlock != air) {
                             if (currentBlock == baseBlock) {

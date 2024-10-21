@@ -468,7 +468,16 @@
       },
       {
         "char": "w",
-        "block": "minecraft:cobblestone_wall"
+        "blocks": [
+        {
+          "random": 1000,
+          "block": "minecraft:cobblestone_wall"
+        },
+        {
+          "random": 70,
+          "block": "minecraft:cobblestone_wall@1"  
+        }
+        ]
       },
       {
         "char": ":",

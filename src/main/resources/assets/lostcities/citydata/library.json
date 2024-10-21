@@ -5,50 +5,62 @@
     "palette": [
       {
         "char": "k",
+        "tile_entity":true,
         "block": "minecraft:rail"
       },
       {
         "char": "e",
+        "tile_entity":true,
         "block": "minecraft:rail@1"
       },
       {
         "char": "j",
+        "tile_entity":true,
         "block": "minecraft:rail@2"
       },
       {
         "char": "q",
+        "tile_entity":true,
         "block": "minecraft:rail@6"
       },
       {
         "char": "s",
+        "tile_entity":true,
         "block": "minecraft:rail@7"
       },
       {
         "char": "r",
+        "tile_entity":true,
         "block": "minecraft:rail@8"
       },
       {
         "char": "n",
+        "tile_entity":true,
         "block": "minecraft:rail@9"
       },
       {
         "char": "m",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@8"
       },
       {
         "char": "E",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@13"
       },
       {
         "char": "H",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@12"
       },
       {
         "char": "f",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@9"
       },
       {
         "char": "i",
+        "tile_entity":true,
         "block": "minecraft:golden_rail@10"
       }
     ]
@@ -80,7 +92,16 @@
       },
       {
         "char": "h",
-        "block": "minecraft:glowstone"
+        "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:glowstone"
+          },
+          {
+            "random": 12,
+            "block": "minecraft:redstone_lamp"
+          }
+      ]
       },
       {
         "char": "g",
@@ -169,6 +190,22 @@
             "block": "minecraft:red_flower"
           },
           {
+            "random": 64,
+            "block": "minecraft:red_flower@2"
+          },
+          {
+            "random": 64,
+            "block": "minecraft:red_flower@3"
+          },
+          {
+            "random": 64,
+            "block": "minecraft:red_flower@4"
+          },
+          {
+            "random": 64,
+            "block": "minecraft:red_flower@5"
+          },
+          {
             "random": 1000,
             "block": "minecraft:yellow_flower"
           }
@@ -182,8 +219,20 @@
             "block": "minecraft:diamond_block"
           },
           {
+            "random": 15,
+            "block": "minecraft:lapis_block"
+          },
+          {
+            "random": 15,
+            "block": "minecraft:redstone_block"
+          },
+          {
             "random": 20,
             "block": "minecraft:gold_block"
+          },
+          {
+            "random": 20,
+            "block": "minecraft:coal_block"
           },
           {
             "random": 15,
@@ -254,12 +303,34 @@
         "block": "minecraft:ladder@2"
       },
       {
-        "char": "-",
-        "block": "minecraft:wooden_pressure_plate"
+      "char": "-",
+      "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:wooden_pressure_plate"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:stone_pressure_plate"
+          }
+      ]
       },
       {
         "char": ".",
-        "block": "minecraft:fence"
+         "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:fence"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:spruce_fence"
+          },
+          {
+            "random": 12,
+            "block": "minecraft:dark_oak_fence"
+          }
+        ]   
       },
       {
         "char": "L",
@@ -289,7 +360,16 @@
       },
       {
         "char": "D",
-        "block": "minecraft:dirt"
+        "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:dirt"
+          },
+          {
+            "random": 12,
+            "block": "minecraft:dirt@1"
+          }
+        ]
       },
       {
         "char": " ",
@@ -466,6 +546,10 @@
       {
         "factor": 1.0,
         "front": "building_front3"
+      },
+      {
+        "factor": 0.9,
+        "front": "building_front_small1"
       }
     ],
     "stairs": [
@@ -479,7 +563,11 @@
       },
       {
         "factor": 1.0,
-        "stair": "stairsnormal"
+        "stair": "stairsnormal1"
+      },
+      {
+        "factor": 1.0,
+        "stair": "stairsnormal2"
       },
       {
         "factor": 1.0,
@@ -496,13 +584,13 @@
         "fountain": "fountain2"
       },
       {
-        "factor": 1.0,
-        "fountain": "fountain3"
+        "factor": 0.5,
+        "fountain": "wall1"
       }
     ],
     "parks": [
       {
-        "factor": 1.0,
+        "factor": 0.3,
         "park": "park_pond"
       },
       {
@@ -515,7 +603,24 @@
       },
       {
         "factor": 1.0,
-        "park": "park_trees"
+        "park": "park_trees1"
+      },
+      {
+        "factor": 0.9,
+        "park": "park_trees2"
+      },
+      {
+        "factor": 0.8,
+        "park": "park_notrees1"
+      },
+
+      {
+        "factor": 0.8,
+        "park": "park_nofountain1"
+      },
+      {
+        "factor": 0.8,
+        "park": "park_nofountain2"
       },
       {
         "factor": 0.8,
@@ -645,6 +750,88 @@
         "__",
         "__",
         "__",
+        "  ",
+        "  ",
+        "  "
+      ]
+    ],
+    "meta": []
+  },
+
+  {
+    "type": "part",
+    "name": "building_front_small1",
+    "xsize": 2,
+    "zsize": 16,
+    "slices": [
+      [
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        " w",
+        "  ",
+        "  ",
+        " w",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  "
+      ],
+      [
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        " w",
+        "  ",
+        "  ",
+        " w",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  "
+      ],
+      [
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        " w",
+        "  ",
+        "  ",
+        " w",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  "
+      ],
+      [
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "  ",
+        "__",
+        "__",
+        "__",
+        "__",
+        "  ",
+        "  ",
+        "  ",
         "  ",
         "  ",
         "  "
@@ -932,7 +1119,7 @@
   },
   {
     "type": "part",
-    "name": "stairsnormal",
+    "name": "stairsnormal1",
     "xsize": 6,
     "zsize": 11,
     "meta": [
@@ -983,6 +1170,115 @@
         "xxx/  ",
         "xxx/  ",
         "xxx/  ",
+        "xxxx_ "
+      ],
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "xxx_  ",
+        "xx/   ",
+        "xx/   ",
+        "xx/   ",
+        "xx/   ",
+        "xxx_  "
+      ],
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "xx_   ",
+        "x/    ",
+        "x/    ",
+        "x/    ",
+        "x/    ",
+        "xx_   "
+      ],
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "x_    ",
+        "/     ",
+        "/     ",
+        "/     ",
+        "/     ",
+        "x_    "
+      ],
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "_     ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "_     "
+      ]
+    ]
+  },
+  {
+    "type": "part",
+    "name": "stairsnormal2",
+    "xsize": 6,
+    "zsize": 11,
+    "meta": [
+      {
+        "key": "z1",
+        "integer": 5
+      },
+      {
+        "key": "z2",
+        "integer": 10
+      }
+    ],
+    "slices": [
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "xxxxxx",
+        "xFC x/",
+        "x   x/",
+        "x   x/",
+        "x   x/",
+        "xx xxx"
+      ],
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "xxxxx_",
+        "x   / ",
+        "x   / ",
+        "x   / ",
+        "x   / ",
+        "xx xx_"
+      ],
+      [
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "      ",
+        "xxxx_ ",
+        "x  /  ",
+        "x  /  ",
+        "x  /  ",
+        "x  /  ",
         "xxxx_ "
       ],
       [
@@ -1537,12 +1833,12 @@
         "                ",
         "                ",
         "                ",
-        "       ##       ",
+        "                ",
+        "      ####      ",
         "      #WW#      ",
-        "     #WWWW#     ",
-        "     #WWWW#     ",
         "      #WW#      ",
-        "       ##       ",
+        "      ####      ",
+        "                ",
         "                ",
         "                ",
         "                ",
@@ -1556,10 +1852,46 @@
         "                ",
         "                ",
         "                ",
-        "      T  T      ",
+        "      :  :      ",
         "                ",
         "                ",
-        "      T  T      ",
+        "      :  :      ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ],
+      [
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "      :  :      ",
+        "                ",
+        "                ",
+        "      :  :      ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ],
+      [
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "     T####T     ",
+        "      ####      ",
+        "      ####      ",
+        "     T####T     ",
         "                ",
         "                ",
         "                ",
@@ -1569,9 +1901,9 @@
       ]
     ]
   },
-  {
+    {
     "type": "part",
-    "name": "fountain3",
+    "name": "wall1",
     "xsize": 16,
     "zsize": 16,
     "slices": [
@@ -1581,11 +1913,47 @@
         "                ",
         "                ",
         "                ",
+        "w###### #######w",
         "                ",
-        "      ####      ",
-        "      #WW#      ",
-        "      #WW#      ",
-        "      ####      ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ],
+[
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "w#####   ######w",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ],
+[
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "w######  ######w",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
         "                ",
         "                ",
         "                ",
@@ -1599,29 +1967,11 @@
         "                ",
         "                ",
         "                ",
-        "                ",
-        "      :  :      ",
-        "                ",
-        "                ",
-        "      :  :      ",
+        "w##############w",
         "                ",
         "                ",
         "                ",
         "                ",
-        "                ",
-        "                "
-      ],
-      [
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "                ",
-        "      :  :      ",
-        "                ",
-        "                ",
-        "      :  :      ",
         "                ",
         "                ",
         "                ",
@@ -1635,11 +1985,11 @@
         "                ",
         "                ",
         "                ",
+        "::::::::::::::::",
         "                ",
-        "     T####T     ",
-        "      ####      ",
-        "      ####      ",
-        "     T####T     ",
+        "                ",
+        "                ",
+        "                ",
         "                ",
         "                ",
         "                ",
@@ -1695,12 +2045,13 @@
   },
   {
     "type": "part",
-    "name": "park_trees",
+    "name": "park_trees1",
     "xsize": 16,
     "zsize": 16,
     "palette": [
       {
         "char": "P",
+        "tile_entity":true,
         "blocks": [
           {
             "random": 32,
@@ -1753,6 +2104,117 @@
         "                ",
         "                ",
         "   TP      PT   ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ]
+    ]
+  },
+    {
+    "type": "part",
+    "name": "park_trees2",
+    "xsize": 16,
+    "zsize": 16,
+    "palette": [
+      {
+        "char": "P",
+        "blocks": [
+          {
+            "random": 32,
+            "block": "minecraft:sapling"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:sapling@1"
+          },
+          {
+            "random": 32,
+            "block": "minecraft:sapling@2"
+          },
+          {
+            "random": 1000,
+            "block": "minecraft:sapling@4"
+          }
+        ]
+      }
+    ],
+    "slices": [
+      [
+        "                ",
+        "                ",
+        "  _____  _____  ",
+        "  _SSS_  _SSS_  ",
+        "  _SDS_  _SDS_  ",
+        "  _SSS_  _SSS_  ",
+        "  _____  _____  ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ],
+      [
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                "
+      ]
+    ]
+  },
+  {
+    "type": "part",
+    "name": "park_notrees1",
+    "xsize": 16,
+    "zsize": 16,
+    "slices": [
+      [
+        "                ",
+        "           p    ",
+        "    p           ",
+        "                ",
+        "     p      p   ",
+        "                ",
+        "                ",
+        "          p     ",
+        "                ",
+        "     p          ",
+        "                ",
+        "            p   ",
+        "                ",
+        "      p         ",
+        "                ",
+        "      p         "
+      ],
+      [
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
         "                ",
         "                ",
         "                ",
@@ -1844,6 +2306,148 @@
         "                ",
         "                ",
         "Tw            wT",
+        "                "
+      ]
+    ]
+  },
+    {
+    "type": "part",
+    "name": "park_nofountain1",
+    "xsize": 16,
+    "zsize": 16,
+    "slices": [
+      [
+        "                ",
+        " wwww      wwww ",
+        " w     p p  p w ",
+        " wp  p        w ",
+        " w           pw ",
+        "       p   p    ",
+        "  p             ",
+        "            p   ",
+        "    p           ",
+        "                ",
+        "  p       p     ",
+        " w    p     p w ",
+        " w            w ",
+        " w p     p    w ",
+        " wwwwp     wwww ",
+        "                "
+      ],
+      [
+        "                ",
+        " w  T      T  w ",
+        "                ",
+        "                ",
+        " T            T ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        " T            T ",
+        "                ",
+        "                ",
+        " w  T      T  w ",
+        "                "
+      ],
+      [
+        "                ",
+        " w            w ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        " w            w ",
+        "                "
+      ]
+    ]
+  },
+  {
+    "type": "part",
+    "name": "park_nofountain2",
+    "xsize": 16,
+    "zsize": 16,
+    "slices": [
+      [
+        "                ",
+        " wwww      wwww ",
+        " w     p p  p w ",
+        " w   p        w ",
+        " w           pw ",
+        "           p    ",
+        "  p             ",
+        "            p   ",
+        "    p           ",
+        "                ",
+        "  p       p     ",
+        " w    p     p w ",
+        " w            w ",
+        " w p     p    w ",
+        " wwwwp     wwww ",
+        "                "
+      ],
+      [
+        "                ",
+        " w  w      w  w ",
+        "                ",
+        "                ",
+        " w            w ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        " w            w ",
+        "                ",
+        "                ",
+        " w  w      w  w ",
+        "                "
+      ],
+      [
+        "                ",
+        " w  w      w  w ",
+        "                ",
+        "                ",
+        " w            w ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "  w           w ",
+        "                ",
+        "                ",
+        " w  w      w  w ",
+        "                "
+      ],
+      [
+        "                ",
+        " ____      ____ ",
+        " _            _ ",
+        " _            _ ",
+        " _            _ ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        "                ",
+        " _            _ ",
+        " _            _ ",
+        " _            _ ",
+        " ____      ____ ",
         "                "
       ]
     ]
@@ -2265,7 +2869,7 @@
     "filler": "#",
     "maxcellars": 0,
     "minfloors": 4,
-    "maxfloors": 6,
+    "maxfloors": 8,
     "preferslonely": 0.9,
     "parts": [
       {
