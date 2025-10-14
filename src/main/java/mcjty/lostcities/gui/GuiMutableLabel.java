@@ -11,8 +11,15 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import java.util.List;
 
+/**
+ * A custom GUI label that can display multiple lines of text and can be centered.
+ * It also supports background color, border, and text color customization.
+ *
+ * @author mcjty
+ */
 @SideOnly(Side.CLIENT)
 public class GuiMutableLabel extends Gui {
+
     protected int width = 200;
     protected int height = 20;
     public int x;
@@ -29,6 +36,17 @@ public class GuiMutableLabel extends Gui {
     private final FontRenderer fontRenderer;
     private int border;
 
+    /**
+     * Constructor for the GuiMutableLabel.
+     *
+     * @param fontRendererObj the font renderer used to draw the text
+     * @param p_i45540_2_      the id of the label
+     * @param p_i45540_3_      the x position of the label
+     * @param p_i45540_4_      the y position of the label
+     * @param p_i45540_5_      the width of the label
+     * @param p_i45540_6_      the height of the label
+     * @param p_i45540_7_      the color of the text
+     */
     public GuiMutableLabel(FontRenderer fontRendererObj, int p_i45540_2_, int p_i45540_3_, int p_i45540_4_, int p_i45540_5_, int p_i45540_6_, int p_i45540_7_) {
         this.fontRenderer = fontRendererObj;
         this.id = p_i45540_2_;
@@ -46,22 +64,39 @@ public class GuiMutableLabel extends Gui {
         this.border = 0;
     }
 
+    /**
+     * Adds a line of text to the label.
+     *
+     * @param p_175202_1_ the text to add
+     */
     public void addLine(String p_175202_1_) {
         this.labels.add(I18n.format(p_175202_1_, new Object[0]));
     }
 
+    /**
+     * Clears all lines of text from the label.
+     */
     public void clearLines() {
         labels.clear();
     }
 
     /**
-     * Sets the Label to be centered
+     * Sets the label to be centered.
+     *
+     * @return the label itself for chaining
      */
     public GuiMutableLabel setCentered() {
         this.centered = true;
         return this;
     }
 
+    /**
+     * Draws the label on the screen.
+     *
+     * @param mc       the Minecraft instance
+     * @param mouseX   the x position of the mouse cursor
+     * @param mouseY   the y position of the mouse cursor
+     */
     public void drawLabel(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
             GlStateManager.enableBlend();
@@ -80,6 +115,13 @@ public class GuiMutableLabel extends Gui {
         }
     }
 
+    /**
+     * Draws the background of the label.
+     *
+     * @param mcIn       the Minecraft instance
+     * @param p_146160_2_ the x position of the mouse cursor
+     * @param p_146160_3_ the y position of the mouse cursor
+     */
     protected void drawLabelBackground(Minecraft mcIn, int p_146160_2_, int p_146160_3_) {
         if (this.labelBgEnabled) {
             int i = this.width + this.border * 2;

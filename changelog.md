@@ -1,6 +1,29 @@
+## The Lost Cities Squared Dev-5:
+* Fixed an ArrayIndexOutOfBoundsException when generating chunks (sandtechnology)
+* Add a config to generate loot from Modern Warfare Cubed.
+* Fixed bridges generating air underwater (Windmill-City)
+* Improved how cities flatten terrain (Windmill-City)
+* Added loottables that generate different items based on what building the chest is in. (Office, Food. More will be added as I revamp the buildings)
+* Added a check for REID
+* More Randomness: 
+  * Cobblestone walls have a chance to be mossy
+  * Fences have a chance to be Spruce or Dark oak. 
+  * Glowstone blocks have a chance to be a unlit redstone lamps
+  * Preasure plates have a chance to be stone pressure plates 
+  * Increased the variety of flowers
+* Cleaned up LostWorldBOP
+* WIP: Added support for creating world types with ATG. Very buggy! Usually crashes! 
+* New config value: avoidGeneratedIce. Simalar to avoidGeneratedFossils or avoidGeneratedPumpkins, but for Ice.
+* New parks:
+  * park_nofountain1 and park_nofountain2. Same as park_fountain1 and park_fountain2 but without fountains in the middle
+* The Water Tower building top now has water in it.
+* Chisel Palette Overhaul Part 1
+  * New Brick types: bricks_chisel_brick, bricks_chisel_limestone_brick, bricks_chisel_hardenedclay_brick, bricks_chisel_diorite_brick, bricks_chisel_granite_brick, and bricks_chisel_cobblestone_brick.
+  * New Glass types: glass_chisel_pane_gray_bordered, glass_chisel_pane_stone_bordered, glass_chisel_pane_shale_bordered and glass_chisel_pane_steel_bordered.
+
 ## The Lost Cities Squared Dev-4:
-* Added a bunch of closed PR's from the original Lost Cities. The orginal author's username is credited next to the change.
-* Fixed train station being one block elevated
+* Added a bunch of closed PRs from the original Lost Cities. The original author's username is credited next to the change.
+* Fixed train station is one block elevated
 * Fixed bridges being one block elevated
 * Fixed explosions leaving airblocks underwater (Windmill-City)
 * Fixed Min + Max Cellars (Windmill-City)
@@ -31,8 +54,8 @@
 ## The Lost Cities Squared Dev-2:
 * New "experimental" profile for my testing. May work, may not.  
 * Library.json changes:
-  * Brewing stands will generate less frequently in city's.
-  * Enchanting tables will generate less frequently city's.
+  * Brewing stands will generate less frequently in cities.
+  * Enchanting tables will generate less frequent cities.
   * Slight chance to generate air in place of crafting tables or furnaces.
 * Un-privated the "bio_wasteland" and "water_empty" profiles. They are used internally for waterbubbles and biospheres respectively.
 * Removed the ugly Blue and Light Blue glass colors from generating in cities.

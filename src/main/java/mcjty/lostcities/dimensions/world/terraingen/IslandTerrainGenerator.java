@@ -326,7 +326,7 @@ public class IslandTerrainGenerator {
             if (height <= 2) {
                 driver.block(air);
             } else {
-                char currentBlock = driver.getBlock();
+                int currentBlock = driver.getBlock();
                 if (currentBlock == LostCitiesTerrainGenerator.bedrockChar && height <= 12) {
                     driver.block(air);
                     k = -1;

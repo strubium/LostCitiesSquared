@@ -38,6 +38,19 @@ public class LostWorldTypeBOP extends WorldType {
         }
     }
 
+    @Override
+    public int getSpawnFuzz(WorldServer world, MinecraftServer server) {
+        LostCityProfile profile = WorldTypeTools.getProfile(world);
+        switch (profile.LANDSCAPE_TYPE) {
+            case DEFAULT:
+            case FLOATING:
+                return super.getSpawnFuzz(world, server);
+            case SPACE:
+            case CAVERN:
+                return 0;
+        }
+        return super.getSpawnFuzz(world, server);
+    }
 
     private BiomeProvider getInternalBiomeProvider(World world) {
         if (biomeProvider == null) {
@@ -61,12 +74,12 @@ public class LostWorldTypeBOP extends WorldType {
             return getInternalBiomeProvider(world);
         } else {
             String[] outsideAllowedbiomeFactors = profile.ALLOWED_BIOME_FACTORS;
-            String[] outsideManualBiomeMapping = profile.MANUAL_BIOME_MAPPINGS;
+            String[] outsideManualBiomeMappings = profile.MANUAL_BIOME_MAPPINGS;
             BiomeSelectionStrategy outsideStrategy = null;
             if (profile.isSpace() && profile.CITYSPHERE_LANDSCAPE_OUTSIDE && !profile.CITYSPHERE_OUTSIDE_PROFILE.isEmpty()) {
                 LostCityProfile outProfile = LostCityConfiguration.profiles.get(profile.CITYSPHERE_OUTSIDE_PROFILE);
                 outsideAllowedbiomeFactors = outProfile.ALLOWED_BIOME_FACTORS;
-                outsideManualBiomeMapping = outProfile.MANUAL_BIOME_MAPPINGS;
+                outsideManualBiomeMappings = outProfile.MANUAL_BIOME_MAPPINGS;
                 outsideStrategy = outProfile.BIOME_SELECTION_STRATEGY;
             }
             return new LostWorldFilteredBiomeProvider(world, getInternalBiomeProvider(world),
@@ -74,7 +87,7 @@ public class LostWorldTypeBOP extends WorldType {
                     profile.MANUAL_BIOME_MAPPINGS,
                     profile.BIOME_SELECTION_STRATEGY,
                     outsideAllowedbiomeFactors,
-                    outsideManualBiomeMapping,
+                    outsideManualBiomeMappings,
                     outsideStrategy);
         }
     }
@@ -88,20 +101,6 @@ public class LostWorldTypeBOP extends WorldType {
     @SideOnly(Side.CLIENT)
     public void onCustomizeButton(Minecraft mc, GuiCreateWorld guiCreateWorld) {
         mc.displayGuiScreen(new GuiLostCityConfiguration(guiCreateWorld));
-    }
-
-    @Override
-    public int getSpawnFuzz(WorldServer world, MinecraftServer server) {
-        LostCityProfile profile = WorldTypeTools.getProfile(world);
-        switch (profile.LANDSCAPE_TYPE) {
-            case DEFAULT:
-            case FLOATING:
-                return super.getSpawnFuzz(world, server);
-            case SPACE:
-            case CAVERN:
-                return 0;
-        }
-        return super.getSpawnFuzz(world, server);
     }
 
     @Override

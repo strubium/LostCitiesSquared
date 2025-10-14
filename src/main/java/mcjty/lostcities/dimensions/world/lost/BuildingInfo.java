@@ -353,7 +353,12 @@ public class BuildingInfo implements ILostChunkInfo {
             LostChunkCharacteristics characteristics = new LostChunkCharacteristics();
 
             characteristics.isCity = isCityRaw(chunkX, chunkZ, provider, profile);
-            characteristics.section = getMultiBuildingSection(chunkX, chunkZ, provider, profile);
+            if (!characteristics.isCity) {
+                characteristics.multiBuilding = null;
+            }
+            else {
+                 characteristics.section = getMultiBuildingSection(chunkX, chunkZ, provider, profile);
+            }
             if (characteristics.section > 0) {
                 characteristics.cityLevel = getTopLeftCityInfo(characteristics, chunkX, chunkZ, provider).cityLevel;
             } else {

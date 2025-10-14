@@ -32,20 +32,22 @@ public class LostCityConfiguration {
             "minecraft:glowstone",
             "minecraft:lit_pumpkin",
             "minecraft:magma",
-            "minecraft:ladder"
+            "minecraft:ladder",
+            "minecraft:redstone_lamp",
+            "minecraft:redstone_lamp_lit"
     };
 
     public static String[] ASSETS = new String[] {
-            "/assets/lostcities/citydata/conditions.json",
-            "/assets/lostcities/citydata/palette.json",
-            "/assets/lostcities/citydata/palette_desert.json",
-            "/assets/lostcities/citydata/palette_chisel.json",
-            "/assets/lostcities/citydata/palette_chisel_desert.json",
-            "/assets/lostcities/citydata/highwayparts.json",
-            "/assets/lostcities/citydata/railparts.json",
-            "/assets/lostcities/citydata/monorailparts.json",
-            "/assets/lostcities/citydata/buildingparts.json",
-            "/assets/lostcities/citydata/library.json",
+            "/citydata/conditions.json",
+            "/citydata/palette.json",
+            "/citydata/palette_desert.json",
+            "/citydata/palette_chisel.json",
+            "/citydata/palette_chisel_desert.json",
+            "/citydata/highwayparts.json",
+            "/citydata/railparts.json",
+            "/citydata/monorailparts.json",
+            "/citydata/buildingparts.json",
+            "/citydata/library.json",
             "$lostcities/userassets.json"
     };
 
@@ -66,6 +68,7 @@ public class LostCityConfiguration {
 
     public static boolean DEBUG = false;
     public static boolean OPTIMIZED_CHUNKGEN = true;
+    public static boolean MWC_LOOT = false;
 
     public static String SPECIAL_BED_BLOCK = Blocks.DIAMOND_BLOCK.getRegistryName().toString();
 
@@ -89,7 +92,7 @@ public class LostCityConfiguration {
         String[] profileList;
 
         if (oldVersion != VERSION) {
-            LostCities.setup.getLogger().info("Upgrading Lost Cities config from " + oldVersion + " to " + VERSION + "!");
+            LostCities.setup.getLogger().info("Upgrading Lost Cities config from {} to {}!", oldVersion, VERSION);
             String[] configuredAssets = cfg.getStringList("assets", CATEGORY_GENERAL, ASSETS, ASSET_COMMENT);
             List<String> mergedAssets = new ArrayList<>();
             Collections.addAll(mergedAssets, ASSETS);
@@ -137,9 +140,14 @@ public class LostCityConfiguration {
 
         DEBUG = cfg.getBoolean("debug", CATEGORY_GENERAL, DEBUG, "Enable debugging/logging");
         OPTIMIZED_CHUNKGEN = cfg.getBoolean("optimizedChunkgen", CATEGORY_GENERAL, OPTIMIZED_CHUNKGEN, "Disable this if you have mods like NEID or JEID installed. Note that when NEID or JEID is present this is disabled by default");
-        if (ModSetup.neid || ModSetup.jeid) {
-            LostCities.setup.getLogger().log(Level.INFO, "NEID or JEID detected: disabling optimized chunkgeneration!");
+        if (ModSetup.neid || ModSetup.jeid || ModSetup.reid) {
+            LostCities.setup.getLogger().log(Level.INFO, "NEID/JEID/REID detected: disabling optimized chunkgeneration!");
             OPTIMIZED_CHUNKGEN = false;
+        }
+        MWC_LOOT = cfg.getBoolean("doMWCloot", CATEGORY_GENERAL, MWC_LOOT, "Enable this if you want MWC items to spawn in chests");
+        if (ModSetup.mwc) {
+            LostCities.setup.getLogger().log(Level.INFO, "MWC detected: Enableing MWC loot!");
+            MWC_LOOT = true;
         }
 
         return profileList;

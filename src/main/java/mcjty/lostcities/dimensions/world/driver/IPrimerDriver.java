@@ -35,29 +35,28 @@ public interface IPrimerDriver {
 
     IIndex getIndex(int x, int y, int z);
 
-    void setBlockRange(int x, int y, int z, int y2, char c);
+    void setBlockRange(int x, int y, int z, int y2, int blockId); // Changed char to int
 
-    void setBlockRangeSafe(int x, int y, int z, int y2, char c);
-
-    /// Set a block at the current position
-    IPrimerDriver block(char c);
+    void setBlockRangeSafe(int x, int y, int z, int y2, int blockId); // Changed char to int
 
     /// Set a block at the current position
-    IPrimerDriver block(IBlockState c);
+    IPrimerDriver block(int blockId); // Changed char to int
+
+    /// Set a block at the current position
+    IPrimerDriver block(IBlockState state);
 
     /// Set a block at the current position and increase the height with 1
-    IPrimerDriver add(char c);
+    IPrimerDriver add(int blockId); // Changed char to int
 
-    char getBlock();
+    char getBlock(); // Changed char to int
 
-    char getBlockDown();
-    char getBlockEast();
-    char getBlockWest();
-    char getBlockSouth();
-    char getBlockNorth();
+    int getBlockDown(); // Changed char to int
+    int getBlockEast(); // Changed char to int
+    int getBlockWest(); // Changed char to int
+    int getBlockSouth(); // Changed char to int
+    int getBlockNorth(); // Changed char to int
 
-    char getBlock(int x, int y, int z);
+    int getBlock(int x, int y, int z); // Changed char to int
 
     IPrimerDriver copy();
-
 }

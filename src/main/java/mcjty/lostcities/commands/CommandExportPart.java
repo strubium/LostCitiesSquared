@@ -25,6 +25,11 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
+
+/**
+ * This class represents a command to export a part of a lost city.
+ * The part is defined by a number of slices and is saved to a JSON file.
+ */
 public class CommandExportPart implements ICommand {
 
     @Override
@@ -146,7 +151,10 @@ public class CommandExportPart implements ICommand {
     public int compareTo(ICommand o) {
         return getName().compareTo(o.getName());
     }
-
+    
+    /**
+     * This class represents a slice of the lost city part.
+     */
     public static class Slice {
         String sequence[] = new String[256];
     }

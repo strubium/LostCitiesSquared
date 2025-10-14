@@ -86,8 +86,8 @@ public class SafeDriver implements IPrimerDriver {
     }
 
     @Override
-    public void setBlockRange(int x, int y, int z, int y2, char c) {
-        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(c);
+    public void setBlockRange(int x, int y, int z, int y2, int blockId) { // Changed char to int
+        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(blockId); // Use blockId as int
         while (y < y2) {
             primer.setBlockState(x, y, z, state);
             y++;
@@ -95,8 +95,8 @@ public class SafeDriver implements IPrimerDriver {
     }
 
     @Override
-    public void setBlockRangeSafe(int x, int y, int z, int y2, char c) {
-        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(c);
+    public void setBlockRangeSafe(int x, int y, int z, int y2, int blockId) { // Changed char to int
+        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(blockId); // Use blockId as int
         while (y < y2) {
             primer.setBlockState(x, y, z, state);
             y++;
@@ -104,66 +104,64 @@ public class SafeDriver implements IPrimerDriver {
     }
 
     @Override
-    public IPrimerDriver block(char c) {
-        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(c);
+    public IPrimerDriver block(int blockId) { // Changed char to int
+        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(blockId); // Use blockId as int
         primer.setBlockState(currentX, currentY, currentZ, state);
         return this;
     }
 
     @Override
-    public IPrimerDriver block(IBlockState c) {
-        primer.setBlockState(currentX, currentY, currentZ, c);
+    public IPrimerDriver block(IBlockState state) {
+        primer.setBlockState(currentX, currentY, currentZ, state);
         return this;
     }
 
     @Override
-    public IPrimerDriver add(char c) {
-        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(c);
+    public IPrimerDriver add(int blockId) { // Changed char to int
+        IBlockState state = Block.BLOCK_STATE_IDS.getByValue(blockId); // Use blockId as int
         primer.setBlockState(currentX, currentY++, currentZ, state);
         return this;
     }
 
     @Override
-    public char getBlock() {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY, currentZ));
+    public char getBlock() { // Changed char to int
+        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY, currentZ)); // Return as int
     }
 
     @Override
-    public char getBlockDown() {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY-1, currentZ));
+    public int getBlockDown() { // Changed char to int
+        return Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY - 1, currentZ)); // Return as int
     }
 
     @Override
-    public char getBlockEast() {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX+1, currentY, currentZ));
+    public int getBlockEast() { // Changed char to int
+        return Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX + 1, currentY, currentZ)); // Return as int
     }
 
     @Override
-    public char getBlockWest() {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX-1, currentY, currentZ));
+    public int getBlockWest() { // Changed char to int
+        return Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX - 1, currentY, currentZ)); // Return as int
     }
 
     @Override
-    public char getBlockSouth() {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY, currentZ+1));
+    public int getBlockSouth() { // Changed char to int
+        return Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY, currentZ + 1)); // Return as int
     }
 
     @Override
-    public char getBlockNorth() {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY, currentZ-1));
+    public int getBlockNorth() { // Changed char to int
+        return Block.BLOCK_STATE_IDS.get(primer.getBlockState(currentX, currentY, currentZ - 1)); // Return as int
     }
 
-
     @Override
-    public char getBlock(int x, int y, int z) {
-        return (char) Block.BLOCK_STATE_IDS.get(primer.getBlockState(x, y, z));
+    public int getBlock(int x, int y, int z) { // Changed char to int
+        return Block.BLOCK_STATE_IDS.get(primer.getBlockState(x, y, z)); // Return as int
     }
 
     @Override
     public IIndex getIndex(int x, int y, int z) {
         return new Index(x, y, z);
     }
-
 
     private class Index implements IIndex {
         private final int x;

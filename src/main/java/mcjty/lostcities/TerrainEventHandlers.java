@@ -15,8 +15,17 @@ import net.minecraftforge.event.terraingen.DecorateBiomeEvent;
 import net.minecraftforge.fml.common.eventhandler.Event;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+/**
+ * This class handles the terrain decoration events in the Lost Cities dimension.
+ */
 public class TerrainEventHandlers {
 
+    /**
+     * This method is called when a decorate event occurs in the world.
+     * It checks if the event is in the Lost Cities dimension and modifies the decoration based on the configuration.
+     *
+     * @param event The decorate event
+     */
     @SubscribeEvent
     public void onCreateDecorate(DecorateBiomeEvent.Decorate event) {
         World world = event.getWorld();
@@ -33,6 +42,10 @@ public class TerrainEventHandlers {
                 case CLAY:
                 case DEAD_BUSH:
                 case ICE:
+                    if (getProfile(event, (WorldServer) world).AVOID_GENERATED_ICE) {
+                        event.setResult(Event.Result.DENY);
+                    }
+                    break;
                 case LAKE_LAVA:
                 case ROCK:
                 case SAND:
@@ -137,7 +150,14 @@ public class TerrainEventHandlers {
             }
         }
     }
-
+    
+    /**
+     * This method retrieves the Lost City profile for a given world and chunk coordinates.
+     *
+     * @param event The decorate event
+     * @param world The world server
+     * @return The Lost City profile for the given chunk
+     */
     private LostCityProfile getProfile(DecorateBiomeEvent.Decorate event, WorldServer world) {
         LostCityChunkGenerator provider = WorldTypeTools.getChunkGenerator(world.provider.getDimension());
         int chunkX = (event.getPos().getX()) >> 4;

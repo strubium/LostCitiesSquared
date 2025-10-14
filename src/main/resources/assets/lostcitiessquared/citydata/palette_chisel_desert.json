@@ -183,7 +183,7 @@
     "palette": [
       {
         "char": "Q",
-        "block": "minecraft:quartz_block",
+        "block": "chisel:quartz@7",
         "damaged": "minecraft:iron_bars"
       },
       {
@@ -193,7 +193,7 @@
       },
       {
         "char": "u",
-        "block": "minecraft:double_stone_slab",
+        "block": "minecraft:sandstone",
         "damaged": "minecraft:iron_bars"
       },
       {
@@ -264,7 +264,16 @@
       },
       {
         "char": ":",
-        "block": "minecraft:iron_bars"
+        "blocks": [
+          {
+            "random": 2000,
+            "block": "chisel:ironpane@0"
+          },
+          {
+            "random": 9,
+            "block": "chisel:ironpane@7"
+          }
+        ]
       },
       {
         "char": "A",

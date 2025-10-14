@@ -37,10 +37,13 @@ public class AssetRegistries {
     }
 
     public static void load(File file) {
-        try(FileInputStream in = new FileInputStream(file)) {
+        if (file == null || !file.exists()) {
+            LostCities.setup.getLogger().info("Can't find file while loading assets, this is not an error!");
+            return;
+        }
+
+        try (FileInputStream in = new FileInputStream(file)) {
             load(in, file.getName());
-        } catch (FileNotFoundException e) {
-            // Not an error
         } catch (IOException e) {
             throw new UncheckedIOException(e);
         }

@@ -14,9 +14,8 @@ public class Highway {
 
     private static NoiseGeneratorPerlin perlinX = null;
     private static NoiseGeneratorPerlin perlinZ = null;
-    private static Map<ChunkCoord, Integer> xHighwayLevelCache = new HashMap<>();
-    private static Map<ChunkCoord, Integer> zHighwayLevelCache = new HashMap<>();
-
+    private static final Map<ChunkCoord, Integer> xHighwayLevelCache = new HashMap<>();
+    private static final Map<ChunkCoord, Integer> zHighwayLevelCache = new HashMap<>();
 
     private static void makePerlin(long seed) {
         if (perlinX == null) {
@@ -82,17 +81,16 @@ public class Highway {
             while (hasHighway.apply(lower)) {
                 lower = lower.lower(orientation);
             }
-            lower = lower.higher(orientation);     // This is now where the highway starts
+            lower = lower.higher(orientation);
 
-            // Find the right-most chunk that is still part of this highway
             ChunkCoord higher = cp.higher(orientation);
             while (hasHighway.apply(higher)) {
                 higher = higher.higher(orientation);
             }
-            higher = higher.lower(orientation);     // This is now where the highway ends
+            higher = higher.lower(orientation);
 
             int level = -1;
-            if (higher.getCoord(orientation)-lower.getCoord(orientation) >= 5) {
+            if (higher.getCoord(orientation) - lower.getCoord(orientation) >= 5) {
                 boolean valid;
                 if (profile.HIGHWAY_REQUIRES_TWO_CITIES) {
                     valid = BuildingInfo.isCityRaw(lower.getChunkX(), lower.getChunkZ(), provider, profile) && BuildingInfo.isCityRaw(higher.getChunkX(), higher.getChunkZ(), provider, profile);
@@ -100,7 +98,6 @@ public class Highway {
                     valid = BuildingInfo.isCityRaw(lower.getChunkX(), lower.getChunkZ(), provider, profile) || BuildingInfo.isCityRaw(higher.getChunkX(), higher.getChunkZ(), provider, profile);
                 }
                 if (valid) {
-                    // We have at least one city. Valid highway:
                     switch (profile.HIGHWAY_LEVEL_FROM_CITIES_MODE) {
                         case 0:
                             level = BuildingInfo.getCityLevel(lower.getChunkX(), lower.getChunkZ(), provider);
@@ -120,17 +117,26 @@ public class Highway {
                         default:
                             throw new RuntimeException("Bad value for 'highwayLevelFromCities'!");
                     }
-                    for (ChunkCoord cc = lower; cc.getCoord(orientation) <= higher.getCoord(orientation); cc = cc.higher(orientation)) {
-                        cache.put(cc, level);
-                    }
+
+                    // Check for adjacent highways and adjust levels accordingly
+                    adjustHighwayLevels(lower, higher, orientation, level, cache, provider, profile);
                 }
             }
             return level;
-
         }
 
         cache.put(cp, -1);
         return -1;
+    }
+
+    private static void adjustHighwayLevels(ChunkCoord lower, ChunkCoord higher, Orientation orientation, int level, Map<ChunkCoord, Integer> cache, LostCityChunkGenerator provider, LostCityProfile profile) {
+        for (ChunkCoord cc = lower; cc.getCoord(orientation) <= higher.getCoord(orientation); cc = cc.higher(orientation)) {
+            // Check for adjacent highways and adjust their levels to merge or blend correctly
+            if (cache.containsKey(cc) && cache.get(cc) != -1) {
+                level = Math.max(level, cache.get(cc));  // Merge with adjacent highways
+            }
+            cache.put(cc, level);
+        }
     }
 
     private static boolean hasXHighway(ChunkCoord cp, LostCityProfile profile) {

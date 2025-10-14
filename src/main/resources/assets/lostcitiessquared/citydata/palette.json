@@ -383,17 +383,8 @@
       },
       {
         "char": "S",
-        "blocks": [
-          {
-            "random": 9,
-            "block": "minecraft:stone_slab"
-          },
-          {
-            "random": 1000,
-            "block": "minecraft:double_stone_slab"
-          }
-        ],
-        "damaged": "minecraft:iron_bars"
+        "block": "minecraft:double_stone_slab",
+        "damaged": "minecraft:stone_slab"
       },
       {
         "char": "b",
@@ -468,7 +459,16 @@
       },
       {
         "char": "w",
-        "block": "minecraft:cobblestone_wall"
+        "blocks": [
+        {
+          "random": 1000,
+          "block": "minecraft:cobblestone_wall"
+        },
+        {
+          "random": 70,
+          "block": "minecraft:cobblestone_wall@1"  
+        }
+        ]
       },
       {
         "char": ":",
