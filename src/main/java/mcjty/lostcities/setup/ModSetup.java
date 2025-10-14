@@ -8,6 +8,9 @@ import mcjty.lostcities.config.LostCityConfiguration;
 import mcjty.lostcities.dimensions.ModDimensions;
 import mcjty.lostcities.dimensions.world.lost.cityassets.AssetRegistries;
 import mcjty.lostcities.network.PacketHandler;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.resources.IResource;
+import net.minecraft.client.resources.IResourceManager;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.storage.loot.LootTableList;
 import net.minecraftforge.common.MinecraftForge;
@@ -54,7 +57,7 @@ public class ModSetup {
      */
     public void preInit(FMLPreInitializationEvent e) {
         logger = e.getModLog();
-        PacketHandler.registerChannelAndMessages("lostcitiessquared");
+        PacketHandler.registerChannelAndMessages(LostCities.MODID);
 
         setupModCompat();
 
@@ -119,18 +122,31 @@ public class ModSetup {
         ConfigSetup.profileConfigs.clear();
 
         AssetRegistries.reset();
+        IResourceManager resourceManager = Minecraft.getMinecraft().getResourceManager();
+
         for (String path : LostCityConfiguration.ASSETS) {
-            if (path.startsWith("/")) {
-                try(InputStream inputstream = LostCities.class.getResourceAsStream(path)) {
-                    AssetRegistries.load(inputstream, path);
-                } catch (IOException ex) {
-                    throw new UncheckedIOException(ex);
+            try {
+                if (path.startsWith("/")) {
+                    // Remove leading slash for ResourceLocation
+                    String resourcePath = path.substring(1);
+                    ResourceLocation rl = new ResourceLocation(LostCities.MODID, resourcePath);
+
+                    try (IResource resource = resourceManager.getResource(rl)) {
+                        AssetRegistries.load(resource.getInputStream(), path);
+                    }
+                } else if (path.startsWith("$")) {
+                    // Optional: load from config folder
+                    File file = new File(modConfigDir, path.substring(1));
+                    if (file.exists()) {
+                        AssetRegistries.load(file);
+                    } else {
+                        logger.warn("Asset file not found: " + file);
+                    }
+                } else {
+                    throw new RuntimeException("Invalid path for lostcity resource in 'assets' config: " + path);
                 }
-            } else if (path.startsWith("$")) {
-                File file = new File(modConfigDir.getPath() + File.separator + path.substring(1));
-                AssetRegistries.load(file);
-            } else {
-                throw new RuntimeException("Invalid path for lostcity resource in 'assets' config!");
+            } catch (IOException ex) {
+                logger.error("Failed to load asset: " + path, ex);
             }
         }
 

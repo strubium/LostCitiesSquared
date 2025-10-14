@@ -38,16 +38,16 @@ public class LostCityConfiguration {
     };
 
     public static String[] ASSETS = new String[] {
-            "/assets/lostcities/citydata/conditions.json",
-            "/assets/lostcities/citydata/palette.json",
-            "/assets/lostcities/citydata/palette_desert.json",
-            "/assets/lostcities/citydata/palette_chisel.json",
-            "/assets/lostcities/citydata/palette_chisel_desert.json",
-            "/assets/lostcities/citydata/highwayparts.json",
-            "/assets/lostcities/citydata/railparts.json",
-            "/assets/lostcities/citydata/monorailparts.json",
-            "/assets/lostcities/citydata/buildingparts.json",
-            "/assets/lostcities/citydata/library.json",
+            "/citydata/conditions.json",
+            "/citydata/palette.json",
+            "/citydata/palette_desert.json",
+            "/citydata/palette_chisel.json",
+            "/citydata/palette_chisel_desert.json",
+            "/citydata/highwayparts.json",
+            "/citydata/railparts.json",
+            "/citydata/monorailparts.json",
+            "/citydata/buildingparts.json",
+            "/citydata/library.json",
             "$lostcities/userassets.json"
     };
 
@@ -92,7 +92,7 @@ public class LostCityConfiguration {
         String[] profileList;
 
         if (oldVersion != VERSION) {
-            LostCities.setup.getLogger().info("Upgrading Lost Cities config from " + oldVersion + " to " + VERSION + "!");
+            LostCities.setup.getLogger().info("Upgrading Lost Cities config from {} to {}!", oldVersion, VERSION);
             String[] configuredAssets = cfg.getStringList("assets", CATEGORY_GENERAL, ASSETS, ASSET_COMMENT);
             List<String> mergedAssets = new ArrayList<>();
             Collections.addAll(mergedAssets, ASSETS);

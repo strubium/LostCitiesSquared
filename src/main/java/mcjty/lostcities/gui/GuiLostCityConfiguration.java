@@ -14,158 +14,146 @@ import java.io.IOException;
 import java.util.*;
 
 /**
- * This class represents the GUI for configuring Lost Cities world generation.
- * It extends the GuiScreen class from Minecraft and provides a user interface
- * for selecting and applying different Lost Cities profiles.
- * 
- * @author mcjty
+ * GUI for configuring Lost Cities world generation.
+ * Allows the user to select and apply different Lost Cities profiles.
  */
 public class GuiLostCityConfiguration extends GuiScreen {
 
-    private final GuiCreateWorld parent;
-    private Map<Integer, Runnable> actionHandler = new HashMap<>();
-    private Map<Integer, String> profileNames = new HashMap<>();
-    private int page = 0;
-    private int numpages;
-    private GuiMutableLabel pagelabel;
+    private static final int BUTTON_WIDTH = 90;
+    private static final int BUTTON_HEIGHT = 20;
+    private static final int LABEL_WIDTH = 230;
+    private static final int LABEL_HEIGHT = 20;
+    private static final int BUTTON_Y_SPACING = 22;
+    private static final int PROFILES_PER_PAGE = 8;
 
-    /**
-     * Constructor for the GuiLostCityConfiguration class.
-     *
-     * @param parent The parent GUI screen from which this GUI is opened.
-     */
+    private final GuiCreateWorld parent;
+    private final Map<Integer, Runnable> actionHandler = new HashMap<>();
+    private final Map<Integer, String> profileNames = new HashMap<>();
+
+    private int page = 0;
+    private int numPages = 0;
+    private GuiMutableLabel pageLabel;
+
     public GuiLostCityConfiguration(GuiCreateWorld parent) {
         this.parent = parent;
     }
 
-    /**
-     * Initializes the GUI components and sets up the profile selection.
-     */
     @Override
     public void initGui() {
-        JsonParser parser = new JsonParser();
+        String profileName = getCurrentProfileFromJson();
+        page = 0;
+        numPages = (int) Math.ceil((double) countPublicProfiles() / PROFILES_PER_PAGE);
+        setupGui(profileName);
+    }
+
+    private String getCurrentProfileFromJson() {
         String profileName = LostCityConfiguration.DEFAULT_PROFILE;
         if (parent.chunkProviderSettingsJson != null && !parent.chunkProviderSettingsJson.trim().isEmpty()) {
+            JsonParser parser = new JsonParser();
             JsonElement parsed = parser.parse(parent.chunkProviderSettingsJson);
             if (parsed.getAsJsonObject().has("profile")) {
                 profileName = parsed.getAsJsonObject().get("profile").getAsString();
             }
         }
-
-        page = 0;
-        numpages = (countPublicProfiles() + 7) / 8;
-
-        setupGui(profileName);
+        return profileName;
     }
-    
-    /**
-     * Initializes the GUI components and sets up the profile selection.
-     */
+
     private int countPublicProfiles() {
-        int cnt = 0;
-        for (Map.Entry<String, LostCityProfile> entry : LostCityConfiguration.profiles.entrySet()) {
-            if (entry.getValue().isPublic()) {
-                cnt++;
-            }
-        }
-        return cnt;
+        return (int) LostCityConfiguration.profiles.values().stream().filter(LostCityProfile::isPublic).count();
     }
-    
-    /**
-     * Sets up the GUI components for the profile selection.
-     *
-     * @param profileName The name of the currently selected profile.
-     */
-    private void setupGui(String profileName) {
+
+    private void setupGui(String currentProfile) {
         actionHandler.clear();
         profileNames.clear();
-        this.buttonList.clear();
-        this.labelList.clear();
-        int id = 301;
-        int y = 8;
-        int num = -1;
-        int cnt = 0;
+        buttonList.clear();
+        labelList.clear();
 
         List<String> profileKeys = new ArrayList<>(LostCityConfiguration.profiles.keySet());
         profileKeys.sort(String::compareTo);
+
+        int id = 301;
+        int y = 8;
+        int displayed = 0;
+        int skipped = page * PROFILES_PER_PAGE;
+
         for (String key : profileKeys) {
             LostCityProfile profile = LostCityConfiguration.profiles.get(key);
-            if (profile.isPublic()) {
-                num++;
-                if (num < page * 8) {
-                    continue;
-                }
-                if (cnt >= 8) {
-                    break;
-                }
-                cnt++;
-                GuiButton button = new GuiButton(id, 10, y, 90, 20, key);
-                if (profileName.equals(profile.getName())) {
-                    button.packedFGColour = 0xffffff00;
-                }
-                this.buttonList.add(button);
-                actionHandler.put(id, () -> setProfile(profile));
-                profileNames.put(id, profile.getName());
-                id++;
+            if (!profile.isPublic()) continue;
+            if (skipped-- > 0) continue;
+            if (displayed >= PROFILES_PER_PAGE) break;
 
-                GuiLabel label = new GuiLabel(Minecraft.getMinecraft().fontRenderer, id++, 110, y, 230, 20, 0xffffffff);
-                label.addLine(profile.getDescription());
-                this.labelList.add(label);
-                y += 22;
-            }
+            addProfileButtonAndLabel(id++, key, profile, y, currentProfile);
+            y += BUTTON_Y_SPACING;
+            displayed++;
         }
 
+        addInfoLabel(id++, 200, "(note, you can create your own profiles and many more",
+                "configuration options in 'lostcities.cfg')");
 
-        y = 200;
-        GuiLabel label = new GuiLabel(Minecraft.getMinecraft().fontRenderer, id++, 20, y, 340, 20, 0xffffffff);
-        label.addLine("(note, you can create your own profiles and many more");
-        label.addLine("configuration options in 'lostcities.cfg')");
-        this.labelList.add(label);
-
-        if (numpages > 1) {
-            GuiButton prev = new GuiButton(id, 330, y, 20, 19, "<");
-            this.buttonList.add(prev);
-            actionHandler.put(id, () -> { page = page > 0 ? page - 1 : page; setupGui(profileName); });
-
-            id++;
-            pagelabel = new GuiMutableLabel(Minecraft.getMinecraft().fontRenderer, id++, 360, y, 30, 20, 0xffffffff);
-            pagelabel.addLine("" + (page+1) + "/" + numpages);
-
-            GuiButton next = new GuiButton(id, 390, y, 20, 19, ">");
-            this.buttonList.add(next);
-            actionHandler.put(id, () -> { page = page < numpages-1 ? page + 1 : page; setupGui(profileName); });
-            id++;
+        if (numPages > 1) {
+            addPageNavigationButtons(id++, 200, currentProfile);
         }
+    }
+
+    private void addProfileButtonAndLabel(int id, String key, LostCityProfile profile, int y, String currentProfile) {
+        // Profile button
+        GuiButton button = new GuiButton(id, 10, y, BUTTON_WIDTH, BUTTON_HEIGHT, key);
+        if (currentProfile.equals(profile.getName())) {
+            button.packedFGColour = 0xffffff00; // Highlight selected
+        }
+        buttonList.add(button);
+        actionHandler.put(id, () -> setProfile(profile));
+        profileNames.put(id, profile.getName());
+
+        // Profile description label
+        GuiLabel label = new GuiLabel(Minecraft.getMinecraft().fontRenderer, id + 1000, 110, y, LABEL_WIDTH, LABEL_HEIGHT, 0xffffffff);
+        label.addLine(profile.getDescription());
+        labelList.add(label);
+    }
+
+    private void addInfoLabel(int id, int y, String line1, String line2) {
+        GuiLabel label = new GuiLabel(Minecraft.getMinecraft().fontRenderer, id, 20, y, 340, 20, 0xffffffff);
+        label.addLine(line1);
+        label.addLine(line2);
+        labelList.add(label);
+    }
+
+    private void addPageNavigationButtons(int id, int y, String currentProfile) {
+        GuiButton prev = new GuiButton(id, 330, y, 20, 19, "<");
+        buttonList.add(prev);
+        actionHandler.put(id, () -> { page = Math.max(page - 1, 0); setupGui(currentProfile); });
+
+        pageLabel = new GuiMutableLabel(Minecraft.getMinecraft().fontRenderer, id + 1, 360, y, 30, 20, 0xffffffff);
+        pageLabel.addLine("" + (page + 1) + "/" + numPages);
+
+        GuiButton next = new GuiButton(id + 2, 390, y, 20, 19, ">");
+        buttonList.add(next);
+        actionHandler.put(id + 2, () -> { page = Math.min(page + 1, numPages - 1); setupGui(currentProfile); });
     }
 
     private void setProfile(LostCityProfile profile) {
         parent.chunkProviderSettingsJson = "{ \"profile\": \"" + profile.getName() + "\" }";
-        this.mc.displayGuiScreen(parent);
+        mc.displayGuiScreen(parent);
     }
 
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
         super.actionPerformed(button);
-        if (actionHandler.containsKey(button.id)) {
-            actionHandler.get(button.id).run();
+        Runnable action = actionHandler.get(button.id);
+        if (action != null) {
+            action.run();
         }
     }
 
-     /**
-     * Draws the GUI components on the screen.
-     *
-     * @param mouseX The X coordinate of the mouse cursor.
-     * @param mouseY The Y coordinate of the mouse cursor.
-     * @param partialTicks The partial ticks for smooth rendering.
-     */
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
-        this.drawDefaultBackground();
+        drawDefaultBackground();
         super.drawScreen(mouseX, mouseY, partialTicks);
-        if (numpages > 1) {
-            pagelabel.clearLines();
-            pagelabel.addLine("" + (page+1) + "/" + numpages);
-            pagelabel.drawLabel(Minecraft.getMinecraft(), mouseX, mouseY);
+
+        if (numPages > 1) {
+            pageLabel.clearLines();
+            pageLabel.addLine("" + (page + 1) + "/" + numPages);
+            pageLabel.drawLabel(Minecraft.getMinecraft(), mouseX, mouseY);
         }
 
         for (GuiButton button : buttonList) {
@@ -174,16 +162,20 @@ public class GuiLostCityConfiguration extends GuiScreen {
                 if (name != null) {
                     LostCityProfile profile = LostCityConfiguration.profiles.get(name);
                     if (profile != null && profile.getIcon() != null) {
-                        int bx = button.x + 95;
-                        int by = button.y + 6;
-                        drawGradientRect(bx-5, by-5, bx + 320, by + 85, 0xffffffff, 0xffffffff);
-                        mc.getTextureManager().bindTexture(profile.getIcon());
-                        drawScaledCustomSizeModalRect(bx, by, 0, 0, 128, 128, 80, 80, 128, 128);
-                        String output = profile.getDescription() + "\n" + profile.getExtraDescription();
-                        mc.fontRenderer.drawSplitString(output, bx + 90, by, 220, 0xff000000);
+                        drawProfileTooltip(button, profile);
                     }
                 }
             }
         }
+    }
+
+    private void drawProfileTooltip(GuiButton button, LostCityProfile profile) {
+        int bx = button.x + 95;
+        int by = button.y + 6;
+        drawGradientRect(bx - 5, by - 5, bx + 320, by + 85, 0xffffffff, 0xffffffff);
+        mc.getTextureManager().bindTexture(profile.getIcon());
+        drawScaledCustomSizeModalRect(bx, by, 0, 0, 128, 128, 80, 80, 128, 128);
+        String output = profile.getDescription() + "\n" + profile.getExtraDescription();
+        mc.fontRenderer.drawSplitString(output, bx + 90, by, 220, 0xff000000);
     }
 }
